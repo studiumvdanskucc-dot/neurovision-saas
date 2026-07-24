@@ -39,8 +39,14 @@ The repository includes an automatic GitHub Pages workflow.
 3. Set the source to **GitHub Actions**.
 4. The workflow builds and deploys the site automatically.
 
-The included `CNAME` file points to `neurovision-ai.com`. Remove or update it
-before deployment if a different domain should be used.
+The workflow reads GitHub Pages' configured base path during every build. The
+same source therefore works at both a repository URL such as
+`https://USERNAME.github.io/neurovision-saas/` and at a configured custom
+domain.
+
+The included `CNAME` file points to `neurovision-ai.com`. Configure that domain
+under **Settings → Pages** when its DNS is ready, or remove/update `public/CNAME`
+if a different domain will be used.
 
 Product calls to action point to:
 

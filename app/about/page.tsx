@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { sitePath } from "../site-path";
 import { Footer, Header } from "../site-shell";
 
 export const metadata: Metadata = {
@@ -7,11 +8,11 @@ export const metadata: Metadata = {
 };
 
 const team = [
-  ["Jakub Lenovsky", "Business development & partnerships", "/assets/jakub.jpeg"],
-  ["Frantisek Hoza", "Platform engineering & architecture", "/assets/frantisek.jpeg"],
-  ["Aleksandra Krolikowska", "Operations & international growth", "/assets/aleksandra.jpeg"],
-  ["Alexia Sovar", "Market development & partnerships", "/assets/alexia.jpeg"],
-  ["Maria Kostrzewa", "Behavioural research & business development", "/assets/maria.jpeg"],
+  ["Jakub Lenovsky", "Business development & partnerships", sitePath("/assets/jakub.jpeg")],
+  ["Frantisek Hoza", "Platform engineering & architecture", sitePath("/assets/frantisek.jpeg")],
+  ["Aleksandra Krolikowska", "Operations & international growth", sitePath("/assets/aleksandra.jpeg")],
+  ["Alexia Sovar", "Market development & partnerships", sitePath("/assets/alexia.jpeg")],
+  ["Maria Kostrzewa", "Behavioural research & business development", sitePath("/assets/maria.jpeg")],
 ];
 
 export default function About() {

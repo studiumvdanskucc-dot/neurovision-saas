@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { sitePath } from "../site-path";
 import { Footer, Header } from "../site-shell";
 
 export const metadata: Metadata = {
@@ -7,9 +8,9 @@ export const metadata: Metadata = {
 };
 
 const steps = [
-  ["01 / Original stimulus", "Start with the creative as the audience will meet it.", "Upload a campaign visual, website capture, package or product listing. NeuroVision keeps the original stimulus at the centre of every evaluation.", "/assets/hero-ad.webp", "Original sample Zephyr Motors advertisement"],
-  ["02 / Attention prediction", "See the hierarchy—not just the decoration.", "The predictive heatmap shows which elements are likely to attract early attention, what competes and what risks being missed.", "/assets/hero-heatmap.webp", "Sample ad with predictive attention heatmap"],
-  ["03 / Optimised variation", "Turn the finding into something your team can use.", "The new direction gives the product more presence, makes the headline easier to decode and brings the brand into the opening view.", "/assets/hero-optimised.webp", "Optimised sample Zephyr Motors advertisement"],
+  ["01 / Original stimulus", "Start with the creative as the audience will meet it.", "Upload a campaign visual, website capture, package or product listing. NeuroVision keeps the original stimulus at the centre of every evaluation.", sitePath("/assets/hero-ad.webp"), "Original sample Zephyr Motors advertisement"],
+  ["02 / Attention prediction", "See the hierarchy—not just the decoration.", "The predictive heatmap shows which elements are likely to attract early attention, what competes and what risks being missed.", sitePath("/assets/hero-heatmap.webp"), "Sample ad with predictive attention heatmap"],
+  ["03 / Optimised variation", "Turn the finding into something your team can use.", "The new direction gives the product more presence, makes the headline easier to decode and brings the brand into the opening view.", sitePath("/assets/hero-optimised.webp"), "Optimised sample Zephyr Motors advertisement"],
 ];
 
 export default function CaseStudies() {

@@ -1,12 +1,14 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { Footer, Header } from "./site-shell";
+import { sitePath } from "./site-path";
 
 const demo = {
   attention: {
     label: "Attention",
-    image: "/assets/hero-heatmap.webp",
+    image: sitePath("/assets/hero-heatmap.webp"),
     alt: "Sample ad with predictive attention heatmap",
     score: "84",
     metric: "Attention clarity",
@@ -14,7 +16,7 @@ const demo = {
   },
   interpretation: {
     label: "Interpretation",
-    image: "/assets/hero-ad.webp",
+    image: sitePath("/assets/hero-ad.webp"),
     alt: "Sample ad ready for audience interpretation",
     score: "76",
     metric: "Message fit",
@@ -22,7 +24,7 @@ const demo = {
   },
   optimise: {
     label: "Optimise",
-    image: "/assets/hero-optimised.webp",
+    image: sitePath("/assets/hero-optimised.webp"),
     alt: "Sample ad after creative optimisation",
     score: "91",
     metric: "Predicted impact",
@@ -104,7 +106,7 @@ export default function Home() {
             <div className="product-wrap">
               <div className="product">
                 <div className="product-bar">
-                  <div><img src="/logo.webp" alt="" /><b>NeuroVision</b></div>
+                  <div><img src={sitePath("/logo.webp")} alt="" /><b>NeuroVision</b></div>
                   <span>•••</span><small>Sample analysis</small>
                 </div>
                 <div className="product-body">
@@ -224,7 +226,7 @@ export default function Home() {
         <section className="section science">
           <div className="container science-grid">
             <div className="science-art"><div className="orbit o1" /><div className="orbit o2" /><strong>NV</strong><span className="n1">Behaviour</span><span className="n2">Attention</span><span className="n3">Design</span><span className="n4">AI</span></div>
-            <div><p className="kicker light">Scientific by design</p><h2>Built to make complex evidence useful.</h2><p>NeuroVision combines predictive visual modelling, behavioural research and generative systems in a workflow creative teams can actually use. Every score is a decision aid—not a promise of real-world performance.</p><ul><li><b>Model</b><span>predict likely attention and visual decoding</span></li><li><b>Simulate</b><span>explore response across defined audience profiles</span></li><li><b>Iterate</b><span>turn findings into measurable creative changes</span></li></ul><a className="text-link" href="/about">Meet the team behind NeuroVision ↗</a></div>
+            <div><p className="kicker light">Scientific by design</p><h2>Built to make complex evidence useful.</h2><p>NeuroVision combines predictive visual modelling, behavioural research and generative systems in a workflow creative teams can actually use. Every score is a decision aid—not a promise of real-world performance.</p><ul><li><b>Model</b><span>predict likely attention and visual decoding</span></li><li><b>Simulate</b><span>explore response across defined audience profiles</span></li><li><b>Iterate</b><span>turn findings into measurable creative changes</span></li></ul><Link className="text-link" href="/about">Meet the team behind NeuroVision ↗</Link></div>
           </div>
         </section>
 

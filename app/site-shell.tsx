@@ -1,11 +1,12 @@
 import Link from "next/link";
+import { sitePath } from "./site-path";
 
 export function Header() {
   return (
     <header className="header">
       <div className="container nav">
         <Link className="brand" href="/" aria-label="NeuroVision home">
-          <img src="/logo.webp" alt="" />
+          <img src={sitePath("/logo.webp")} alt="" />
           <span><strong>NeuroVision</strong><small>Predictive design intelligence</small></span>
         </Link>
         <nav className="nav-links" aria-label="Primary navigation">
@@ -44,7 +45,7 @@ export function Footer() {
       <div className="container footer-grid">
         <div className="footer-main">
           <Link className="brand" href="/">
-            <img src="/logo.webp" alt="" />
+            <img src={sitePath("/logo.webp")} alt="" />
             <span><strong>NeuroVision</strong><small>Predictive design intelligence</small></span>
           </Link>
           <p>Predict attention. Simulate interpretation. Generate stronger creative—all before launch.</p>

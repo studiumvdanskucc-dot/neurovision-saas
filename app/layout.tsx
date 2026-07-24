@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { sitePath } from "./site-path";
 
 const sans = Geist({ variable: "--font-sans", subsets: ["latin"] });
 const mono = Geist_Mono({ variable: "--font-mono", subsets: ["latin"] });
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
   description:
     "Predict attention, simulate audience interpretation and generate stronger creative before launch.",
   other: { "codex-preview": "development" },
-  icons: { icon: "/logo.webp", shortcut: "/logo.webp" },
+  icons: { icon: sitePath("/logo.webp"), shortcut: sitePath("/logo.webp") },
 };
 
 export default function RootLayout({

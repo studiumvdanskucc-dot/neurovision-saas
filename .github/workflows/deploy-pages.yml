@@ -28,6 +28,7 @@ jobs:
           cache: npm
 
       - name: Configure GitHub Pages
+        id: pages
         uses: actions/configure-pages@v5
 
       - name: Install dependencies
@@ -37,6 +38,12 @@ jobs:
         run: npm run build:github
         env:
           GITHUB_PAGES: "true"
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+
+      - name: Validate GitHub Pages paths
+        run: npm run validate:github
+        env:
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
