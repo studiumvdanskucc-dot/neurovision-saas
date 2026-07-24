@@ -5,9 +5,9 @@ const outputDirectory = path.resolve("out");
 const basePath =
   (process.env.NEXT_PUBLIC_BASE_PATH ?? "").replace(/\/$/, "");
 
-if (!basePath.startsWith("/")) {
+if (basePath !== "" && !basePath.startsWith("/")) {
   throw new Error(
-    "NEXT_PUBLIC_BASE_PATH must start with / when validating GitHub Pages.",
+    "NEXT_PUBLIC_BASE_PATH must be empty for a custom domain or start with /.",
   );
 }
 
@@ -46,6 +46,7 @@ for (const htmlFile of htmlFiles) {
     if (!reference.startsWith("/")) continue;
 
     if (
+      basePath &&
       reference !== basePath &&
       !reference.startsWith(`${basePath}/`)
     ) {
@@ -78,5 +79,7 @@ if (failures.length > 0) {
 }
 
 console.log(
-  `Validated ${htmlFiles.length} HTML files for GitHub Pages at ${basePath}/`,
+  `Validated ${htmlFiles.length} HTML files for GitHub Pages at ${
+    basePath ? `${basePath}/` : "the custom-domain root"
+  }`,
 );

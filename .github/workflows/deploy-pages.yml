@@ -38,12 +38,16 @@ jobs:
         run: npm run build:github
         env:
           GITHUB_PAGES: "true"
-          NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          # This repository owns neurovision-ai.com (see public/CNAME), so the
+          # exported site must use domain-root asset URLs. Using the repository
+          # path here makes every stylesheet, script and image 404 on the
+          # custom domain.
+          NEXT_PUBLIC_BASE_PATH: ""
 
-      - name: Validate GitHub Pages paths
+      - name: Validate custom-domain paths
         run: npm run validate:github
         env:
-          NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          NEXT_PUBLIC_BASE_PATH: ""
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
