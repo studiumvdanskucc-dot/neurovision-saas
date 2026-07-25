@@ -42,12 +42,12 @@ jobs:
           # exported site must use domain-root asset URLs. Using the repository
           # path here makes every stylesheet, script and image 404 on the
           # custom domain.
-          NEXT_PUBLIC_BASE_PATH: ""
+          NEXT_PUBLIC_BASE_PATH: "/neurovision-saas"
 
-      - name: Validate custom-domain paths
+      - name: Validate GitHub Pages paths
         run: npm run validate:github
         env:
-          NEXT_PUBLIC_BASE_PATH: ""
+          NEXT_PUBLIC_BASE_PATH: "/neurovision-saas"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
