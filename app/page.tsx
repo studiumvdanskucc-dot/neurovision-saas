@@ -190,7 +190,7 @@ export default function Home() {
                   {plan.featured && <em>Most popular</em>}
                   <h3>{plan.name}</h3><p className="desc">{plan.description}</p>
                   <p className="price"><b>{plan.price}</b><span>/ month</span></p>
-                  <p className="credits">{plan.credits}</p>
+                  <p className="credits"><span>Monthly allowance</span><b>{plan.credits}</b></p>
                   <ul>{plan.features.map(f => <li key={f}><span>✓</span>{f}</li>)}</ul>
                   <a className={`btn ${plan.featured ? "primary" : "secondary"}`} href="http://app.neurovision-ai.com/register">{plan.cta} ↗</a>
                 </article>
