@@ -1,0 +1,35 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { Footer, Header } from "../site-shell";
+
+export const metadata: Metadata = {
+  title: "Use Cases",
+  description: "Explore how NeuroVision supports campaigns, websites, digital shelf, packaging and product decisions.",
+};
+
+const useCases = [
+  { id:"01", label:"Campaigns & ads", title:"Choose the creative worth backing before media spend.", copy:"Compare concepts, messages and generated variants while there is still time to change them. NeuroVision shows whether the product, headline, brand and call to action form the hierarchy you intended.", tasks:["Pre-flight a hero campaign","Compare paid-social variants","Check brand and CTA visibility","Build an evidence-backed creative review"], outputs:["Attention map","Audience interpretation","A/B recommendation"], art:"campaign-art" },
+  { id:"02", label:"Websites & UX", title:"Find conversion friction before it becomes analytics.", copy:"Analyse full-page captures or key interface states to see what attracts the opening view, what is visually buried and where the page asks users to work too hard.", tasks:["Review landing-page hierarchy","Check CTA discoverability","Compare hero and navigation options","Trace attention across a long page"], outputs:["First-view hierarchy","Clarity risks","Prioritised UX changes"], art:"website-art" },
+  { id:"03", label:"Digital shelf", title:"Win attention in the most competitive few centimetres online.", copy:"Benchmark product listings against the surrounding shelf. See which product gains presence, whether critical details survive thumbnail scale and how brand assets perform against competitors.", tasks:["Compare search-result thumbnails","Benchmark product presence","Audit titles, badges and pack visibility","Screen new listing creatives"], outputs:["Shelf ranking","Product visibility","Competitive benchmark"], art:"shelf-art" },
+  { id:"04", label:"Packaging & product", title:"Test what the pack communicates before production.", copy:"Evaluate shelf presence, information order and brand recognition across early packaging concepts. Agentic audiences add a first-pass view of clarity, trust, relevance and likely misunderstanding.", tasks:["Compare pack architecture","Check claim readability","Evaluate range consistency","Test recognition at realistic scale"], outputs:["Pack attention","Message clarity","Variant comparison"], art:"packaging-art" },
+  { id:"05", label:"Creative generation", title:"Turn diagnosis into a controlled GenAI test.", copy:"Use findings from the attention and interpretation layers to brief stronger alternatives. Generate within brand constraints, then compare every new direction against the original instead of choosing by taste alone.", tasks:["Translate findings into a prompt","Create on-brand variants","Resize for channel formats","Run iterative A/B evaluation"], outputs:["Optimised variants","A/B evidence","Export-ready creative"], art:"generation-art" },
+];
+
+function UseCaseArt({ type }: { type: string }) {
+  if (type === "campaign-art") return <div className="use-case-art campaign-art"><span>MOVE<br />DIFFERENT.</span><span>BUILT<br />TO MOVE.</span><b>A/B</b></div>;
+  if (type === "website-art") return <div className="use-case-art website-art"><div><i /><strong>Make every first view count.</strong><em /><button>Start now</button></div><u /><u /></div>;
+  if (type === "shelf-art") return <div className="use-case-art shelf-art"><div /><div className="winner" /><div /><div /><b>#1</b><small>visibility rank</small></div>;
+  if (type === "packaging-art") return <div className="use-case-art packaging-art"><span><small>NO. 04</small><b>FORM</b><em>daily essentials</em></span><span><small>NO. 05</small><b>FORM</b><em>night repair</em></span><i /></div>;
+  return <div className="use-case-art generation-art"><div><small>Original</small><span /></div><b>→</b><div><small>Variant B</small><span /></div><em>+18%</em></div>;
+}
+
+export default function UseCases() {
+  return (
+    <><Header /><main>
+      <section className="page-hero use-cases-hero"><div className="container page-hero-grid"><div><p className="kicker">Made for visual decisions</p><h1>One intelligence layer across your creative stack.</h1></div><p className="lead">Run the same science-backed evaluation wherever customers meet your brand—from the first campaign concept to the final product listing.</p></div></section>
+      <section className="use-case-list"><div className="container">{useCases.map((item,index)=><article className={`use-case-row ${index%2?"reverse":""}`} key={item.id}><UseCaseArt type={item.art}/><div className="use-case-copy"><p className="case-number">{item.id} / {item.label}</p><h2>{item.title}</h2><p>{item.copy}</p><div className="use-case-details"><div><strong>Use NeuroVision to</strong><ul>{item.tasks.map(task=><li key={task}>{task}</li>)}</ul></div><div><strong>Typical outputs</strong><ul>{item.outputs.map(output=><li key={output}>{output}</li>)}</ul></div></div></div></article>)}</div></section>
+      <section className="section decision-strip"><div className="container"><p className="kicker light">A repeatable decision layer</p><h2>One workflow. Different creative questions.</h2><div className="decision-grid"><div><span>01</span><b>Does it get seen?</b><p>Predict early attention and visual hierarchy.</p></div><div><span>02</span><b>Does it get understood?</b><p>Explore meaning, clarity, trust and relevance.</p></div><div><span>03</span><b>Can it work harder?</b><p>Generate and compare evidence-led variations.</p></div></div><Link className="btn white" href="/how-it-works">See how the workflow works →</Link></div></section>
+      <section className="final-cta"><div className="container"><p className="kicker light">Bring your own visual</p><h2>Start with the creative decision in front of you.</h2><p>Analyse one asset, compare a campaign system or run the complete loop across your next launch.</p><div className="actions center"><a className="btn white" href="http://app.neurovision-ai.com/register">Try NeuroVision free ↗</a><a className="btn ghost" href="mailto:info@neurovision-ai.com?subject=NeuroVision%20use%20case">Discuss your use case</a></div></div></section>
+    </main><Footer /></>
+  );
+}

@@ -1,45 +1,18 @@
 import type { Metadata } from "next";
-import { sitePath } from "../site-path";
 import { Footer, Header } from "../site-shell";
+import { sitePath } from "../site-path";
 
-export const metadata: Metadata = {
-  title: "Case Studies",
-  description: "See an illustrative NeuroVision workflow from attention prediction to an optimised creative.",
-};
+export const metadata: Metadata = { title:"Case Study", description:"Follow an illustrative NeuroVision workflow from original stimulus through attention, interpretation and A/B-tested optimisation." };
 
-const steps = [
-  ["01 / Original stimulus", "Start with the creative as the audience will meet it.", "Upload a campaign visual, website capture, package or product listing. NeuroVision keeps the original stimulus at the centre of every evaluation.", sitePath("/assets/hero-ad.webp"), "Original sample Zephyr Motors advertisement"],
-  ["02 / Attention prediction", "See the hierarchy—not just the decoration.", "The predictive heatmap shows which elements are likely to attract early attention, what competes and what risks being missed.", sitePath("/assets/hero-heatmap.webp"), "Sample ad with predictive attention heatmap"],
-  ["03 / Optimised variation", "Turn the finding into something your team can use.", "The new direction gives the product more presence, makes the headline easier to decode and brings the brand into the opening view.", sitePath("/assets/hero-optimised.webp"), "Optimised sample Zephyr Motors advertisement"],
-];
-
-export default function CaseStudies() {
-  return (
-    <>
-      <Header />
-      <main>
-        <section className="page-hero">
-          <div className="container page-hero-grid">
-            <div><p className="kicker">Illustrative workflow</p><h1>One creative. Three layers of intelligence.</h1></div>
-            <p className="lead">Follow a sample automotive campaign through NeuroVision—from its original hierarchy to predictive attention and a stronger generated variation. This demonstration is illustrative and does not represent measured commercial results.</p>
-          </div>
-        </section>
-        <section className="inner-section">
-          <div className="container">
-            <div className="section-head">
-              <div><p className="kicker">Zephyr Motors · product demonstration</p><h2>From broad concept to clearer creative decision.</h2></div>
-              <p>The original communicates a premium, futuristic world, but attention competes across the headline, vehicle and brand.</p>
-            </div>
-            <div className="demo-list">
-              {steps.map(([label,title,copy,image,alt]) => (
-                <article className="demo-row" key={label}><div><span>{label}</span><h3>{title}</h3><p>{copy}</p></div><img src={image} alt={alt} /></article>
-              ))}
-            </div>
-          </div>
-        </section>
-        <section className="final-cta"><div className="container"><p className="kicker light">Your creative is next</p><h2>Run the same loop with your own visual.</h2><p>Start with predictive attention, then add interpretation and optimisation when the project needs it.</p><div className="actions center"><a className="btn white" href="http://app.neurovision-ai.com/register">Try NeuroVision free ↗</a><a className="btn ghost" href="mailto:info@neurovision-ai.com?subject=NeuroVision%20pilot">Discuss a pilot</a></div></div></section>
-      </main>
-      <Footer />
-    </>
-  );
+export default function CaseStudy(){
+  return <><Header/><main>
+    <section className="page-hero"><div className="container page-hero-grid"><div><p className="kicker">Illustrative product demonstration</p><h1>One creative. Three layers of intelligence.</h1></div><p className="lead">Follow a sample automotive campaign through NeuroVision—from its original hierarchy to predictive attention, semantic audience interpretation and an evidence-led generated variation.</p></div></section>
+    <section className="case-intro"><div className="container case-intro-grid"><div><p className="kicker">Zephyr Motors · product demonstration</p><h2>From a broad concept to a clearer creative decision.</h2></div><div><p>The original communicates a premium, futuristic world, but attention competes across the headline, vehicle and brand. The question is not whether the visual looks good—it is whether the intended hierarchy arrives quickly and survives deeper interpretation.</p><small>This demonstration is illustrative and does not represent measured commercial results.</small></div></div></section>
+    <section className="case-chapter original-chapter"><div className="container case-chapter-grid"><div className="chapter-copy"><span>01 / Original stimulus</span><h2>Start with the creative exactly as the audience will meet it.</h2><p>Upload a campaign visual, website capture, package or product listing. NeuroVision preserves the original stimulus as the baseline for every later comparison.</p><div className="chapter-points"><div><b>Creative question</b><p>Does the premium world lead clearly to the product and brand?</p></div><div><b>Baseline</b><p>Headline, car and logo are all present, but their relative priority is unknown.</p></div></div></div><figure><img src={sitePath("/assets/hero-ad.webp")} alt="Original Zephyr Motors advertisement"/><figcaption>Original sample Zephyr Motors advertisement</figcaption></figure></div></section>
+    <section className="case-chapter dark-chapter"><div className="container case-chapter-grid"><div className="chapter-copy"><span>02 / Predictive attention · first 1–2 seconds</span><h2>Reveal the opening hierarchy—not just the decoration.</h2><p>The predictive heatmap estimates where early attention is likely to concentrate. It helps the team see which elements attract gaze, which compete with each other and what could be missed before conscious evaluation begins.</p><div className="chapter-points"><div><b>What the model examines</b><p>Contrast, colour, text, faces, objects, scale, position and spatial composition.</p></div><div><b>Illustrative finding</b><p>The headline dominates. The car receives a secondary cluster; the brand enters later than intended.</p></div></div></div><figure><img src={sitePath("/assets/hero-heatmap.webp")} alt="Zephyr advertisement with a predictive attention heatmap"/><figcaption>Red and yellow indicate stronger predicted attention; blue indicates lower intensity.</figcaption></figure></div></section>
+    <section className="case-chapter survey-chapter"><div className="container case-chapter-grid"><div className="chapter-copy"><span>03 / Agentic survey · semantic understanding</span><h2>Extend the first glance into meaning, trust and relevance.</h2><p>A heatmap can show what may be noticed; it cannot explain what the message means to an audience. Structured agentic surveys continue the analysis beyond the opening seconds to explore interpretation across defined profiles.</p><div className="chapter-points"><div><b>Questions explored</b><p>What is the main promise? Does it feel credible? Is the product relevant? What is confusing or missing?</p></div><div><b>Illustrative finding</b><p>The premium and futuristic tone is clear, while the innovation claim needs a more concrete reason to believe.</p></div></div></div><div className="case-survey-panel"><div className="profile-line"><i>25–34</i><i>City commuter</i><i>EV consideration</i></div><blockquote>“It feels like a premium future-facing car, but I still do not know what makes this model meaningfully different.”</blockquote><div className="case-bars"><p><span>Premium perception</span><b style={{width:"89%"}}/></p><p><span>Message clarity</span><b style={{width:"71%"}}/></p><p><span>Reason to believe</span><b style={{width:"58%"}}/></p><p><span>Brand fit</span><b style={{width:"82%"}}/></p></div><small>Illustrative synthesis · defined agentic profile</small></div></div></section>
+    <section className="case-chapter optimise-chapter"><div className="container"><div className="optimise-heading"><div><span>04 / GenAI optimisation + A/B evaluation</span><h2>Turn the diagnosis into a variation your team can compare.</h2></div><p>Attention and interpretation findings become creative constraints: give the product more presence, make the claim easier to decode and bring the brand into the opening view. The generated direction then runs through the same evaluation so the comparison stays consistent.</p></div><div className="ab-comparison"><figure><div className="variant-label"><span>A</span><b>Original</b><em>Baseline</em></div><img src={sitePath("/assets/hero-ad.webp")} alt="Original Zephyr Motors advertisement"/></figure><div className="ab-result"><small>Illustrative predicted score</small><strong>76 <i>→</i> 91</strong><b>Variant B</b><p>Clearer product dominance, faster headline decoding and stronger opening brand visibility.</p></div><figure className="winning-figure"><div className="variant-label"><span>B</span><b>Optimised</b><em>Predicted winner</em></div><img src={sitePath("/assets/hero-optimised.webp")} alt="Optimised Zephyr Motors advertisement"/></figure></div><p className="case-caveat">A/B outputs are decision support. Final market performance still depends on placement, media, audience, offer and real-world context.</p></div></section>
+    <section className="case-summary"><div className="container"><p className="kicker light">What the team leaves with</p><div className="case-summary-grid"><div><span>01</span><b>A visible hierarchy</b><p>A clear view of what is likely to win or lose the opening seconds.</p></div><div><span>02</span><b>An audience hypothesis</b><p>Structured insight into likely meaning, trust, relevance and misunderstanding.</p></div><div><span>03</span><b>A testable alternative</b><p>A generated variation directly connected to the original diagnosis.</p></div><div><span>04</span><b>A documented decision</b><p>An A/B comparison teams can review, share and export.</p></div></div></div></section>
+    <section className="final-cta"><div className="container"><p className="kicker light">Your creative is next</p><h2>Run the same loop with your own visual.</h2><p>Start with predictive attention, then add interpretation, generation and A/B comparison when the project needs them.</p><div className="actions center"><a className="btn white" href="http://app.neurovision-ai.com/register">Try NeuroVision free ↗</a><a className="btn ghost" href="mailto:info@neurovision-ai.com?subject=NeuroVision%20pilot">Discuss a pilot</a></div></div></section>
+  </main><Footer/></>;
 }

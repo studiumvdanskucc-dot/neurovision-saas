@@ -1,58 +1,30 @@
 import type { Metadata } from "next";
-import { sitePath } from "../site-path";
 import { Footer, Header } from "../site-shell";
+import { sitePath } from "../site-path";
 
-export const metadata: Metadata = {
-  title: "About",
-  description: "Meet the multidisciplinary team building NeuroVision.",
-};
+export const metadata: Metadata = { title:"About", description:"Meet the multidisciplinary team building NeuroVision." };
 
 const team = [
-  ["Jakub Lenovsky", "Business development & partnerships", sitePath("/assets/jakub.jpeg")],
-  ["Frantisek Hoza", "Platform engineering & architecture", sitePath("/assets/frantisek.jpeg")],
-  ["Aleksandra Krolikowska", "Operations & international growth", sitePath("/assets/aleksandra.jpeg")],
-  ["Alexia Sovar", "Market development & partnerships", sitePath("/assets/alexia.jpeg")],
-  ["Maria Kostrzewa", "Behavioural research & business development", sitePath("/assets/maria.jpeg")],
+  { name:"Patrik Molnar", role:"CEO & Chief Scientist", image:sitePath("/assets/team-patrik.webp"), bio:"Patrik is a computational neuroscience researcher exploring how neuroscience and biophysics can inspire the next generation of intelligent systems. He currently works at the Chinese Academy of Sciences with multimodal artificial intelligence and complex systems. His research focuses on neural decoding, brain-computer interfaces and computational models of perception. At NeuroVision, he leads the scientific vision, combining neuroscience-driven AI with predictive models of human attention." },
+  { name:"Frantisek Hoza", role:"CTO & Head of Software Development", image:sitePath("/assets/team-frantisek.webp"), bio:"Frantisek is a full-stack software engineer specialising in scalable architectures and high-performance systems. After starting his career in digital marketing, he moved into software engineering through a deep interest in data-driven behaviour and the algorithms that shape decision-making. At NeuroVision, he leads platform architecture and core product development." },
+  { name:"Tereza Molnar", role:"Chief Product Officer", image:sitePath("/assets/team-tereza.webp"), bio:"Tereza combines economics, business development and design to translate complex technology into useful products. With more than nine years of experience across branding, marketing and creative direction, she focuses on bridging science and real-world application. She previously worked as an art director at a technology startup and later pursued a master’s degree in Innovation Management." },
+  { name:"Aleksandra Krolikowska", role:"Chief Operations Officer", image:sitePath("/assets/team-aleksandra.webp"), bio:"Aleksandra oversees operations and business development, building scalable processes and supporting NeuroVision’s international growth." },
+  { name:"Jakub Lenovsky", role:"Head of CRM & Slovakia", image:sitePath("/assets/team-jakub.webp"), bio:"Jakub leads customer relationships and market development in Slovakia, supporting the adoption of NeuroVision’s data-driven marketing tools." },
+  { name:"Maria Kostrzewa", role:"Science & Business Development", image:sitePath("/assets/team-maria.webp"), bio:"Maria supports research initiatives and helps translate NeuroVision’s scientific insights into practical business applications." },
+  { name:"Milosz Panasik", role:"Head of Poland | Sustainability", image:sitePath("/assets/team-milosz.webp"), bio:"Milosz leads expansion in Poland and integrates sustainability perspectives into NeuroVision’s strategy and partnerships." },
+  { name:"Hana Vyroubalova", role:"Business Developer & Sales Specialist", initials:"HV", bio:"Hana builds trust before she builds pipelines. Her background spans consultative sales, customer success, content and social entrepreneurship—giving every client relationship a sharp commercial focus and a distinctly human tone." },
+  { name:"Denisa Kubova", role:"UX & Visual Design Specialist", initials:"DK", bio:"Denisa gives ideas a visual system people want to keep. Her practice crosses UX, branding, illustration, print and packaging, with an unusually precise eye for the details that make an experience feel considered rather than decorated." },
+  { name:"Eva Paracuellos", role:"Software Developer", initials:"EP", bio:"Eva contributes to the product experience and engineering systems that turn NeuroVision’s research workflows into dependable software." },
+  { name:"Fadil Abdussemee", role:"Software Developer", initials:"FA", bio:"Fadil develops and strengthens the software behind NeuroVision’s analysis, workflow and product-delivery capabilities." },
+  { name:"Apurv Nishit", role:"Software Developer", initials:"AN", bio:"Apurv supports platform development across the technical stack, helping NeuroVision deliver fast, scalable creative intelligence." },
 ];
 
-export default function About() {
-  return (
-    <>
-      <Header />
-      <main>
-        <section className="page-hero">
-          <div className="container page-hero-grid">
-            <div><p className="kicker">About NeuroVision</p><h1>Creative intelligence should understand people.</h1></div>
-            <p className="lead">We are building a new decision layer for creative work—one that connects visual neuroscience, behavioural insight and generative AI before a campaign, product or interface goes live.</p>
-          </div>
-        </section>
-        <section className="inner-section">
-          <div className="container inner-grid">
-            <div className="brand-art" aria-hidden="true"><div /></div>
-            <div className="inner-copy">
-              <p className="kicker">Why we started</p>
-              <h2>Design tools got faster. Understanding stayed fragmented.</h2>
-              <p>Teams can create more visual content than ever, yet the hardest questions still arrive after launch: What did people notice? What did they understand? Which version should we back?</p>
-              <p>NeuroVision brings those questions into one repeatable SaaS workflow. Upload a visual, predict attention, explore audience interpretation and turn the result into a stronger variation. The goal is not to replace creative judgment—it is to give that judgment better evidence.</p>
-            </div>
-          </div>
-        </section>
-        <section className="section team">
-          <div className="container">
-            <div className="section-head">
-              <div><p className="kicker light">The people behind the platform</p><h2>A multidisciplinary team for a multidisciplinary problem.</h2></div>
-              <p>NeuroVision combines product engineering, behavioural research, business development and design thinking across markets.</p>
-            </div>
-            <div className="team-grid">
-              {team.map(([name, role, image]) => (
-                <article key={name}><img src={image} alt={name} /><div><h3>{name}</h3><p>{role}</p></div></article>
-              ))}
-            </div>
-          </div>
-        </section>
-        <section className="final-cta"><div className="container"><p className="kicker light">Build with us</p><h2>Bring predictive creative intelligence into your workflow.</h2><p>We welcome product feedback, research conversations, pilot projects and partnerships.</p><div className="actions center"><a className="btn white" href="mailto:info@neurovision-ai.com?subject=NeuroVision%20conversation">Start a conversation ↗</a><a className="btn ghost" href="http://app.neurovision-ai.com/register">Try the platform</a></div></div></section>
-      </main>
-      <Footer />
-    </>
-  );
+export default function About(){
+  return <><Header/><main>
+    <section className="page-hero about-hero"><div className="container page-hero-grid"><div><p className="kicker">About NeuroVision</p><h1>Creative intelligence should understand people.</h1></div><p className="lead">We are building a new decision layer for creative work—one that connects visual neuroscience, behavioural insight and generative AI before a campaign, product or interface goes live.</p></div></section>
+    <section className="inner-section why-started"><div className="container inner-grid"><div className="origin-art" aria-hidden="true"><div className="origin-window"><span className="origin-brand">NeuroVision</span><div className="origin-canvas"><i className="scan s1"/><i className="scan s2"/><i className="scan s3"/><b>What did they see?</b><em>Attention → Meaning → Action</em></div><div className="origin-signal"><span>ATTENTION</span><b/><span>INTERPRETATION</span><b/><span>IMPROVEMENT</span></div></div></div><div className="inner-copy"><p className="kicker">Why we started</p><h2>Design tools got faster. Understanding stayed fragmented.</h2><p>Teams can now produce more visual content than ever. Yet the hardest questions still arrive after launch: What did people notice? What did they understand? Which version should we back—and why?</p><p>The answers are usually scattered across intuition, isolated heatmaps, slow research projects, analytics that arrive too late and generative tools that can make more versions without explaining which one is stronger.</p><p>NeuroVision started to close that gap. We bring predictive attention, structured audience interpretation and evidence-led generation into one repeatable SaaS workflow. The goal is not to replace creative judgement. It is to give that judgement a clearer view of people before the work reaches them.</p><div className="origin-principle"><span>Our principle</span><b>Make evidence usable while creative decisions are still reversible.</b></div></div></div></section>
+    <section className="section team"><div className="container"><div className="section-head"><div><p className="kicker light">The team behind NeuroVision</p><h2>Meet the people building the future of design intelligence.</h2></div><p>NeuroVision brings together neuroscience, product engineering, design, operations and market development across Europe and Asia.</p></div><div className="team-grid detailed-team">{team.map(member=><article key={member.name}>{member.image?<img src={member.image} alt={member.name}/>:<div className="team-placeholder" aria-label={`${member.name} profile image not yet available`}><span>{member.initials}</span><i/><i/></div>}<div className="team-copy"><p className="team-role">{member.role}</p><h3>{member.name}</h3><p className="team-bio">{member.bio}</p></div></article>)}</div></div></section>
+    <section className="section values"><div className="container"><div className="section-head"><div><p className="kicker">What connects us</p><h2>Different disciplines. One standard for useful intelligence.</h2></div><p>We build at the intersection of scientific care, practical product thinking and creative ambition.</p></div><div className="value-grid"><div><span>01</span><h3>Evidence before certainty</h3><p>We communicate probabilities, limitations and context—not false guarantees.</p></div><div><span>02</span><h3>Complexity made usable</h3><p>Research matters only when teams can use it in the decisions they make every day.</p></div><div><span>03</span><h3>Creative judgement amplified</h3><p>The platform supports human direction. It does not try to make taste or responsibility disappear.</p></div></div></div></section>
+    <section className="final-cta"><div className="container"><p className="kicker light">Build with us</p><h2>Bring predictive creative intelligence into your workflow.</h2><p>We welcome product feedback, research conversations, pilot projects and partnerships.</p><div className="actions center"><a className="btn white" href="mailto:info@neurovision-ai.com?subject=NeuroVision%20conversation">Start a conversation ↗</a><a className="btn ghost" href="http://app.neurovision-ai.com/register">Try the platform</a></div></div></section>
+  </main><Footer/></>;
 }

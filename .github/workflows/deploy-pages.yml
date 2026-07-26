@@ -38,10 +38,10 @@ jobs:
         run: npm run build:github
         env:
           GITHUB_PAGES: "true"
-          # This repository owns neurovision-ai.com (see public/CNAME), so the
-          # exported site must use domain-root asset URLs. Using the repository
-          # path here makes every stylesheet, script and image 404 on the
-          # custom domain.
+          # GitHub serves this repository at
+          # https://studiumvdanskucc-dot.github.io/neurovision-saas/.
+          # Every generated stylesheet, script, image and internal link must
+          # therefore include the repository path.
           NEXT_PUBLIC_BASE_PATH: "/neurovision-saas"
 
       - name: Validate GitHub Pages paths
