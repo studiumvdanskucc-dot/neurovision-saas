@@ -10,9 +10,10 @@ export function Header() {
           <span><strong>NeuroVision</strong><small>Predictive design intelligence</small></span>
         </Link>
         <nav className="nav-links" aria-label="Primary navigation">
-          <Link href="/">Platform</Link>
+          <Link href="/">Home</Link>
           <Link href="/use-cases">Use cases</Link>
           <Link href="/how-it-works">How it works</Link>
+          <Link href="/science">Science</Link>
           <Link href="/#pricing">Pricing</Link>
           <Link href="/about">About</Link>
         </nav>
@@ -23,9 +24,10 @@ export function Header() {
         <details className="mobile-nav">
           <summary aria-label="Open menu">Menu</summary>
           <nav>
-            <Link href="/">Platform</Link>
+            <Link href="/">Home</Link>
             <Link href="/use-cases">Use cases</Link>
             <Link href="/how-it-works">How it works</Link>
+            <Link href="/science">Science</Link>
             <Link href="/#pricing">Pricing</Link>
             <Link href="/about">About</Link>
             <a className="btn secondary" href="http://app.neurovision-ai.com/login">Sign in</a>
@@ -49,7 +51,7 @@ export function Footer() {
           <p>Predict attention. Simulate interpretation. Generate stronger creative—all before launch.</p>
           <a href="mailto:info@neurovision-ai.com">info@neurovision-ai.com</a>
         </div>
-        <div><strong>Product</strong><Link href="/">Platform</Link><Link href="/how-it-works">How it works</Link><Link href="/use-cases">Use cases</Link><Link href="/#pricing">Pricing</Link></div>
+        <div><strong>Product</strong><Link href="/">Home</Link><Link href="/how-it-works">How it works</Link><Link href="/use-cases">Use cases</Link><Link href="/science">Science &amp; validation</Link><Link href="/#pricing">Pricing</Link></div>
         <div><strong>Company</strong><Link href="/about">About</Link><Link href="/case-studies">Case study</Link><a href="mailto:info@neurovision-ai.com">Contact</a></div>
         <div><strong>Legal</strong><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link></div>
       </div>

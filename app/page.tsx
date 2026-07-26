@@ -36,37 +36,37 @@ type DemoKey = keyof typeof demo;
 
 const plans = [
   {
-    name: "Free",
-    price: "$0",
-    credits: "20 credits",
-    description: "Explore predictive attention with your own creative.",
-    features: ["Attention heatmaps", "Core visual metrics", "Single workspace", "Shareable results"],
-    cta: "Try for free",
+    name: "FREE",
+    price: "€0",
+    credits: "40 credits / month",
+    description: "Explore before committing.",
+    features: ["Predictive attention heatmaps", "AI creative critique", "Surveys up to 25 responses", "1 seat"],
+    cta: "Start free",
   },
   {
-    name: "Starter",
-    price: "$20",
-    credits: "120 credits / month",
-    description: "For individual creators and focused projects.",
-    features: ["Typically 1 standard creative loop", "AI attention heatmaps", "Basic agentic interpretation", "1 optimised creative variant", "PDF summary export"],
-    cta: "Choose Starter",
+    name: "STANDARD",
+    price: "€25",
+    credits: "200 credits / month",
+    description: "For freelancers and solo marketers.",
+    features: ["Everything in Free", "Surveys up to 50 responses", "1 seat"],
+    cta: "Get started",
   },
   {
-    name: "Pro",
-    price: "$300",
-    credits: "3,000 credits / month",
-    description: "For teams testing campaigns, audiences and variants.",
-    features: ["Full agentic audience surveys", "GenAI creative optimisation", "A/B comparison", "Brand asset memory", "PDF, PowerPoint and CSV downloads", "3 team seats"],
-    cta: "Start with Pro",
+    name: "PRO",
+    price: "€79",
+    credits: "800 credits / month",
+    description: "For small teams.",
+    features: ["Everything in Standard", "Surveys with 100+ responses", "PDF report download", "2 seats"],
+    cta: "Get started",
     featured: true,
   },
   {
-    name: "Enterprise",
-    price: "$1,500",
-    credits: "18,000 credits / month",
-    description: "For multi-brand teams with high-volume workflows.",
-    features: ["Premium GenAI workflows", "Multiple brand workspaces", "API access", "White-label reports", "Priority support", "Custom onboarding"],
-    cta: "Talk to us",
+    name: "PREMIUM",
+    price: "€249",
+    credits: "2,500 credits / month",
+    description: "For agencies, e-commerce brands, and high-volume creative teams.",
+    features: ["Everything in Pro", "Priority support", "5 seats"],
+    cta: "Get started",
   },
 ];
 
@@ -183,7 +183,7 @@ export default function Home() {
 
         <section className="section pricing" id="pricing">
           <div className="container">
-            <div className="pricing-head"><p className="kicker">Simple monthly plans</p><h2>One wallet. Every NeuroVision workflow.</h2><p>Spend flexible credits across heatmaps, surveys, variants, resizes and full optimisation loops.</p></div>
+            <div className="pricing-head"><p className="kicker">Pricing</p><h2>Start free. Upgrade as your team grows.</h2><p>Spend flexible credits across attention analysis, agentic surveys and creative improvement.</p></div>
             <div className="plan-grid">
               {plans.map(plan => (
                 <article className={plan.featured ? "featured" : ""} key={plan.name}>
@@ -192,11 +192,18 @@ export default function Home() {
                   <p className="price"><b>{plan.price}</b><span>/ month</span></p>
                   <p className="credits">{plan.credits}</p>
                   <ul>{plan.features.map(f => <li key={f}><span>✓</span>{f}</li>)}</ul>
-                  <a className={`btn ${plan.featured ? "primary" : "secondary"}`} href={plan.name === "Enterprise" ? "mailto:info@neurovision-ai.com?subject=NeuroVision%20Enterprise" : "http://app.neurovision-ai.com/register"}>{plan.cta} ↗</a>
+                  <a className={`btn ${plan.featured ? "primary" : "secondary"}`} href="http://app.neurovision-ai.com/register">{plan.cta} ↗</a>
                 </article>
               ))}
             </div>
-            <p className="pricing-note">Credits are usage-based, not fixed feature bundles. Need more volume? <a href="mailto:info@neurovision-ai.com">Let&apos;s build your plan.</a></p>
+            <div className="credit-guide">
+              <div><b>5</b><span><strong>Creative Analysis</strong><small>1 design or image · Attention heatmap + AI critique</small></span></div>
+              <div><b>20</b><span><strong>Survey · 25 responses</strong><small>Small audience simulation · Fast early feedback</small></span></div>
+              <div><b>35</b><span><strong>Survey · 50 responses</strong><small>Standard audience simulation · Balanced confidence</small></span></div>
+              <div><b>60</b><span><strong>Survey · 100 responses</strong><small>Large audience simulation · Stronger validation</small></span></div>
+            </div>
+            <p className="pricing-note">Surveys over 100 responses start at 60 credits + 45 credits for each additional 100 responses.</p>
+            <div className="white-label-callout"><span><small>Custom solutions</small><h3>Your platform. Your brand. Our intelligence.</h3><p>NeuroVision can power fully white-label products, branded client portals, embedded analysis, API workflows and custom enterprise deployments.</p></span><a className="btn white" href="mailto:info@neurovision-ai.com?subject=NeuroVision%20white-label%20solution">Build a white-label solution ↗</a></div>
           </div>
         </section>
 
