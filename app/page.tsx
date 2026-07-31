@@ -70,6 +70,63 @@ const plans = [
   },
 ];
 
+const agencyPackages = [
+  {
+    label: "Diagnose and improve",
+    name: "Signal Review",
+    description: "A focused scientific evaluation of one campaign direction, with practical improvements your team can use immediately.",
+    price: "€690",
+    features: [
+      "Up to 3 static assets or 1 landing page",
+      "NeuroVision heatmaps & design psychology",
+      "What is seen, missed and misunderstood",
+      "Agentic audience pulse for 1 target profile",
+      "Prioritized GenAI recommendations",
+      "2 generated optimization variants",
+      "Up to 3 platform-ready resizes",
+      "Annotated report + A/B comparison",
+      "30-minute expert readout",
+      "Human-led production redesign",
+    ],
+  },
+  {
+    label: "The complete diagnostic",
+    name: "Performance Deep Dive",
+    description: "Our strongest analysis package for teams deciding between concepts or preparing a campaign for meaningful media spend.",
+    price: "€1,390",
+    features: [
+      "Up to 6 assets or 2 creative concepts",
+      "Full NeuroVision analysis stack",
+      "NeuroVision Digital Shelf snapshot",
+      "Agentic survey across 3 audience profiles",
+      "Semantic, cultural & geographic risk review",
+      "A/B comparison across concepts",
+      "3 generated optimization variants",
+      "Up to 6 platform-ready resizes",
+      "Executive report + 60-minute workshop",
+      "One recommendation feedback round",
+      "Human-led production redesign",
+    ],
+    featured: true,
+  },
+  {
+    label: "Analysis, redesign, proof",
+    name: "Creative Lab",
+    description: "A full optimization sprint: diagnose the campaign, redesign its most important moments and test the improved directions again.",
+    price: "€2,790",
+    features: [
+      "Up to 10 assets or 3 creative concepts",
+      "Everything in Performance Deep Dive",
+      "Full NeuroVision Digital Shelf benchmark",
+      "2 expert-designed creative directions",
+      "Brand, copy, hierarchy and UX redesign",
+      "Re-test against the original creative",
+      "Campaign-ready files and required resizes",
+      "90-minute creative workshop",
+    ],
+  },
+];
+
 const faqs = [
   ["What can I analyse?", "Upload an ad, social creative, landing page, website screenshot, packaging concept, product image or marketplace listing."],
   ["Do I need eye-tracking equipment?", "No. NeuroVision uses predictive models trained on behavioural, cognitive and eye-tracking data, so teams can evaluate early creative in the browser."],
@@ -90,7 +147,11 @@ export default function Home() {
           <div className="container hero-grid">
             <div className="hero-copy">
               <p className="eyebrow"><i /> Predictive design intelligence</p>
-              <h1>Know what people <em>will see.</em><br />Understand what they&apos;ll feel.<br />Ship stronger creative.</h1>
+              <h1>
+                Know what people <em className="hero-blue">will see.</em><br />
+                Understand what they&apos;ll <em className="hero-violet">feel.</em><br />
+                Ship <em className="hero-pink">stronger creative.</em>
+              </h1>
               <p className="hero-lead">
                 NeuroVision brings attention prediction, agentic audience
                 research and creative optimisation into one fast SaaS workflow.
@@ -196,14 +257,44 @@ export default function Home() {
                 </article>
               ))}
             </div>
-            <div className="credit-guide">
-              <div><b>5</b><span><strong>Creative Analysis</strong><small>1 design or image · Attention heatmap + AI critique</small></span></div>
-              <div><b>20</b><span><strong>Survey · 25 responses</strong><small>Small audience simulation · Fast early feedback</small></span></div>
-              <div><b>35</b><span><strong>Survey · 50 responses</strong><small>Standard audience simulation · Balanced confidence</small></span></div>
-              <div><b>60</b><span><strong>Survey · 100 responses</strong><small>Large audience simulation · Stronger validation</small></span></div>
+            <div className="credit-explainer">
+              <div className="credit-explainer-head">
+                <div><p className="kicker">How credits are used</p><h3>One credit wallet. Different actions.</h3></div>
+                <p>These are usage costs shared by every plan—not benefits attached to the tier directly above them.</p>
+              </div>
+              <div className="credit-guide">
+                <div><b>5</b><span><strong>Creative Analysis</strong><small>1 design or image · Attention heatmap + AI critique</small></span></div>
+                <div><b>20</b><span><strong>Survey · 25 responses</strong><small>Small audience simulation · Fast early feedback</small></span></div>
+                <div><b>35</b><span><strong>Survey · 50 responses</strong><small>Standard audience simulation · Balanced confidence</small></span></div>
+                <div><b>60</b><span><strong>Survey · 100 responses</strong><small>Large audience simulation · Stronger validation</small></span></div>
+              </div>
+              <p className="pricing-note">Surveys over 100 responses start at 60 credits + 45 credits for each additional 100 responses.</p>
             </div>
-            <p className="pricing-note">Surveys over 100 responses start at 60 credits + 45 credits for each additional 100 responses.</p>
-            <div className="white-label-callout"><span><small>Custom solutions</small><h3>Your platform. Your brand. Our intelligence.</h3><p>NeuroVision can power fully white-label products, branded client portals, embedded analysis, API workflows and custom enterprise deployments.</p></span><a className="btn white" href="mailto:info@neurovision-ai.com?subject=NeuroVision%20white-label%20solution">Build a white-label solution ↗</a></div>
+          </div>
+        </section>
+
+        <section className="section agency-pricing" id="agency">
+          <div className="container">
+            <div className="agency-head">
+              <p className="kicker">Done-for-you agency services</p>
+              <h2>Don&apos;t want to get your hands dirty? No problem.</h2>
+              <p>NeuroVision can also work as your agency partner. We run the analysis, improve the creative and ship the final results—ready for your team to use.</p>
+            </div>
+            <div className="agency-grid">
+              {agencyPackages.map(pkg => (
+                <article className={pkg.featured ? "agency-card featured" : "agency-card"} key={pkg.name}>
+                  <div className="agency-labels">
+                    <span>{pkg.label}</span>
+                    {pkg.featured && <em>Most popular</em>}
+                  </div>
+                  <h3>{pkg.name}</h3>
+                  <p className="agency-description">{pkg.description}</p>
+                  <p className="agency-price"><b>{pkg.price}</b><span>per campaign<small>excl. VAT</small></span></p>
+                  <a className={`btn ${pkg.featured ? "primary" : "white"}`} href={`mailto:info@neurovision-ai.com?subject=NeuroVision%20${encodeURIComponent(pkg.name)}`}>Choose {pkg.name} ↗</a>
+                  <ul>{pkg.features.map(feature => <li key={feature}><span>✓</span>{feature}</li>)}</ul>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
