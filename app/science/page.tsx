@@ -84,27 +84,37 @@ export default function Science() {
                 new version against the original. The result is a decision trail,
                 not a black-box opinion.
               </p>
+              <div className="sv-status-row">
+                <span><i /> Aarhus validation active</span>
+                <span>Planned readout · late August 2026</span>
+              </div>
               <p className="sv-citation-line">
                 Early gaze is shaped by visual saliency and scene structure, while
                 task and context increasingly influence what happens next{" "}
                 <a href="#ref-itti-koch">(Itti &amp; Koch, 2001)</a>{" "}
                 <a href="#ref-tatler">(Tatler et al., 2011)</a>.
               </p>
-              <div className="sv-status-row">
-                <span><i /> Aarhus validation active</span>
-                <span>Planned readout · late August 2026</span>
-              </div>
             </div>
 
             <aside className="sv-hero-model" aria-label="NeuroVision evidence loop summary">
               <span className="sv-hero-model-label">Evidence loop</span>
-              <div className="sv-model-ring sv-model-ring-one" />
-              <div className="sv-model-ring sv-model-ring-two" />
-              <strong>NV</strong>
-              <span className="sv-model-node sv-model-node-a">See</span>
-              <span className="sv-model-node sv-model-node-b">Understand</span>
-              <span className="sv-model-node sv-model-node-c">Improve</span>
-              <span className="sv-model-node sv-model-node-d">Prove again</span>
+              <div className="sv-process-loop">
+                <span className="sv-process-ring" aria-hidden="true" />
+                <span className="sv-process-arrow sv-process-arrow-a" aria-hidden="true">→</span>
+                <span className="sv-process-arrow sv-process-arrow-b" aria-hidden="true">→</span>
+                <span className="sv-process-arrow sv-process-arrow-c" aria-hidden="true">→</span>
+                <span className="sv-process-arrow sv-process-arrow-d" aria-hidden="true">→</span>
+                <div className="sv-process-center">
+                  <small>NeuroVision</small>
+                  <strong>Measure.<br />Learn.<br />Improve.</strong>
+                </div>
+                <ol>
+                  <li className="sv-process-node sv-process-node-a"><i>01</i><b>See</b></li>
+                  <li className="sv-process-node sv-process-node-b"><i>02</i><b>Understand</b></li>
+                  <li className="sv-process-node sv-process-node-c"><i>03</i><b>Improve</b></li>
+                  <li className="sv-process-node sv-process-node-d"><i>04</i><b>Prove again</b></li>
+                </ol>
+              </div>
             </aside>
           </div>
         </section>
