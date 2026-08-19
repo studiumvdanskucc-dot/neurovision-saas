@@ -42,6 +42,15 @@ export function Header() {
 export function Footer() {
   return (
     <footer className="footer">
+      <div className="container">
+        <Link className="footer-difference" href="/about#why-neurovision-is-different">
+          <span>
+            <small>Why NeuroVision is different</small>
+            <strong>Model control. Research-grade evidence. Your data path.</strong>
+          </span>
+          <b>Explore our advantage <i aria-hidden="true">↗</i></b>
+        </Link>
+      </div>
       <div className="container footer-grid">
         <div className="footer-main">
           <Link className="brand" href="/">
