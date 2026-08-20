@@ -92,3 +92,34 @@
 .story-path{margin-top:45px}
 .sv-position-grid{display:block}
 .sv-position-grid>div:last-child{max-width:940px;margin-top:24px;border:0;padding:0}
+
+/* Simplified evidence loop: one ring, one accent and four quiet steps. */
+.sv-hero-model{min-height:450px;border:1px solid #24242d;border-radius:30px;background:#111118;box-shadow:0 24px 65px #17141f20}
+.sv-process-loop{width:min(370px,calc(100% - 56px))}
+.sv-process-loop:before,.sv-process-ring:after{display:none}
+.sv-process-ring{inset:54px;border:2px solid #7088ff;background:none;filter:none}
+.sv-process-center{width:180px}
+.sv-process-center small{margin-bottom:10px;color:#91a6ff;font-size:7px;letter-spacing:.1em}
+.sv-process-center strong{font-size:25px;font-weight:620;line-height:1.08}
+.sv-process-node{min-width:auto;gap:7px;border:0;border-radius:99px;padding:7px 10px;background:#111118;box-shadow:none;color:#d8d7df}
+.sv-process-node i{width:auto;height:auto;display:block;border:0;border-radius:0;background:none!important;color:#91a6ff;font-size:7px}
+.sv-process-node b{font-size:7px;letter-spacing:.065em}
+.sv-process-node-a{top:40px}
+.sv-process-node-b{right:0}
+.sv-process-node-c{bottom:40px}
+.sv-process-node-d{left:0}
+.sv-process-arrow{width:25px;height:25px;border:0;border-radius:0;background:#111118!important;color:#91a6ff;font-size:17px;box-shadow:none}
+.sv-process-arrow-a{right:17%;top:20%;transform:rotate(45deg)}
+
+@media(max-width:620px){
+  .sv-hero-model{min-height:340px}
+  .sv-process-loop{width:min(300px,calc(100% - 20px))}
+  .sv-process-ring{inset:46px}
+  .sv-process-center{width:130px}
+  .sv-process-center strong{font-size:18px}
+  .sv-process-node{min-width:auto;padding:6px 8px}
+  .sv-process-node i{width:auto;height:auto}
+  .sv-process-node-a{top:33px}
+  .sv-process-node-c{bottom:33px}
+  .sv-process-arrow{width:21px;height:21px;font-size:14px}
+}

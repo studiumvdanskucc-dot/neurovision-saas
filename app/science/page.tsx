@@ -98,15 +98,11 @@ export default function Science() {
             </div>
 
             <aside className="sv-hero-model" aria-label="NeuroVision evidence loop summary">
-              <span className="sv-hero-model-label">Evidence loop</span>
               <div className="sv-process-loop">
                 <span className="sv-process-ring" aria-hidden="true" />
                 <span className="sv-process-arrow sv-process-arrow-a" aria-hidden="true">→</span>
-                <span className="sv-process-arrow sv-process-arrow-b" aria-hidden="true">→</span>
-                <span className="sv-process-arrow sv-process-arrow-c" aria-hidden="true">→</span>
-                <span className="sv-process-arrow sv-process-arrow-d" aria-hidden="true">→</span>
                 <div className="sv-process-center">
-                  <small>NeuroVision</small>
+                  <small>Continuous evidence</small>
                   <strong>Measure.<br />Learn.<br />Improve.</strong>
                 </div>
                 <ol>
