@@ -1,320 +1,53 @@
-"use client";
-
 import Link from "next/link";
-import { useState } from "react";
 import { Footer, Header } from "./site-shell";
-import { sitePath } from "./site-path";
+import { REGISTER_URL } from "./site-links";
+import { CreativeCompare } from "./creative-compare";
+import { ClosingCTA } from "./closing-cta";
 
-const demo = {
-  attention: {
-    label: "Attention",
-    image: sitePath("/assets/hero-heatmap.webp"),
-    alt: "Sample ad with predictive attention heatmap",
-    score: "84",
-    metric: "Attention clarity",
-    note: "Headline wins the first seconds. Brand needs more visual weight.",
-  },
-  interpretation: {
-    label: "Interpretation",
-    image: sitePath("/assets/hero-ad.webp"),
-    alt: "Sample ad ready for audience interpretation",
-    score: "76",
-    metric: "Message fit",
-    note: "Premium and futuristic. The innovation claim needs clearer proof.",
-  },
-  optimise: {
-    label: "Optimise",
-    image: sitePath("/assets/hero-optimised.webp"),
-    alt: "Sample ad after creative optimisation",
-    score: "91",
-    metric: "Predicted impact",
-    note: "Clearer hierarchy, stronger product focus and brand entry.",
-  },
-} as const;
-
-type DemoKey = keyof typeof demo;
-
-const plans = [
-  {
-    name: "FREE",
-    price: "€0",
-    credits: "40 credits / month",
-    description: "Explore before committing.",
-    features: ["Predictive attention heatmaps", "AI creative critique", "Surveys up to 25 responses", "1 seat"],
-    cta: "Start free",
-  },
-  {
-    name: "STANDARD",
-    price: "€25",
-    credits: "200 credits / month",
-    description: "For freelancers and solo marketers.",
-    features: ["Everything in Free", "Surveys up to 50 responses", "1 seat"],
-    cta: "Get started",
-  },
-  {
-    name: "PRO",
-    price: "€79",
-    credits: "800 credits / month",
-    description: "For small teams.",
-    features: ["Everything in Standard", "Surveys with 100+ responses", "PDF report download", "2 seats"],
-    cta: "Get started",
-    featured: true,
-  },
-  {
-    name: "PREMIUM",
-    price: "€249",
-    credits: "2,500 credits / month",
-    description: "For agencies, e-commerce brands, and high-volume creative teams.",
-    features: ["Everything in Pro", "Priority support", "5 seats"],
-    cta: "Get started",
-  },
-];
-
-const agencyPackages = [
-  {
-    label: "Diagnose and improve",
-    name: "Signal Review",
-    description: "A focused scientific evaluation of one campaign direction, with practical improvements your team can use immediately.",
-    price: "€690",
-    features: [
-      "Up to 3 static assets or 1 landing page",
-      "NeuroVision heatmaps & design psychology",
-      "What is seen, missed and misunderstood",
-      "Agentic audience pulse for 1 target profile",
-      "Prioritized GenAI recommendations",
-      "2 generated optimization variants",
-      "Up to 3 platform-ready resizes",
-      "Annotated report + A/B comparison",
-      "30-minute expert readout",
-      "Human-led production redesign",
-    ],
-  },
-  {
-    label: "The complete diagnostic",
-    name: "Performance Deep Dive",
-    description: "Our strongest analysis package for teams deciding between concepts or preparing a campaign for meaningful media spend.",
-    price: "€1,390",
-    features: [
-      "Up to 6 assets or 2 creative concepts",
-      "Full NeuroVision analysis stack",
-      "NeuroVision Digital Shelf snapshot",
-      "Agentic survey across 3 audience profiles",
-      "Semantic, cultural & geographic risk review",
-      "A/B comparison across concepts",
-      "3 generated optimization variants",
-      "Up to 6 platform-ready resizes",
-      "Executive report + 60-minute workshop",
-      "One recommendation feedback round",
-      "Human-led production redesign",
-    ],
-    featured: true,
-  },
-  {
-    label: "Analysis, redesign, proof",
-    name: "Creative Lab",
-    description: "A full optimization sprint: diagnose the campaign, redesign its most important moments and test the improved directions again.",
-    price: "€2,790",
-    features: [
-      "Up to 10 assets or 3 creative concepts",
-      "Everything in Performance Deep Dive",
-      "Full NeuroVision Digital Shelf benchmark",
-      "2 expert-designed creative directions",
-      "Brand, copy, hierarchy and UX redesign",
-      "Re-test against the original creative",
-      "Campaign-ready files and required resizes",
-      "90-minute creative workshop",
-    ],
-  },
-];
-
-const faqs = [
-  ["What can I analyse?", "Upload an ad, social creative, landing page, website screenshot, packaging concept, product image or marketplace listing."],
-  ["Do I need eye-tracking equipment?", "No. NeuroVision uses predictive models trained on behavioural, cognitive and eye-tracking data, so teams can evaluate early creative in the browser."],
-  ["What are credits used for?", "One flexible wallet works across heatmaps, agentic surveys, generated variants, resizes and optimisation loops."],
-  ["Can NeuroVision replace real consumer research?", "NeuroVision is an early decision layer, not a guarantee of market performance. Use it to screen, compare and improve creative before slower validation."],
+const questions = [
+  ["What do I upload?", "Start with an image: an ad, website screenshot, packaging concept, product image or marketplace listing. Tell NeuroVision what you want viewers to notice and understand."],
+  ["What will I get back?", "An attention heatmap and a prioritised creative critique. You can also compare alternatives, explore AI audience feedback, generate a revised version and test it again."],
+  ["Are the survey respondents real people?", "No. Surveys use AI-simulated audience profiles. They help you explore possible interpretations and decide what to test with people; they are not a recruited consumer panel."],
+  ["How much can I do for free?", "The Free plan includes 40 credits each month. At 5 credits per single-image analysis, that is up to 8 analyses if you use the whole allowance for analysis. Other actions use different amounts."],
+  ["How is my creative data handled?", "Our proprietary attention model runs on European infrastructure. You can connect supported providers with your own API keys. Processing and retention depend on the providers and configuration you choose."],
+  ["Does a better prediction guarantee a better campaign?", "No. NeuroVision helps you screen and improve creative before launch. Real results also depend on the audience, placement, offer and context. Use human research or a live A/B test for final validation."],
 ];
 
 export default function Home() {
-  const [active, setActive] = useState<DemoKey>("attention");
-  const view = demo[active];
+  return <><Header /><main id="main-content">
+    <section className="home-hero"><div className="container">
+      <p className="kicker">NeuroVision · AI creative testing</p>
+      <h1>Better creative.<br /><span>Before launch.</span></h1>
+      <p className="lead">See what gets noticed. Explore what gets understood.<br className="desktop-break" /> Improve your ads, websites and packaging with evidence.</p>
+      <div className="actions center"><a className="btn primary" href={REGISTER_URL}>Start free <span aria-hidden="true">↗</span></a><Link className="text-link" href="/how-it-works">See how it works <span aria-hidden="true">→</span></Link></div>
+      <p className="home-allowance">40 free credits each month · Up to 8 image analyses</p>
+    </div></section>
 
-  return (
-    <>
-      <Header />
-      <main>
-        <section className="hero" id="top">
-          <div className="orb orb-a" /><div className="orb orb-b" />
-          <div className="container hero-grid">
-            <div className="hero-copy">
-              <p className="eyebrow"><i /> Predictive design intelligence</p>
-              <h1>
-                Know what people <em className="hero-blue">will see.</em><br />
-                Understand what they&apos;ll <em className="hero-violet">feel.</em><br />
-                Ship <em className="hero-pink">stronger creative.</em>
-              </h1>
-              <p className="hero-lead">
-                NeuroVision brings attention prediction, agentic audience
-                research and creative optimisation into one fast SaaS workflow.
-                Test before you publish—not after the budget is spent.
-              </p>
-              <div className="actions">
-                <a className="btn primary" href="http://app.neurovision-ai.com/register">Try NeuroVision free ↗</a>
-                <Link className="btn secondary" href="/how-it-works">See how it works →</Link>
-              </div>
-              <div className="proof"><span /><span /><span /><p>Built where <b>neuroscience</b>, behavioural science, design and AI meet.</p></div>
-            </div>
+    <section className="home-showcase" aria-label="An illustrative creative redesign"><div className="container">
+      <CreativeCompare compact />
+      <Link className="text-link" href="/case-studies">Explore the creative examples <span aria-hidden="true">→</span></Link>
+    </div></section>
 
-            <div className="product-wrap">
-              <div className="product">
-                <div className="product-bar">
-                  <div><img src={sitePath("/logo.webp")} alt="" /><b>NeuroVision</b></div>
-                  <span>•••</span><small>Sample analysis</small>
-                </div>
-                <div className="product-body">
-                  <aside><i className="on" /><i /><i /><i /></aside>
-                  <div className="analysis">
-                    <div className="analysis-head"><span><small>Zephyr campaign</small><b>Hero creative · v03</b></span><button>Export</button></div>
-                    <div className="tabs" role="tablist" aria-label="Analysis views">
-                      {(Object.keys(demo) as DemoKey[]).map((key, index) => (
-                        <button role="tab" aria-selected={active === key} className={active === key ? "on" : ""} onClick={() => setActive(key)} key={key}>
-                          <small>0{index + 1}</small>{demo[key].label}
-                        </button>
-                      ))}
-                    </div>
-                    <div className="creative">
-                      <img src={view.image} alt={view.alt} />
-                      <div className="score"><strong>{view.score}</strong><span><small>{view.metric}</small><b>{view.note}</b></span></div>
-                    </div>
-                    <div className="metrics"><span><small>Processing fluency</small><b>8.7</b></span><span><small>Brand attention</small><b>High</b></span><span><small>Recall potential</small><b>82%</b></span></div>
-                  </div>
-                </div>
-              </div>
-              <div className="float f1"><i>⌁</i><span><small>Analysis ready</small><b>in seconds</b></span></div>
-              <div className="float f2"><i>A/B</i><span><small>Variant winner</small><b>Creative B</b></span></div>
-            </div>
-          </div>
-          <div className="container signal"><span>Attention prediction</span><span>Agentic audience surveys</span><span>Creative optimisation</span><span>Digital shelf intelligence</span></div>
-        </section>
+    <section className="section home-capabilities"><div className="container">
+      <div className="section-head centered"><p className="kicker">From insight to the next version</p><h2>One image.<br />A clearer way forward.</h2><p>Upload your creative and set the objective. Start with attention, then add the layers your decision needs.</p></div>
+      <div className="open-columns">
+        <article><span className="step-number">01</span><h3>See.</h3><p>Predict where attention is likely to go. Check whether the brand, message and next step stand out.</p><Link className="text-link" href="/how-it-works#attention">Attention analysis →</Link></article>
+        <article><span className="step-number">02</span><h3>Understand.</h3><p>Explore clarity and relevance with AI-simulated audiences. Find the questions to ask real customers.</p><Link className="text-link" href="/how-it-works#audience">Audience insights →</Link></article>
+        <article><span className="step-number">03</span><h3>Improve.</h3><p>Create a new direction from the findings. Re-test it with the same measures and compare what changed.</p><Link className="text-link" href="/how-it-works#improvement">Creative improvement →</Link></article>
+      </div>
+    </div></section>
 
-        <section className="section platform" id="platform">
-          <div className="container">
-            <div className="section-head">
-              <div><p className="kicker">One connected platform</p><h2>From visual stimulus to a better decision.</h2></div>
-              <p>Most tools stop at a heatmap. NeuroVision connects what draws the eye with what the creative communicates—and turns that diagnosis into the next version.</p>
-            </div>
-            <div className="pillars literal-pillars">
-              <article>
-                <span className="num">Attention model</span>
-                <div className="visual literal-heatmap"><img src={sitePath("/assets/hero-heatmap.webp")} alt="Predictive heatmap example" /><span className="visual-label">EARLY ATTENTION · 0–2 SEC</span><span className="heat-legend"><i /> Low <b /> High</span></div>
-                <p className="card-kicker">Predict attention</p><h3>See what wins the first seconds.</h3>
-                <p>Predict visual hierarchy, hotspots, missed elements and attention clarity—without lab equipment.</p>
-                <ul><li>AI attention heatmaps</li><li>First-view hierarchy</li><li>Brand and CTA visibility</li></ul>
-              </article>
-              <article>
-                <span className="num">Audience simulation</span>
-                <div className="visual literal-survey"><div className="audience-chips"><i>25–34</i><i>Urban</i><i>New buyer</i></div><blockquote>“Premium and progressive, but I need a clearer reason to believe.”</blockquote><p><span>Message clarity</span><b style={{width:"78%"}} /></p><p><span>Brand trust</span><b style={{width:"86%"}} /></p><small>64 simulated responses synthesised</small></div>
-                <p className="card-kicker">Simulate interpretation</p><h3>Understand the response behind the view.</h3>
-                <p>Explore how defined audiences may interpret your message, product and brand before launch.</p>
-                <ul><li>Agentic audience surveys</li><li>Demographic segmentation</li><li>Semantic and cultural signals</li></ul>
-              </article>
-              <article>
-                <span className="num">Creative optimisation</span>
-                <div className="visual literal-optimise"><div><span>Original</span><img src={sitePath("/assets/hero-ad.webp")} alt="" /></div><b>→</b><div className="winner"><span>Variant B · winner</span><img src={sitePath("/assets/hero-optimised.webp")} alt="" /></div><small>Predicted hierarchy +18%</small></div>
-                <p className="card-kicker">Generate &amp; compare</p><h3>Move from insight to usable creative.</h3>
-                <p>Generate variants, compare them against the original and iterate until the hierarchy works harder.</p>
-                <ul><li>Optimised variants</li><li>Platform-ready resizes</li><li>Brand-guided generation</li></ul>
-              </article>
-            </div>
-            <div className="section-actions"><Link className="btn secondary" href="/how-it-works">Explore the complete workflow →</Link><Link className="text-link dark" href="/case-studies">View the Zephyr case study ↗</Link></div>
-          </div>
-        </section>
+    <section className="section home-foundation"><div className="container">
+      <div className="section-head centered"><p className="kicker">Why NeuroVision</p><h2>Built on research.<br />Built for your team.</h2><p>Our own attention model, deployed in Europe. Millions of research-grade data points. The option to use your own API keys.</p><Link className="text-link" href="/about#why-neurovision-is-different">What makes us different →</Link></div>
+      <div className="quiet-routes"><Link href="/science"><span>The science</span><b>Understand the evidence <i aria-hidden="true">→</i></b></Link><Link href="/use-cases"><span>Your next project</span><b>Ads, websites, shelf &amp; packaging <i aria-hidden="true">→</i></b></Link></div>
+    </div></section>
 
-        <section className="section compare">
-          <div className="container compare-grid">
-            <div><p className="kicker">Decisions before launch</p><h2>More than a heatmap. Less than a research marathon.</h2><p>NeuroVision is the fast, repeatable layer between intuition and expensive validation.</p></div>
-            <div className="comparison">
-              <div className="thead"><span>Approach</span><span>Attention</span><span>Meaning</span><span>New creative</span></div>
-              <div className="best"><b>NeuroVision</b><span>✓</span><span>✓</span><span>✓</span></div>
-              <div><b>Heatmap tool</b><span>✓</span><span>—</span><span>—</span></div>
-              <div><b>Traditional survey</b><span>—</span><span>✓</span><span>—</span></div>
-              <div><b>Creative software</b><span>—</span><span>—</span><span>✓</span></div>
-            </div>
-          </div>
-        </section>
+    <section className="section"><div className="container">
+      <div className="section-head"><p className="kicker">Two ways to get started</p><h2>Your team runs it.<br />Or we run it with you.</h2></div>
+      <div className="start-options"><article><h3>The platform.</h3><p>For everyday creative decisions. Start free, with paid plans from €25 per month.</p><Link className="text-link" href="/pricing">Explore software plans →</Link></article><article><h3>Expert support.</h3><p>Analysis, creative direction and hands-on design. Project packages from €690, excluding VAT.</p><Link className="text-link" href="/pricing#agency">Explore expert services →</Link></article></div>
+    </div></section>
 
-        <section className="section pricing" id="pricing">
-          <div className="container">
-            <div className="pricing-head"><p className="kicker">Pricing</p><h2>Start free. Upgrade as your team grows.</h2><p>Spend flexible credits across attention analysis, agentic surveys and creative improvement.</p></div>
-            <div className="plan-grid">
-              {plans.map(plan => (
-                <article className={plan.featured ? "featured" : ""} key={plan.name}>
-                  {plan.featured && <em>Most popular</em>}
-                  <h3>{plan.name}</h3><p className="desc">{plan.description}</p>
-                  <p className="price"><b>{plan.price}</b><span>/ month</span></p>
-                  <p className="credits"><span>Monthly allowance</span><b>{plan.credits}</b></p>
-                  <ul>{plan.features.map(f => <li key={f}><span>✓</span>{f}</li>)}</ul>
-                  <a className={`btn ${plan.featured ? "primary" : "secondary"}`} href="http://app.neurovision-ai.com/register">{plan.cta} ↗</a>
-                </article>
-              ))}
-            </div>
-            <div className="credit-explainer">
-              <div className="credit-explainer-head">
-                <div><p className="kicker">How credits are used</p><h3>One credit wallet. Different actions.</h3></div>
-                <p>These are usage costs shared by every plan—not benefits attached to the tier directly above them.</p>
-              </div>
-              <div className="credit-guide">
-                <div><b>5</b><span><strong>Creative Analysis</strong><small>1 design or image · Attention heatmap + AI critique</small></span></div>
-                <div><b>20</b><span><strong>Survey · 25 responses</strong><small>Small audience simulation · Fast early feedback</small></span></div>
-                <div><b>35</b><span><strong>Survey · 50 responses</strong><small>Standard audience simulation · Balanced confidence</small></span></div>
-                <div><b>60</b><span><strong>Survey · 100 responses</strong><small>Large audience simulation · Stronger validation</small></span></div>
-              </div>
-              <p className="pricing-note">Surveys over 100 responses start at 60 credits + 45 credits for each additional 100 responses.</p>
-            </div>
-          </div>
-        </section>
-
-        <section className="section agency-pricing" id="agency">
-          <div className="container">
-            <div className="agency-head">
-              <p className="kicker">Done-for-you agency services</p>
-              <h2>Don&apos;t want to get your hands dirty? No problem.</h2>
-              <p>NeuroVision can also work as your agency partner. We run the analysis, improve the creative and ship the final results—ready for your team to use.</p>
-            </div>
-            <div className="agency-grid">
-              {agencyPackages.map(pkg => (
-                <article className={pkg.featured ? "agency-card featured" : "agency-card"} key={pkg.name}>
-                  <div className="agency-labels">
-                    <span>{pkg.label}</span>
-                    {pkg.featured && <em>Most popular</em>}
-                  </div>
-                  <h3>{pkg.name}</h3>
-                  <p className="agency-description">{pkg.description}</p>
-                  <p className="agency-price"><b>{pkg.price}</b><span>per campaign<small>excl. VAT</small></span></p>
-                  <a className={`btn ${pkg.featured ? "primary" : "white"}`} href={`mailto:info@neurovision-ai.com?subject=NeuroVision%20${encodeURIComponent(pkg.name)}`}>Choose {pkg.name} ↗</a>
-                  <ul>{pkg.features.map(feature => <li key={feature}><span>✓</span>{feature}</li>)}</ul>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="section route-teasers">
-          <div className="container route-teaser-grid">
-            <Link href="/use-cases"><span>Use cases</span><h2>See where visual intelligence creates an advantage.</h2><b>Explore campaigns, UX, shelf and packaging →</b></Link>
-            <Link href="/how-it-works"><span>How it works</span><h2>Go deeper into the science and the creative loop.</h2><b>Understand the complete workflow →</b></Link>
-          </div>
-        </section>
-
-        <section className="section faq">
-          <div className="container faq-grid">
-            <div><p className="kicker">The essentials</p><h2>Questions, answered.</h2><p>Still deciding how NeuroVision fits? <a href="mailto:info@neurovision-ai.com">Talk to our team.</a></p></div>
-            <div>{faqs.map(([q,a], index) => <details key={q} open={index===0}><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div>
-          </div>
-        </section>
-
-        <section className="final-cta"><div className="container"><p className="kicker light">See your creative before your audience does</p><h2>Make the next version the stronger version.</h2><p>Upload your first visual and turn attention, interpretation and optimisation into one connected decision.</p><div className="actions center"><a className="btn white" href="http://app.neurovision-ai.com/register">Try NeuroVision free ↗</a><a className="btn ghost" href="mailto:info@neurovision-ai.com?subject=NeuroVision%20demo">Book a demo</a></div></div></section>
-      </main>
-      <Footer />
-    </>
-  );
+    <section className="section home-questions"><div className="reading-width"><div className="section-head"><p className="kicker">A little more detail</p><h2>Good questions.</h2></div>{questions.map(([question,answer]) => <details className="reading-details" key={question}><summary>{question}<span aria-hidden="true">+</span></summary><div><p>{answer}</p></div></details>)}</div></section>
+    <ClosingCTA />
+  </main><Footer /></>;
 }

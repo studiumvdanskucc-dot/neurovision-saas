@@ -4,7 +4,7 @@ export const metadata: Metadata = { title: "Terms of Use" };
 
 export default function Terms() {
   return (
-    <><Header /><main className="legal"><div className="container legal-shell">
+    <><Header /><main id="main-content" className="legal"><div className="container legal-shell">
       <p className="kicker">Legal</p><h1>Terms of Use</h1><p className="legal-date">Last updated: May 2026</p>
       <div className="legal-content">
         <section><h2>1. Acceptance of terms</h2><p>By accessing or using the NeuroVision platform (&quot;Service&quot;), you agree to be bound by these Terms of Use. If you do not agree, do not use the Service.</p></section>

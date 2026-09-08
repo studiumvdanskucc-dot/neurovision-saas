@@ -4,7 +4,7 @@ export const metadata: Metadata = { title: "Privacy Policy" };
 
 export default function Privacy() {
   return (
-    <><Header /><main className="legal"><div className="container legal-shell">
+    <><Header /><main id="main-content" className="legal"><div className="container legal-shell">
       <p className="kicker">Legal</p><h1>Privacy Policy</h1><p className="legal-date">Last updated: May 2026</p>
       <div className="legal-content">
         <section><h2>1. Introduction</h2><p>NeuroVision Technologies (&quot;we&quot;, &quot;our&quot;, &quot;us&quot;) is committed to protecting your privacy. This Privacy Policy explains how we collect, use and safeguard your personal data when you use our platform and services.</p></section>
