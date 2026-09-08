@@ -15,39 +15,43 @@ const questions = [
 
 export default function Home() {
   return <><Header /><main id="main-content">
-    <section className="home-hero"><div className="container">
-      <p className="kicker">NeuroVision · AI creative testing</p>
-      <h1>Better creative.<br /><span>Before launch.</span></h1>
-      <p className="lead">See what gets noticed. Explore what gets understood.<br className="desktop-break" /> Improve your ads, websites and packaging with evidence.</p>
-      <div className="actions center"><a className="btn primary" href={REGISTER_URL}>Start free <span aria-hidden="true">↗</span></a><Link className="text-link" href="/how-it-works">See how it works <span aria-hidden="true">→</span></Link></div>
-      <p className="home-allowance">40 free credits each month · Up to 8 image analyses</p>
-    </div></section>
-
-    <section className="home-showcase" aria-label="An illustrative creative redesign"><div className="container">
-      <CreativeCompare compact />
-      <Link className="text-link" href="/case-studies">Explore the creative examples <span aria-hidden="true">→</span></Link>
-    </div></section>
-
-    <section className="section home-capabilities"><div className="container">
-      <div className="section-head centered"><p className="kicker">From insight to the next version</p><h2>One image.<br />A clearer way forward.</h2><p>Upload your creative and set the objective. Start with attention, then add the layers your decision needs.</p></div>
-      <div className="open-columns">
-        <article><span className="step-number">01</span><h3>See.</h3><p>Predict where attention is likely to go. Check whether the brand, message and next step stand out.</p><Link className="text-link" href="/how-it-works#attention">Attention analysis →</Link></article>
-        <article><span className="step-number">02</span><h3>Understand.</h3><p>Explore clarity and relevance with AI-simulated audiences. Find the questions to ask real customers.</p><Link className="text-link" href="/how-it-works#audience">Audience insights →</Link></article>
-        <article><span className="step-number">03</span><h3>Improve.</h3><p>Create a new direction from the findings. Re-test it with the same measures and compare what changed.</p><Link className="text-link" href="/how-it-works#improvement">Creative improvement →</Link></article>
+    <section className="home-hero"><div className="container home-hero-grid">
+      <div className="home-hero-copy">
+        <p className="kicker">AI creative testing for marketing teams</p>
+        <h1>Make your creative clearer.<br /><span>Before you launch.</span></h1>
+        <p className="lead">Upload an ad, website or packaging design. Predict what gets noticed, explore how your audience might understand it, and create a better next version.</p>
+        <div className="actions"><a className="btn primary" href={REGISTER_URL}>Start free <span aria-hidden="true">↗</span></a><Link className="btn hero-secondary" href="/how-it-works">See how it works <span aria-hidden="true">→</span></Link></div>
+        <p className="home-allowance">40 free credits each month · Up to 8 image analyses</p>
+      </div>
+      <div className="hero-example" aria-label="An illustrative creative redesign">
+        <div className="hero-example-title"><span>From original to next version</span><small>Creative example</small></div>
+        <CreativeCompare compact />
+        <Link className="text-link" href="/case-studies">Explore all four examples <span aria-hidden="true">→</span></Link>
       </div>
     </div></section>
+    <nav className="home-section-nav" aria-label="Explore NeuroVision"><div className="container"><span>Explore NeuroVision</span><a href="#capabilities">What it does</a><a href="#why-neurovision">Why NeuroVision</a><a href="#get-started">Ways to get started</a><a href="#questions">Common questions</a></div></nav>
 
-    <section className="section home-foundation"><div className="container">
-      <div className="section-head centered"><p className="kicker">Why NeuroVision</p><h2>Built on research.<br />Built for your team.</h2><p>Our own attention model, deployed in Europe. Millions of research-grade data points. The option to use your own API keys.</p><Link className="text-link" href="/about#why-neurovision-is-different">What makes us different →</Link></div>
+    <section className="section home-capabilities" id="capabilities"><div className="container">
+      <div className="section-head"><p className="kicker">01 / What NeuroVision does</p><h2>Three questions.<br />One connected workflow.</h2><p>Start with attention analysis. Add audience feedback and creative improvement when your decision needs them.</p></div>
+      <div className="open-columns">
+        <article><span className="step-number">01 / Attention</span><h3>Will it get noticed?</h3><p>Predict where attention is likely to go. Check whether the brand, message and next step stand out.</p><div className="card-output"><span>You get</span><strong>An attention map + prioritised fixes</strong></div><Link className="text-link" href="/how-it-works#attention">Explore attention analysis →</Link></article>
+        <article><span className="step-number">02 / Audience</span><h3>Will it be understood?</h3><p>Explore clarity and relevance with AI-simulated audiences. Find the questions to ask real customers.</p><div className="card-output"><span>You get</span><strong>Feedback by audience profile</strong></div><Link className="text-link" href="/how-it-works#audience">Explore audience insights →</Link></article>
+        <article><span className="step-number">03 / Improvement</span><h3>What should change?</h3><p>Create a new direction from the findings. Re-test it with the same measures and compare what changed.</p><div className="card-output"><span>You get</span><strong>A new version + a clear comparison</strong></div><Link className="text-link" href="/how-it-works#improvement">Explore creative improvement →</Link></article>
+      </div>
+      <div className="format-links"><span>For your next project</span><Link href="/use-cases#campaigns">Ads &amp; campaigns →</Link><Link href="/use-cases#websites">Websites &amp; UX →</Link><Link href="/use-cases#digital-shelf">Digital shelf →</Link><Link href="/use-cases#packaging">Packaging →</Link></div>
+    </div></section>
+
+    <section className="section home-foundation" id="why-neurovision"><div className="container">
+      <div className="section-head"><p className="kicker">02 / Why NeuroVision</p><h2>Built on research.<br />Built for your team.</h2><p>Our own attention model, deployed in Europe. Millions of research-grade data points. The option to use your own API keys.</p><Link className="text-link" href="/about#why-neurovision-is-different">What makes us different →</Link></div>
       <div className="quiet-routes"><Link href="/science"><span>The science</span><b>Understand the evidence <i aria-hidden="true">→</i></b></Link><Link href="/use-cases"><span>Your next project</span><b>Ads, websites, shelf &amp; packaging <i aria-hidden="true">→</i></b></Link></div>
     </div></section>
 
-    <section className="section"><div className="container">
-      <div className="section-head"><p className="kicker">Two ways to get started</p><h2>Your team runs it.<br />Or we run it with you.</h2></div>
-      <div className="start-options"><article><h3>The platform.</h3><p>For everyday creative decisions. Start free, with paid plans from €25 per month.</p><Link className="text-link" href="/pricing">Explore software plans →</Link></article><article><h3>Expert support.</h3><p>Analysis, creative direction and hands-on design. Project packages from €690, excluding VAT.</p><Link className="text-link" href="/pricing#agency">Explore expert services →</Link></article></div>
+    <section className="section home-start" id="get-started"><div className="container">
+      <div className="section-head"><p className="kicker">03 / Two ways to get started</p><h2>Your team runs it.<br />Or we run it with you.</h2></div>
+      <div className="start-options"><article><p className="kicker">Self-service software</p><h3>The platform.</h3><p>For everyday creative decisions. Start free, with paid plans from €25 per month.</p><Link className="btn primary" href="/pricing">Compare software plans →</Link></article><article><p className="kicker">Hands-on creative support</p><h3>Expert support.</h3><p>Analysis, creative direction and hands-on design. Project packages from €690, excluding VAT.</p><Link className="btn secondary" href="/pricing#agency">Explore expert services →</Link></article></div>
     </div></section>
 
-    <section className="section home-questions"><div className="reading-width"><div className="section-head"><p className="kicker">A little more detail</p><h2>Good questions.</h2></div>{questions.map(([question,answer]) => <details className="reading-details" key={question}><summary>{question}<span aria-hidden="true">+</span></summary><div><p>{answer}</p></div></details>)}</div></section>
+    <section className="section home-questions" id="questions"><div className="reading-width"><div className="section-head"><p className="kicker">04 / Before you start</p><h2>Common questions.</h2></div><div className="question-list">{questions.map(([question,answer]) => <details className="reading-details" key={question}><summary>{question}<span aria-hidden="true">+</span></summary><div><p>{answer}</p></div></details>)}</div></div></section>
     <ClosingCTA />
   </main><Footer /></>;
 }

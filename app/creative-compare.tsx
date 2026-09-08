@@ -24,7 +24,7 @@ export function CreativeCompare({ initial = "adidas", gallery = false, compact =
       <div className="creative-pair">
         {([ ["Original", item.original], ["Recreated", item.recreated] ] as const).map(([label, asset]) => <figure key={`${active}-${label}`}>
           <figcaption><span>{label}</span><a href={sitePath(asset.src)} target="_blank" rel="noreferrer" aria-label={`View full-size ${label.toLowerCase()} ${item.name} creative`}>View full size <span aria-hidden="true">↗</span></a></figcaption>
-          <CreativeVisual asset={asset} heatmap={heatmap} />
+          <CreativeVisual asset={asset} heatmap={heatmap} priority={compact} />
         </figure>)}
       </div>
       {!compact && <div className="example-controls"><button className="heatmap-toggle" type="button" aria-pressed={heatmap} onClick={() => setHeatmap(value => !value)}><span className="toggle-track" aria-hidden="true"><i /></span>Illustrative heatmaps</button><p className="fine-print">{heatmap ? "Placeholder overlays — not NeuroVision predictions or measured results." : "Explore the supplied designs, or preview a placeholder heatmap overlay."}</p></div>}
