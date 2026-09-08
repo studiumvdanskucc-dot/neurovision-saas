@@ -1,55 +1,12 @@
-type WhyDifferentProps = {
-  id?: string;
-};
+type WhyDifferentProps = { id?: string };
 
 export function WhyDifferent({ id }: WhyDifferentProps) {
-  return (
-    <section className="section sv-control" id={id}>
-      <div className="container">
-        <div className="sv-control-head">
-          <div>
-            <p className="kicker light">Why NeuroVision is different</p>
-            <h2>Control the model, the evidence and the data path.</h2>
-          </div>
-          <p>
-            Our advantage is not simply speed. It is a research-led system built
-            for organisations that care where the model runs, what trained it and
-            how sensitive creative data is handled.
-          </p>
-        </div>
-        <div className="sv-control-grid">
-          <article>
-            <span>EU</span>
-            <div><small>01 · Infrastructure</small><h3>Our own model, deployed in Europe.</h3></div>
-            <p>
-              NeuroVision’s proprietary attention model runs on European
-              infrastructure—giving us tighter control over performance,
-              deployment and the scientific roadmap.
-            </p>
-          </article>
-          <article>
-            <span className="sv-network-icon" aria-hidden="true">
-              <em /><em /><em /><em />
-              <i /><i /><i /><i /><i />
-            </span>
-            <div><small>02 · Research signal</small><h3>Millions of research-grade data points.</h3></div>
-            <p>
-              The model is informed by millions of gaze and fixation signals
-              captured with research-grade devices, including EyeLink 1000, and
-              strengthened by data collected at Aarhus University.
-            </p>
-          </article>
-          <article>
-            <span>API</span>
-            <div><small>03 · Data control</small><h3>Bring your keys. Keep control in-house.</h3></div>
-            <p>
-              Connect supported providers with your own API keys so usage runs
-              under your contracts, policies and billing—keeping the data path
-              aligned with your organisation’s governance.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-  );
+  return <section className="section difference-section" id={id}><div className="container">
+    <div className="section-head"><p className="kicker">Why NeuroVision is different</p><h2>Our own model.<br />A stronger foundation.</h2><p>Research, infrastructure and data control are part of the product from the start.</p></div>
+    <div className="difference-grid">
+      <article><span className="difference-icon" aria-hidden="true">EU</span><h3>Built by us.<br />Deployed in Europe.</h3><p>Our proprietary attention model runs on European infrastructure. We control its development, performance and scientific roadmap.</p></article>
+      <article><span className="difference-icon network-icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><path d="M8 9 20 20 32 9M8 31 20 20 32 31M8 9v22m24-22v22" stroke="currentColor" strokeWidth="1.5"/><circle cx="8" cy="9" r="3" fill="currentColor"/><circle cx="32" cy="9" r="3" fill="currentColor"/><circle cx="20" cy="20" r="4" fill="currentColor"/><circle cx="8" cy="31" r="3" fill="currentColor"/><circle cx="32" cy="31" r="3" fill="currentColor"/></svg></span><h3>Millions of research-grade data points.</h3><p>Gaze and fixation signals captured with high-end devices, including EyeLink 1000, and data collected at Aarhus University inform our model.</p></article>
+      <article><span className="difference-icon" aria-hidden="true">API</span><h3>Your keys.<br />Your provider choice.</h3><p>Connect supported providers with your own API keys, under your agreements and billing. Processing and retention depend on the providers and configuration you choose.</p></article>
+    </div>
+  </div></section>;
 }

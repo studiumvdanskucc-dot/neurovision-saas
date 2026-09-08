@@ -68,236 +68,37 @@ const references = [
 ];
 
 export default function Science() {
-  return (
-    <>
-      <Header />
-      <main>
-        <section className="sv-hero">
-          <div className="sv-orb sv-orb-a" />
-          <div className="sv-orb sv-orb-b" />
-          <div className="container sv-hero-grid">
-            <div className="sv-hero-copy">
-              <p className="kicker">Science &amp; validation</p>
-              <h1>A closed loop from human attention to better creative.</h1>
-              <p className="sv-lead">
-                NeuroVision connects predictive attention, structured audience
-                simulation and constrained creative regeneration—then measures the
-                new version against the original. The result is a decision trail,
-                not a black-box opinion.
-              </p>
-              <div className="sv-status-row">
-                <span><i /> Aarhus validation active</span>
-                <span>Planned readout · late August 2026</span>
-              </div>
-              <p className="sv-citation-line">
-                Early gaze is shaped by visual saliency and scene structure, while
-                task and context increasingly influence what happens next{" "}
-                <a href="#ref-itti-koch">(Itti &amp; Koch, 2001)</a>{" "}
-                <a href="#ref-tatler">(Tatler et al., 2011)</a>.
-              </p>
-            </div>
+  return <><Header /><main id="main-content">
+    <section className="page-hero science-hero"><div className="container">
+      <p className="kicker">Science &amp; validation</p><h1>The science behind<br />a clearer decision.</h1>
+      <p className="lead">Where do people look? What do they understand? Does the next version work better? Each question needs its own evidence.</p>
+      <div className="research-status"><span>Aarhus validation programme</span><span>Results not yet published here</span></div>
+      <p className="science-hero-note">Early gaze is shaped by visual saliency and scene structure. Task and context also influence where people look <a href="#ref-itti-koch">(Itti &amp; Koch, 2001)</a> <a href="#ref-tatler">(Tatler et al., 2011)</a>.</p>
+      <nav className="page-jump-links" aria-label="Science sections"><a href="#evidence">The foundations</a><a href="#closed-loop">The creative loop</a><a href="#aarhus-study">Validation</a><a href="#references">References</a></nav>
+    </div></section>
 
-            <aside className="sv-hero-model" aria-label="NeuroVision evidence loop summary">
-              <div className="sv-process-loop">
-                <span className="sv-process-ring" aria-hidden="true" />
-                <span className="sv-process-arrow sv-process-arrow-a" aria-hidden="true">→</span>
-                <div className="sv-process-center">
-                  <small>Continuous evidence</small>
-                  <strong>Measure.<br />Learn.<br />Improve.</strong>
-                </div>
-                <ol>
-                  <li className="sv-process-node sv-process-node-a"><i>01</i><b>See</b></li>
-                  <li className="sv-process-node sv-process-node-b"><i>02</i><b>Understand</b></li>
-                  <li className="sv-process-node sv-process-node-c"><i>03</i><b>Improve</b></li>
-                  <li className="sv-process-node sv-process-node-d"><i>04</i><b>Prove again</b></li>
-                </ol>
-              </div>
-            </aside>
-          </div>
-        </section>
+    <section className="section science-foundations" id="evidence"><div className="reading-width">
+      <div className="section-head"><p className="kicker">The foundations</p><h2>Three ideas.<br />In plain language.</h2><p>Attention is a starting point. Understanding the message and improving the creative are separate steps.</p></div>
+      <article className="science-chapter"><p className="kicker">01 / Visual attention</p><h3>Some things catch the eye sooner.</h3><p>Contrast, colour, faces, text and the arrangement of objects help guide our opening glance. This is often called <em>visual saliency</em>: how much something stands out in a scene. Our goals, experience and the context also shape what we look at <a href="#ref-itti-koch">(Itti &amp; Koch, 2001)</a> <a href="#ref-bruce-tsotsos">(Bruce &amp; Tsotsos, 2009)</a> <a href="#ref-tatler">(Tatler et al., 2011)</a>.</p><p className="practical-meaning"><strong>For your creative</strong> A striking background can compete with the product. Attention analysis helps you check whether the intended message has enough visual presence.</p></article>
+      <article className="science-chapter"><p className="kicker">02 / Attention prediction</p><h3>A heatmap is a prediction of where people may look.</h3><p>Modern models estimate how likely different parts of an image are to receive a fixation — a brief pause of the eyes. A heatmap makes that distribution visible. It describes a pattern across viewers, rather than the exact path of one person’s eyes <a href="#ref-deepgaze-ii">(Kümmerer et al., 2016)</a> <a href="#ref-deepgaze-iie">(Linardos et al., 2021)</a>.</p><p>To know whether a model is useful, its predictions need to be compared with human eye-tracking on images it has not been evaluated or tuned on. Different metrics reveal different strengths and errors; one attractive map or headline score is not enough <a href="#ref-bylinskii">(Bylinskii et al., 2019)</a>.</p><p className="practical-meaning"><strong>For your creative</strong> Use the map to compare visual hierarchy. Looking at a headline does not, by itself, show that someone understood or believed it.</p></article>
+      <article className="science-chapter"><p className="kicker">03 / Audience simulation</p><h3>Seeing a message and understanding it are different.</h3><p>AI agents can answer structured questions from selected audience profiles. Research explores when these simulations reflect aspects of human behaviour, including the role of grounding agents in information about real people <a href="#ref-horton">(Horton, 2023)</a> <a href="#ref-mei">(Mei et al., 2024)</a> <a href="#ref-park">(Park et al., 2024)</a>.</p><p>That does not make simulated answers interchangeable with a human research panel. They can miss variation and reflect bias. NeuroVision uses them to explore possible interpretations; comparison and calibration against human responses form a separate part of our validation programme.</p><p className="practical-meaning"><strong>For your creative</strong> Screen for clarity, trust and relevance. Use the findings to prioritise ideas and decide what to ask real customers.</p></article>
+    </div></section>
 
-        <ScienceLoop />
+    <ScienceLoop />
 
-        <section className="section sv-evidence" id="evidence">
-          <div className="container">
-            <div className="section-head sv-section-head">
-              <div>
-                <p className="kicker">The science, narrowed down</p>
-                <h2>Three claims. Three different evidence standards.</h2>
-              </div>
-              <p>
-                Attention, interpretation and improvement should not be compressed
-                into one “AI score.” Each layer answers a different question and
-                must be tested differently.
-              </p>
-            </div>
-            <div className="sv-evidence-grid">
-              <article>
-                <span>01 · Attention</span>
-                <h3>Early visual selection is measurable.</h3>
-                <p>
-                  Contrast, colour, faces, text, objects and spatial structure help
-                  guide the opening moments of attention. Task and prior knowledge
-                  also matter, especially as viewing continues.
-                </p>
-                <div className="sv-inline-refs">
-                  <a href="#ref-itti-koch">Itti &amp; Koch, 2001</a>
-                  <a href="#ref-bruce-tsotsos">Bruce &amp; Tsotsos, 2009</a>
-                  <a href="#ref-tatler">Tatler et al., 2011</a>
-                </div>
-              </article>
-              <article>
-                <span>02 · Prediction</span>
-                <h3>Fixation density can be modelled and benchmarked.</h3>
-                <p>
-                  Modern saliency models estimate a probability distribution over
-                  likely human fixations. They are evaluated on unseen images and
-                  with multiple metrics because no single metric tells the whole story.
-                </p>
-                <div className="sv-inline-refs">
-                  <a href="#ref-deepgaze-ii">Kümmerer et al., 2016</a>
-                  <a href="#ref-deepgaze-iie">Linardos et al., 2021</a>
-                  <a href="#ref-bylinskii">Bylinskii et al., 2019</a>
-                </div>
-              </article>
-              <article>
-                <span>03 · Interpretation</span>
-                <h3>Agentic surveys need human calibration.</h3>
-                <p>
-                  Synthetic agents can reproduce useful aggregate patterns, but
-                  they can also compress variance or amplify bias. NeuroVision uses
-                  them for structured screening and compares them with human responses.
-                </p>
-                <div className="sv-inline-refs">
-                  <a href="#ref-horton">Horton, 2023</a>
-                  <a href="#ref-mei">Mei et al., 2024</a>
-                  <a href="#ref-park">Park et al., 2024</a>
-                </div>
-              </article>
-            </div>
-          </div>
-        </section>
+    <section className="section validation-section" id="aarhus-study"><div className="reading-width">
+      <div className="section-head"><p className="kicker">Aarhus University · validation programme</p><h2>Putting the whole<br />process to the test.</h2><p>We are evaluating three links in the chain: the predicted attention, the simulated interpretation and the effect of changing the creative.</p></div>
+      <p className="validation-status">Programme described here; results and an updated readout date are pending publication on this page.</p>
+      <article className="study-chapter"><p className="kicker">Study A / Attention</p><h3>Do the predictions match human gaze?</h3><p>We compare NeuroVision heatmaps with eye movements recorded using EyeLink equipment, across a fixed set of static ads. We look at both the opening glance and the full viewing window.</p><details className="reading-details"><summary>How we measure it<span aria-hidden="true">+</span></summary><div><p><strong>Viewing windows.</strong> The full window is 0–2,000 milliseconds. The early window is 0–800 milliseconds or the first fixations.</p><p><strong>Primary metric.</strong> SIM measures the overlap between normalised fixation-density maps. The predeclared target is a mean SIM of at least 0.93 on the locked benchmark. This is a target, not an achieved result or a “93% accuracy” claim.</p><p><strong>Supporting measures.</strong> CC checks how the maps vary together; NSS evaluates predicted saliency at human fixation locations; AUC-Judd evaluates how the map distinguishes fixated locations from other image locations. We also inspect areas of interest (AOIs): the brand, product, headline and CTA. Multiple measures help avoid relying on one score <a href="#ref-bylinskii">(Bylinskii et al., 2019)</a>.</p></div></details></article>
+      <article className="study-chapter"><p className="kicker">Study B / Interpretation</p><h3>Do simulated and human answers agree?</h3><p>AI profiles and independent human participants receive the same questions and answer options. We check whether they rank the creatives similarly, and whether the pattern of answers agrees across audience groups.</p><details className="reading-details"><summary>How we measure it<span aria-hidden="true">+</span></summary><div><p><strong>Like-for-like questions.</strong> The study uses identical questionnaires and defined demographic groups for the human and simulated samples.</p><p><strong>More than an average.</strong> We examine error in average responses, the distribution of answers and agreement in how creatives are ranked.</p><p><strong>Separate calibration and evaluation.</strong> One subset is used to identify and adjust systematic differences. An independent holdout checks whether those adjustments carry over to data not used for calibration.</p></div></details></article>
+      <article className="study-chapter"><p className="kicker">Study C / Creative improvement</p><h3>Does the new version improve the intended outcome?</h3><p>We compare original and regenerated creatives under the same brand constraints. The question is whether important elements receive more attention and the message becomes clearer.</p><details className="reading-details"><summary>How we measure it<span aria-hidden="true">+</span></summary><div><p><strong>A fair creative brief.</strong> Logos, packshots and legal elements are locked. The editable parts are defined before regeneration.</p><p><strong>A fair exposure.</strong> Fresh participants or balanced assignments limit the effect of having already seen another version of the same ad.</p><p><strong>Outcomes that matter.</strong> The comparison includes attention on the intended elements, message clarity, brand compliance, time and cost. A visual redesign alone is not evidence of improvement.</p></div></details></article>
+      <details className="reading-details study-method"><summary>How we keep the benchmark accountable<span aria-hidden="true">+</span></summary><div><p><strong>Lock the benchmark.</strong> The evaluation set and scoring rules are fixed before scoring, so the test cannot be reshaped around a favourable result.</p><p><strong>Show uncertainty.</strong> Report 95% confidence intervals alongside the scores, rather than presenting a single number as certain.</p><p><strong>Compare people with people.</strong> Human-to-human consistency provides context for what the dataset can support. Published claims will name the dataset, metric and uncertainty used <a href="#ref-bylinskii">(Bylinskii et al., 2019)</a>.</p></div></details>
+    </div></section>
 
-        <WhyDifferent />
+    <section className="section science-position soft-section"><div className="reading-width"><p className="kicker">How to use the evidence</p><h2>A useful first layer.<br />Human judgement stays central.</h2><p>NeuroVision helps teams screen, compare and improve creative while changes are still easy to make. It predicts patterns across audiences; it does not guarantee what any individual will notice, feel or buy.</p><p>For consequential launch decisions, combine these findings with human research or real campaign testing. The research cited here explains the scientific foundations; it is not, by itself, a validation of NeuroVision’s performance.</p></div></section>
 
-        <section className="section sv-aarhus" id="aarhus-study">
-          <div className="container">
-            <div className="sv-aarhus-top">
-              <div>
-                <p className="kicker light">Aarhus University · study in progress</p>
-                <h2>Our most rigorous evaluation to date.</h2>
-                <p>
-                  The programme tests the entire chain—not only whether a heatmap
-                  looks plausible, but whether NeuroVision aligns with measured
-                  human gaze, human interpretation and improved creative outcomes.
-                </p>
-              </div>
-              <aside>
-                <span>Pre-declared primary target</span>
-                <strong>≥ 0.93 <em>SIM</em></strong>
-                <p>Mean overlap of normalised fixation-density maps on a locked static-ad benchmark.</p>
-                <small>Target—not yet a published result.</small>
-              </aside>
-            </div>
+    <WhyDifferent />
 
-            <div className="sv-study-grid">
-              <article>
-                <span>Study stream A</span>
-                <h3>Attention fidelity</h3>
-                <p>
-                  Compare NeuroVision predictions with human EyeLink fixation-density
-                  maps across a locked set of static advertisements.
-                </p>
-                <ul>
-                  <li>Full 0-2,000 ms view</li>
-                  <li>Early 0-800 ms / first fixations</li>
-                  <li>SIM primary; CC, NSS and AUC-Judd secondary</li>
-                  <li>Brand, product, headline and CTA AOIs</li>
-                </ul>
-              </article>
-              <article>
-                <span>Study stream B</span>
-                <h3>Survey fidelity</h3>
-                <p>
-                  Compare agentic audience outputs with independent human survey
-                  responses—not only averages, but rankings and response distributions.
-                </p>
-                <ul>
-                  <li>Identical questions and answer options</li>
-                  <li>Demographic audience cells</li>
-                  <li>Error, distribution and ranking agreement</li>
-                  <li>Calibration subset and independent holdout</li>
-                </ul>
-              </article>
-              <article>
-                <span>Study stream C</span>
-                <h3>Closed-loop uplift</h3>
-                <p>
-                  Diagnose, regenerate and re-test under the same brand constraints
-                  to show whether the measured outcome improves—not merely the aesthetic.
-                </p>
-                <ul>
-                  <li>Original versus regenerated creative</li>
-                  <li>Locked logo, packshot and legal elements</li>
-                  <li>Fresh or balanced participant exposure</li>
-                  <li>Attention, clarity, compliance, time and cost</li>
-                </ul>
-              </article>
-            </div>
-
-            <div className="sv-method-strip">
-              <span><b>Ground truth</b> Human gaze + human surveys</span>
-              <span><b>Benchmark</b> Locked before scoring</span>
-              <span><b>Uncertainty</b> 95% confidence intervals</span>
-              <span><b>Ceiling</b> Human-to-human consistency</span>
-              <span><b>Readout</b> Late August 2026</span>
-            </div>
-          </div>
-        </section>
-
-        <section className="sv-position">
-          <div className="container sv-position-grid">
-            <div><p className="kicker">Our scientific position</p><h2>A fast layer before expensive research—not a replacement for every human study.</h2></div>
-            <div>
-              <p>
-                NeuroVision is built for rapid screening, comparison and creative
-                improvement. It predicts population-level patterns; it does not
-                guarantee how one person will look, feel or buy.
-              </p>
-              <p>
-                Public claims will be tied to the specific benchmark, metric and
-                confidence interval used. That is why we say “fixation-density
-                overlap on a locked dataset,” not “93% the same as real people.”
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section className="section sv-references" id="references">
-          <div className="container">
-            <div className="sv-references-head">
-              <div><p className="kicker">Selected references</p><h2>The research behind the page.</h2></div>
-              <p>
-                A focused reading list from the broader NeuroVision literature review.
-                DOI links open the original publication or record.
-              </p>
-            </div>
-            <ol className="sv-reference-list">
-              {references.map((reference, index) => (
-                <li id={reference.id} key={reference.id}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <div><strong>{reference.lead}</strong><p>{reference.text}</p><a href={reference.href} target="_blank" rel="noreferrer">Open source ↗</a></div>
-                </li>
-              ))}
-            </ol>
-            <div className="sv-reference-cta">
-              <p>Want to see the science applied to your own creative?</p>
-              <Link className="btn primary" href="/how-it-works">Explore the workflow →</Link>
-            </div>
-          </div>
-        </section>
-      </main>
-      <Footer />
-    </>
-  );
+    <section className="section science-references" id="references"><div className="reading-width"><div className="section-head"><p className="kicker">References</p><h2>Follow the research.</h2><p>Every source cited on this page. Links open the original publication or its record.</p></div><ol className="reference-list">{references.map((reference,index)=><li id={reference.id} key={reference.id}><span>{String(index+1).padStart(2,"0")}</span><div><strong>{reference.lead}</strong><p>{reference.text}</p><a href={reference.href} target="_blank" rel="noreferrer">Read the source ↗</a></div></li>)}</ol><Link className="text-link" href="/how-it-works">See the science in the workflow →</Link></div></section>
+  </main><Footer /></>;
 }
