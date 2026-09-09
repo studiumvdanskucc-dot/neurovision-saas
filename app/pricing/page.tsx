@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Footer, Header } from "../site-shell";
-import { REGISTER_URL } from "../site-links";
-
-export const metadata: Metadata = { title: "Pricing", description: "Compare NeuroVision software plans, understand credits and explore expert-led creative services." };
+export const metadata: Metadata = { title: "Pricing", description: "NeuroVision software plans, credit costs and expert creative services." };
 
 const plans = [
   {
@@ -11,7 +8,7 @@ const plans = [
     price: "€0",
     credits: "40 credits / month",
     description: "Explore before committing.",
-    features: ["Predictive attention heatmaps", "AI creative critique", "AI surveys · up to 25 simulated responses", "1 seat"],
+    features: ["Predictive attention heatmaps", "AI creative critique", "Surveys up to 25 responses", "1 seat"],
     cta: "Start free",
   },
   {
@@ -19,7 +16,7 @@ const plans = [
     price: "€25",
     credits: "200 credits / month",
     description: "For freelancers and solo marketers.",
-    features: ["Everything in Free", "AI surveys · up to 50 simulated responses", "1 seat"],
+    features: ["Everything in Free", "Surveys up to 50 responses", "1 seat"],
     cta: "Get started",
   },
   {
@@ -27,7 +24,7 @@ const plans = [
     price: "€79",
     credits: "800 credits / month",
     description: "For small teams.",
-    features: ["Everything in Standard", "AI surveys · 100+ simulated responses", "PDF report download", "2 seats"],
+    features: ["Everything in Standard", "Surveys with 100+ responses", "PDF report download", "2 seats"],
     cta: "Get started",
     featured: true,
   },
@@ -99,11 +96,62 @@ const agencyPackages = [
 ];
 
 export default function Pricing() {
-  return <><Header /><main id="main-content">
-    <section className="page-hero"><div className="container"><p className="kicker">Pricing</p><h1>Start free.<br />Grow from there.</h1><p className="lead">Use the platform for everyday creative decisions, or bring us a project for hands-on analysis and design support.</p><nav className="page-jump-links" aria-label="Pricing sections"><a href="#pricing">Software plans</a><a href="#credits">How credits work</a><a href="#agency">Expert services</a></nav></div></section>
-    <section className="software-section" id="pricing"><div className="container"><h2 className="small-section-title">Software plans</h2><div className="plan-grid">{plans.map(plan=><article key={plan.name} className={plan.featured?"featured-plan":""}><h3>{plan.name.charAt(0)+plan.name.slice(1).toLowerCase()}</h3><p className="plan-description">{plan.description}</p><p className="plan-price"><strong>{plan.price}</strong><span>/ month</span></p><p className="plan-allowance">{plan.credits}</p><a className={`btn ${plan.featured?"primary":"secondary"}`} href={REGISTER_URL}>{plan.cta} ↗</a><p className="plan-analysis">Up to {parseInt(plan.credits.replaceAll(",", ""))/5} image analyses if all credits go to analysis.</p><details className="reading-details plan-features"><summary>What’s included<span aria-hidden="true">+</span></summary><div><ul>{plan.features.map(feature=><li key={feature}>{feature}</li>)}</ul></div></details></article>)}</div></div></section>
-    <section className="section soft-section" id="credits"><div className="reading-width"><p className="kicker">How credits work</p><h2>One allowance.<br />Use it your way.</h2><p className="large-copy">A single-image analysis uses 5 credits. Use your 40 Free credits for up to 8 analyses, or mix analysis with audience simulations.</p><table className="credit-table"><caption>Credits per action</caption><thead><tr><th scope="col">Action</th><th scope="col">Credits</th></tr></thead><tbody><tr><th scope="row">1 image analysis<small>Attention heatmap + AI creative critique</small></th><td>5</td></tr><tr><th scope="row">AI survey · 25 simulated responses</th><td>20</td></tr><tr><th scope="row">AI survey · 50 simulated responses</th><td>35</td></tr><tr><th scope="row">AI survey · 100 simulated responses</th><td>60</td></tr></tbody></table><details className="reading-details"><summary>Larger surveys and simulated responses<span aria-hidden="true">+</span></summary><div><p>Surveys over 100 simulated responses start at 60 credits, plus 45 credits for each additional 100. These are AI simulations. Increasing the response count does not establish validity as human research.</p></div></details></div></section>
-    <section className="section services-section" id="agency"><div className="container"><div className="section-head"><p className="kicker">Expert services</p><h2>Prefer a partner<br />on the project?</h2><p>We run the analysis, develop the creative and help your team use the findings. Choose a focused review or a complete creative sprint.</p></div><div className="service-list">{agencyPackages.map(pkg=><article key={pkg.name}><div className="service-top"><div><p className="kicker">{pkg.label}</p><h3>{pkg.name}</h3><p>{pkg.description}</p></div><div className="service-price"><strong>{pkg.price}</strong><span>per campaign · excl. VAT</span><a className="text-link" href={`mailto:info@neurovision-ai.com?subject=NeuroVision%20${encodeURIComponent(pkg.name)}`}>Discuss this package →</a></div></div><details className="reading-details service-details"><summary>See everything included<span aria-hidden="true">+</span></summary><div><ul>{pkg.features.map(feature=><li key={feature}>{feature}</li>)}</ul></div></details></article>)}</div></div></section>
-    <section className="closing-cta"><div className="container"><h2>Find your starting point.</h2><p>Tell us what you want to test. We can help you choose the right plan or scope.</p><div className="actions center"><a className="btn primary" href="mailto:info@neurovision-ai.com?subject=NeuroVision%20pricing%20question">Ask about pricing →</a><Link className="text-link" href="/case-studies">Explore an example</Link></div></div></section>
-  </main><Footer /></>;
+  return <><Header /><main id="main-content"><section className="page-hero"><div className="container page-hero-grid"><div><p className="kicker">Pricing &amp; services</p><h1>Use the platform.<br />Or let us do the work.</h1></div><p className="lead">Choose a monthly plan for your team, or a one-off project with our specialists.</p></div></section>
+        <section className="section pricing" id="pricing">
+          <div className="container">
+            <div className="pricing-head"><p className="kicker">Pricing</p><h2>Start free. Upgrade as your team grows.</h2><p>Use one credit balance for attention analysis, AI audience surveys and creative improvement.</p></div>
+            <div className="plan-grid">
+              {plans.map(plan => (
+                <article className={plan.featured ? "featured" : ""} key={plan.name}>
+                  {plan.featured && <em>Most popular</em>}
+                  <h3>{plan.name}</h3><p className="desc">{plan.description}</p>
+                  <p className="price"><b>{plan.price}</b><span>/ month</span></p>
+                  <p className="credits"><span>Monthly allowance</span><b>{plan.credits}</b></p>
+                  <ul>{plan.features.map(f => <li key={f}><span>✓</span>{f}</li>)}</ul>
+                  <a className={`btn ${plan.featured ? "primary" : "secondary"}`} href="https://app.neurovision-ai.com/register">{plan.cta} ↗</a>
+                </article>
+              ))}
+            </div>
+            <div className="credit-explainer">
+              <div className="credit-explainer-head">
+                <div><p className="kicker">How credits are used</p><h3>One credit wallet. Different actions.</h3></div>
+                <p>Each action uses credits from your monthly balance. The same costs apply to every plan.</p>
+              </div>
+              <div className="credit-guide">
+                <div><b>5</b><span><strong>Creative Analysis</strong><small>1 design or image · Attention heatmap + AI critique</small></span></div>
+                <div><b>20</b><span><strong>Survey · 25 responses</strong><small>Small audience simulation · Fast early feedback</small></span></div>
+                <div><b>35</b><span><strong>Survey · 50 responses</strong><small>Standard audience simulation · Compare audience responses</small></span></div>
+                <div><b>60</b><span><strong>Survey · 100 responses</strong><small>Large audience simulation · Explore more simulated responses</small></span></div>
+              </div>
+              <p className="pricing-note">Surveys over 100 responses start at 60 credits + 45 credits for each additional 100 responses.</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="section agency-pricing" id="agency">
+          <div className="container">
+            <div className="agency-head">
+              <p className="kicker">Done-for-you agency services</p>
+              <h2>Don&apos;t want to get your hands dirty? No problem.</h2>
+              <p>NeuroVision can also work as your agency partner. We run the analysis, improve the creative and ship the final results—ready for your team to use.</p>
+            </div>
+            <div className="agency-grid">
+              {agencyPackages.map(pkg => (
+                <article className={pkg.featured ? "agency-card featured" : "agency-card"} key={pkg.name}>
+                  <div className="agency-labels">
+                    <span>{pkg.label}</span>
+                    {pkg.featured && <em>Most popular</em>}
+                  </div>
+                  <h3>{pkg.name}</h3>
+                  <p className="agency-description">{pkg.description}</p>
+                  <p className="agency-price"><b>{pkg.price}</b><span>per campaign<small>excl. VAT</small></span></p>
+                  <a className={`btn ${pkg.featured ? "primary" : "white"}`} href={`mailto:info@neurovision-ai.com?subject=NeuroVision%20${encodeURIComponent(pkg.name)}`}>Choose {pkg.name} ↗</a>
+                  <ul>{pkg.features.map(feature => <li key={feature}><span>✓</span>{feature}</li>)}</ul>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+</main><Footer /></>;
 }
