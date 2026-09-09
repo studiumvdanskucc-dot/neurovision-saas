@@ -7,9 +7,9 @@ import { sitePath } from "./site-path";
 import { LOGIN_URL, REGISTER_URL } from "./site-links";
 
 const navigation = [
+  ["/", "Home"],
   ["/how-it-works", "How it works"],
-  ["/use-cases", "Use cases"],
-  ["/case-studies", "Examples"],
+  ["/use-cases", "What it does"],
   ["/science", "Science"],
   ["/pricing", "Pricing"],
   ["/about", "About"],
@@ -36,7 +36,7 @@ export function Header() {
     };
   }, []);
   const links = navigation.map(([href, label]) => (
-    <Link href={href} key={href} aria-current={pathname?.replace(/\/$/, "").endsWith(href) ? "page" : undefined}>{label}</Link>
+    <Link href={href} key={href} aria-current={(href === "/" ? pathname === "/" || pathname === sitePath("/") : pathname?.replace(/\/$/, "").endsWith(href)) ? "page" : undefined}>{label}</Link>
   ));
   return (
     <header className="header">
@@ -47,7 +47,7 @@ export function Header() {
         </Link>
         <nav className="nav-links" aria-label="Primary navigation">{links}</nav>
         <div className="nav-actions">
-          <a className="sign-in" href={LOGIN_URL}>Sign in</a>
+          <a className="btn secondary compact sign-in" href={LOGIN_URL}>Sign in</a>
           <a className="btn primary compact" href={REGISTER_URL}>Start free <span aria-hidden="true">↗</span></a>
         </div>
         <details className="mobile-nav" ref={menu}>
@@ -55,7 +55,7 @@ export function Header() {
           <nav aria-label="Mobile navigation" onClick={(event) => {
             if ((event.target as HTMLElement).closest("a") && menu.current) menu.current.open = false;
           }}>
-            <Link href="/">Home</Link>{links}
+            {links}
             <a className="btn secondary" href={LOGIN_URL}>Sign in</a>
             <a className="btn primary" href={REGISTER_URL}>Start free</a>
           </nav>
