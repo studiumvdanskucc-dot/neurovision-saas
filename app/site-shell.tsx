@@ -7,9 +7,9 @@ import { sitePath } from "./site-path";
 import { LOGIN_URL, REGISTER_URL } from "./site-links";
 
 const navigation = [
-  ["/", "Home"],
   ["/how-it-works", "How it works"],
-  ["/use-cases", "What it does"],
+  ["/use-cases", "Use cases"],
+  ["/case-studies", "Examples"],
   ["/science", "Science"],
   ["/pricing", "Pricing"],
   ["/about", "About"],
@@ -43,7 +43,7 @@ export function Header() {
       <div className="container nav">
         <Link className="brand" href="/" aria-label="NeuroVision home">
           <img src={sitePath("/logo.webp")} alt="" width="38" height="38" />
-          <span><strong>NeuroVision</strong><small>Creative testing, before launch</small></span>
+          <span><strong>NeuroVision</strong></span>
         </Link>
         <nav className="nav-links" aria-label="Primary navigation">{links}</nav>
         <div className="nav-actions">
@@ -70,21 +70,21 @@ export function Footer() {
     <footer className="footer">
       <div className="container">
         <Link className="footer-difference" href="/about#why-neurovision-is-different">
-          <span><small>Why NeuroVision is different</small><strong>Our model. Research-grade data. Your choice of providers.</strong></span>
-          <b>Explore our advantage <i aria-hidden="true">↗</i></b>
+          <strong>Why NeuroVision is different</strong>
+          <i aria-hidden="true">↗</i>
         </Link>
       </div>
       <div className="container footer-grid">
         <div className="footer-main">
-          <Link className="brand" href="/"><img src={sitePath("/logo.webp")} alt="" width="38" height="38" /><span><strong>NeuroVision</strong><small>Creative testing, before launch</small></span></Link>
-          <p>Test what gets noticed. Explore what gets understood. Improve the next version.</p>
+          <Link className="brand" href="/" aria-label="NeuroVision home"><img src={sitePath("/logo.webp")} alt="" width="38" height="38" /><span><strong>NeuroVision</strong></span></Link>
+          <p>Attention science and AI tools for testing creative before launch.</p>
           <a href="mailto:info@neurovision-ai.com">info@neurovision-ai.com</a>
         </div>
         <div><strong>Explore</strong><Link href="/how-it-works">How it works</Link><Link href="/use-cases">Use cases</Link><Link href="/case-studies">Creative examples</Link><Link href="/science">Science &amp; validation</Link></div>
         <div><strong>Work with us</strong><Link href="/pricing">Software pricing</Link><Link href="/pricing#agency">Expert services</Link><Link href="/about">About NeuroVision</Link><a href="mailto:info@neurovision-ai.com?subject=NeuroVision%20demo">Request a demo</a></div>
         <div><strong>Legal</strong><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link></div>
       </div>
-      <div className="container footer-bottom"><span>© {new Date().getFullYear()} NeuroVision Technologies</span><span>Built on science. Designed for creative teams.</span></div>
+      <div className="container footer-bottom"><span>© {new Date().getFullYear()} NeuroVision Technologies</span></div>
     </footer>
   );
 }
