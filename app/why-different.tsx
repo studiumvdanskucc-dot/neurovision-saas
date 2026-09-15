@@ -8,22 +8,16 @@ export function WhyDifferent({ id }: WhyDifferentProps) {
       <div className="container">
         <div className="sv-control-head">
           <div>
-            <p className="kicker light">Why NeuroVision is different</p>
-            <h2>Our model. Our research. Your data control.</h2>
+            <h2>Why NeuroVision is different.</h2>
           </div>
-          <p>
-            Our own attention model, research-grade data and the option to connect
-            your own API keys give you a clearer view of how your creative is tested.
-          </p>
         </div>
         <div className="sv-control-grid">
           <article>
             <span>EU</span>
-            <div><small>01 · Infrastructure</small><h3>Our own model, deployed in Europe.</h3></div>
+            <div><h3>Our model, hosted in Europe.</h3></div>
             <p>
-              NeuroVision’s proprietary attention model runs on European
-              infrastructure—giving us tighter control over performance,
-              deployment and the scientific roadmap.
+              We develop our own attention model and run it on European servers.
+              That gives us direct control over its performance and development.
             </p>
           </article>
           <article>
@@ -31,20 +25,18 @@ export function WhyDifferent({ id }: WhyDifferentProps) {
               <em /><em /><em /><em />
               <i /><i /><i /><i /><i />
             </span>
-            <div><small>02 · Research signal</small><h3>Millions of research-grade data points.</h3></div>
+            <div><h3>Millions of research data points.</h3></div>
             <p>
-              The model is informed by millions of gaze and fixation signals
-              captured with research-grade devices, including EyeLink 1000, and
-              strengthened by data collected at Aarhus University.
+              Our model draws on gaze and fixation data collected with devices
+              including EyeLink 1000, and on research data collected at Aarhus University.
             </p>
           </article>
           <article>
             <span>API</span>
-            <div><small>03 · Data control</small><h3>Bring your keys. Keep control in-house.</h3></div>
+            <div><h3>Connect your own API keys.</h3></div>
             <p>
-              Connect supported providers with your own API keys so usage runs
-              under your contracts, policies and billing—keeping the data path
-              aligned with your organisation’s governance.
+              Use supported providers under your own contracts and billing.
+              Choose the setup that fits your organisation’s data policies.
             </p>
           </article>
         </div>

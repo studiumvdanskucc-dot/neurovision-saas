@@ -29,7 +29,7 @@ export function CreativeCompare({ initial = "adidas", gallery = false, compact =
       </div>
       {!compact && <div className="example-controls"><button className="heatmap-toggle" type="button" aria-pressed={heatmap} onClick={() => setHeatmap(value => !value)}><span className="toggle-track" aria-hidden="true"><i /></span>Illustrative heatmaps</button><p className="fine-print">{heatmap ? "Placeholder overlays — not NeuroVision predictions or measured results." : "Explore the supplied designs, or preview a placeholder heatmap overlay."}</p></div>}
       <p className="example-summary" aria-live="polite">{item.summary}</p>
-      {!compact && <details className="reading-details" key={active}><summary>What changed, and what should be tested?<span aria-hidden="true">+</span></summary><div><p>{item.changes}</p><p><strong>The next question.</strong> {item.question}</p></div></details>}
+      {!compact && <details className="reading-details" key={active}><summary>What changed, and what should be tested?<span aria-hidden="true">+</span></summary><div><p>{item.changes}</p><p>{item.question}</p></div></details>}
     </div>
     <p className="example-disclosure">Independent creative examples. No brand affiliation or measured improvement is implied.</p>
   </div>;
