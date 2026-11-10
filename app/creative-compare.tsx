@@ -23,7 +23,7 @@ export function CreativeCompare({ initial = "adidas", gallery = false, compact =
     <div id={gallery ? "creative-panel" : undefined} role={gallery ? "tabpanel" : undefined} aria-labelledby={gallery ? `creative-tab-${active}` : undefined} tabIndex={gallery ? 0 : undefined}>
       <div className="creative-pair">
         {([ ["Original", item.original], ["Recreated", item.recreated] ] as const).map(([label, asset]) => <figure key={`${active}-${label}`}>
-          <figcaption><span>{label}</span><a href={sitePath(asset.src)} target="_blank" rel="noreferrer" aria-label={`View full-size ${label.toLowerCase()} ${item.name} creative`}>View full size <span aria-hidden="true">↗</span></a></figcaption>
+          <figcaption><span>{label}</span><a href={sitePath(asset.src)} target="_blank" rel="noreferrer" aria-label={`View full-size ${label.toLowerCase()} ${item.name} creative`}>View full size <span aria-hidden="true">→</span></a></figcaption>
           <CreativeVisual asset={asset} heatmap={heatmap} priority={compact} />
         </figure>)}
       </div>

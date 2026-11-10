@@ -70,8 +70,6 @@ const references = [
 export default function Science() {
   return <><Header /><main id="main-content">
         <section className="sv-hero">
-          <div className="sv-orb sv-orb-a" />
-          <div className="sv-orb sv-orb-b" />
           <div className="container sv-hero-grid">
             <div className="sv-hero-copy">
               <p className="kicker">Science &amp; validation</p>
@@ -135,6 +133,6 @@ export default function Science() {
 
     <WhyDifferent />
 
-    <section className="section science-references" id="references"><div className="reading-width"><div className="section-head"><div><h2>References</h2></div><p>Every source cited on this page. Links open the original publication or its record.</p></div><ol className="reference-list">{references.map((reference,index)=><li id={reference.id} key={reference.id}><span>{String(index+1).padStart(2,"0")}</span><div><strong>{reference.lead}</strong><p>{reference.text}</p><a href={reference.href} target="_blank" rel="noreferrer">Read the source ↗</a></div></li>)}</ol><Link className="text-link" href="/how-it-works">See the science in the workflow →</Link></div></section>
+    <section className="section science-references" id="references"><div className="reading-width"><div className="section-head"><div><h2>References</h2></div><p>Every source cited on this page. Links open the original publication or its record.</p></div><ol className="reference-list">{references.map((reference,index)=><li id={reference.id} key={reference.id}><span>{String(index+1).padStart(2,"0")}</span><div><strong>{reference.lead}</strong><p>{reference.text}</p><a href={reference.href} target="_blank" rel="noreferrer">Read the source →</a></div></li>)}</ol><Link className="text-link" href="/how-it-works">See the science in the workflow →</Link></div></section>
   </main><Footer /></>;
 }

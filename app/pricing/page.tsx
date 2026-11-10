@@ -17,7 +17,7 @@ export default function Pricing() {
                   <p className="price"><b>{plan.price}</b><span>/ month</span></p>
                   <p className="credits"><b>{plan.credits}</b></p>
                   <ul>{plan.features.map(f => <li key={f}><span>✓</span>{f}</li>)}</ul>
-                  <a className={`btn ${plan.featured ? "primary" : "secondary"}`} href="https://app.neurovision-ai.com/register">{plan.cta} ↗</a>
+                  <a className={`btn ${plan.featured ? "primary" : "secondary"}`} href="https://app.neurovision-ai.com/register">{plan.cta} →</a>
                 </article>
               ))}
             </div>
@@ -52,7 +52,7 @@ export default function Pricing() {
                   <h3>{pkg.name}</h3>
                   <p className="agency-description">{pkg.description}</p>
                   <p className="agency-price"><b>{pkg.price}</b><span>per campaign<small>excl. VAT</small></span></p>
-                  <a className={`btn ${pkg.featured ? "primary" : "white"}`} href={`mailto:info@neurovision-ai.com?subject=NeuroVision%20${encodeURIComponent(pkg.name)}`}>Choose {pkg.name} ↗</a>
+                  <a className={`btn ${pkg.featured ? "primary" : "white"}`} href={`mailto:info@neurovision-ai.com?subject=NeuroVision%20${encodeURIComponent(pkg.name)}`}>Choose {pkg.name} →</a>
                   <details className="package-details"><summary>What’s included<span aria-hidden="true">+</span></summary><ul>{pkg.features.map(feature => <li key={feature}><span>✓</span>{feature}</li>)}</ul></details>
                 </article>
               ))}

@@ -48,7 +48,7 @@ export function Header() {
         <nav className="nav-links" aria-label="Primary navigation">{links}</nav>
         <div className="nav-actions">
           <a className="btn secondary compact sign-in" href={LOGIN_URL}>Sign in</a>
-          <a className="btn primary compact" href={REGISTER_URL}>Start free <span aria-hidden="true">↗</span></a>
+          <a className="btn primary compact" href={REGISTER_URL}>Start free <span aria-hidden="true">→</span></a>
         </div>
         <details className="mobile-nav" ref={menu}>
           <summary>Menu</summary>
@@ -71,7 +71,7 @@ export function Footer() {
       <div className="container">
         <Link className="footer-difference" href="/about#why-neurovision-is-different">
           <strong>Why NeuroVision is different</strong>
-          <i aria-hidden="true">↗</i>
+          <i aria-hidden="true">→</i>
         </Link>
       </div>
       <div className="container footer-grid">

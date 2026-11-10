@@ -22,8 +22,7 @@ export function WhyDifferent({ id }: WhyDifferentProps) {
           </article>
           <article>
             <span className="sv-network-icon" aria-hidden="true">
-              <em /><em /><em /><em />
-              <i /><i /><i /><i /><i />
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 12 24 24 36 12M24 24 36 36M24 24 12 36"/><circle cx="12" cy="12" r="4" fill="var(--paper)"/><circle cx="36" cy="12" r="4" fill="var(--paper)"/><circle cx="24" cy="24" r="5" fill="var(--paper)"/><circle cx="12" cy="36" r="4" fill="var(--paper)"/><circle cx="36" cy="36" r="4" fill="var(--paper)"/></svg>
             </span>
             <div><h3>Millions of research data points.</h3></div>
             <p>

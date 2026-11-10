@@ -29,7 +29,7 @@ export default function UseCases() {
     <><Header /><main id="main-content">
       <section className="page-hero use-cases-hero"><div className="container page-hero-grid"><div><p className="kicker">Use cases</p><h1>Test the designs your audience will see.</h1></div><p className="lead">Use NeuroVision to check ads, websites, product listings and packaging before they reach your audience.</p></div></section>
       <section className="use-case-list"><div className="container">{useCases.map((item,index)=><article className={`use-case-row ${index%2?"reverse":""}`} key={item.id}><UseCaseArt type={item.art}/><div className="use-case-copy"><h2>{item.label}</h2><p>{item.copy}</p><ul className="use-case-tasks">{item.tasks.map(task=><li key={task}>{task}</li>)}</ul></div></article>)}</div></section>
-      <section className="final-cta"><div className="container"><h2>Try it with your own design.</h2><p>Start with an image, a page screenshot or a packaging concept.</p><div className="actions center"><a className="btn white" href="https://app.neurovision-ai.com/register">Try NeuroVision free ↗</a><a className="btn ghost" href="mailto:info@neurovision-ai.com?subject=NeuroVision%20use%20case">Discuss your use case</a></div></div></section>
+      <section className="final-cta"><div className="container"><h2>Try it with your own design.</h2><p>Start with an image, a page screenshot or a packaging concept.</p><div className="actions center"><a className="btn white" href="https://app.neurovision-ai.com/register">Try NeuroVision free →</a><a className="btn ghost" href="mailto:info@neurovision-ai.com?subject=NeuroVision%20use%20case">Discuss your use case</a></div></div></section>
     </main><Footer /></>
   );
 }
