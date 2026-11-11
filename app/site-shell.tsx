@@ -77,11 +77,11 @@ export function Footer() {
       <div className="container footer-grid">
         <div className="footer-main">
           <Link className="brand" href="/" aria-label="NeuroVision home"><img src={sitePath("/logo.webp")} alt="" width="38" height="38" /><span><strong>NeuroVision</strong></span></Link>
-          <p>Attention science and AI tools for testing creative before launch.</p>
+          <p>Test ads, website screenshots and packaging. Predict attention, explore AI feedback and improve the design.</p>
           <a href="mailto:info@neurovision-ai.com">info@neurovision-ai.com</a>
         </div>
         <div><strong>Explore</strong><Link href="/how-it-works">How it works</Link><Link href="/use-cases">Use cases</Link><Link href="/case-studies">Creative examples</Link><Link href="/science">Science &amp; validation</Link></div>
-        <div><strong>Work with us</strong><Link href="/pricing">Software pricing</Link><Link href="/pricing#agency">Expert services</Link><Link href="/about">About NeuroVision</Link><a href="mailto:info@neurovision-ai.com?subject=NeuroVision%20demo">Request a demo</a></div>
+        <div><strong>Work with us</strong><Link href="/pricing">Token pricing</Link><Link href="/pricing#agency">Expert services</Link><Link href="/about">About NeuroVision</Link><a href="mailto:info@neurovision-ai.com?subject=NeuroVision%20demo">Request a demo</a></div>
         <div><strong>Legal</strong><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link></div>
       </div>
       <div className="container footer-bottom"><span>© {new Date().getFullYear()} NeuroVision Technologies</span></div>

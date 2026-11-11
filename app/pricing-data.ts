@@ -1,39 +1,3 @@
-export const plans = [
-  {
-    name: "FREE",
-    price: "€0",
-    credits: "40 credits / month",
-    description: "Explore before committing.",
-    features: ["Predictive attention heatmaps", "AI creative critique", "Surveys up to 25 responses", "1 seat"],
-    cta: "Start free",
-  },
-  {
-    name: "STANDARD",
-    price: "€25",
-    credits: "200 credits / month",
-    description: "For freelancers and solo marketers.",
-    features: ["Everything in Free", "Surveys up to 50 responses", "1 seat"],
-    cta: "Get started",
-  },
-  {
-    name: "PRO",
-    price: "€79",
-    credits: "800 credits / month",
-    description: "For small teams.",
-    features: ["Everything in Standard", "Surveys with 100+ responses", "PDF report download", "2 seats"],
-    cta: "Get started",
-    featured: true,
-  },
-  {
-    name: "PREMIUM",
-    price: "€249",
-    credits: "2,500 credits / month",
-    description: "For agencies, e-commerce brands, and high-volume creative teams.",
-    features: ["Everything in Pro", "Priority support", "5 seats"],
-    cta: "Get started",
-  },
-];
-
 export const agencyPackages = [
   {
     label: "Diagnose and improve",
