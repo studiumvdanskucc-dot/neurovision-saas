@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Fraunces, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "./ux.css";
-import "./product.css";
+import "./tokens.css";
 import { sitePath } from "./site-path";
 
 const editorial = Fraunces({ variable: "--font-editorial", subsets: ["latin"], display: "swap" });
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     template: "%s — NeuroVision",
   },
   description:
-    "Upload an ad, website screenshot or packaging design. Predict attention, explore AI audience feedback and improve your creative before launch.",
+    "Test ads, websites and packaging before launch with attention prediction, AI audience simulations and creative improvement.",
   icons: { icon: sitePath("/logo.webp"), shortcut: sitePath("/logo.webp") },
 };
 

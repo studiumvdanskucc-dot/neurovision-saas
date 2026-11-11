@@ -1,7 +1,6 @@
 // NeuroVision usage units. Keep money in integer cents, rather than floats.
 export const TOKEN_PRICE_CENTS = 10;
 export const ANALYSIS_TOKENS = 5;
-export const TOKEN_TOP_UPS = [100, 250, 500, 1000] as const;
 
 export function surveyTokens(responses: number) {
   if (responses <= 0) return 0;

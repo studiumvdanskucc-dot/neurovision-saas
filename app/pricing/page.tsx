@@ -1,10 +1,41 @@
 import type { Metadata } from "next";
 import { Footer, Header } from "../site-shell";
-import { TokenPricing, ProjectCalculator } from "../token-pricing";
-import { agencyPackages } from "../pricing-data";
+export const metadata: Metadata = { title: "Pricing", description: "Pay-as-you-go NeuroVision tokens, usage costs and one-off expert creative services." };
 
-export const metadata: Metadata = { title: "Pay-as-you-go pricing", description: "NeuroVision costs €0.10 per token. An image analysis costs 5 tokens (€0.50). Top up when needed, with no subscription or monthly renewal." };
+import { agencyPackages } from "../pricing-data";
+import { TokenPricing } from "../token-pricing";
 
 export default function Pricing() {
-  return <><Header /><main id="main-content"><section className="page-hero token-page-hero"><div className="container"><p className="kicker">Pay-as-you-go pricing</p><h1>One balance.<br /><em>No subscription.</em></h1><p className="lead">Every token costs €0.10. Use tokens to analyse images and explore AI audience feedback. Top up when your next project needs it.</p></div></section><section className="section token-section"><div className="container"><TokenPricing /><ProjectCalculator /></div></section><section className="section expert-services" id="agency"><div className="container"><div className="section-head"><h2>Or ask our experts to run the project.</h2><p>These are one-off services, separate from your token balance. Choose the amount of expert support you need.</p></div><div className="expert-service-list">{agencyPackages.map(pkg => <details key={pkg.name}><summary><span><strong>{pkg.name}</strong><small>{pkg.label}</small></span><span>{pkg.price}<small>one-off · excl. VAT</small></span><i aria-hidden="true">+</i></summary><div className="expert-service-detail"><p>{pkg.description}</p><ul>{pkg.features.map(feature => <li key={feature}>{feature}</li>)}</ul><a className="btn secondary" href={`mailto:info@neurovision-ai.com?subject=${encodeURIComponent(`NeuroVision ${pkg.name}`)}`}>Discuss this project <span aria-hidden="true">→</span></a></div></details>)}</div></div></section></main><Footer /></>;
+  return <><Header /><main id="main-content"><section className="page-hero"><div className="container page-hero-grid"><div><p className="kicker">Pricing &amp; services</p><h1>Use the platform.<br />Or let us do the work.</h1></div><p className="lead">Top up your token balance for the platform, or choose a one-off project with our specialists.</p></div></section>
+        <section className="section pricing" id="pricing">
+          <div className="container">
+            <div className="pricing-head"><h2>One balance. Pay as you go.</h2><p>Add the amount you need. Analyses and AI surveys deduct tokens from the same balance as you use them. Every token has the same price.</p></div>
+            <TokenPricing />
+          </div>
+        </section>
+
+        <section className="section agency-pricing" id="agency">
+          <div className="container">
+            <div className="agency-head">
+              <h2>Expert services</h2>
+              <p>Choose a one-off project. Our team runs the analysis and helps you turn the findings into a design you can use.</p>
+            </div>
+            <div className="agency-grid">
+              {agencyPackages.map(pkg => (
+                <article className={pkg.featured ? "agency-card featured" : "agency-card"} key={pkg.name}>
+                  <div className="agency-labels">
+                    {pkg.featured && <em>Most popular</em>}
+                  </div>
+                  <h3>{pkg.name}</h3>
+                  <p className="agency-description">{pkg.description}</p>
+                  <p className="agency-price"><b>{pkg.price}</b><span>per campaign<small>excl. VAT</small></span></p>
+                  <a className={`btn ${pkg.featured ? "primary" : "white"}`} href={`mailto:info@neurovision-ai.com?subject=NeuroVision%20${encodeURIComponent(pkg.name)}`}>Choose {pkg.name} →</a>
+                  <details className="package-details"><summary>What’s included<span aria-hidden="true">+</span></summary><ul>{pkg.features.map(feature => <li key={feature}><span>✓</span>{feature}</li>)}</ul></details>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+</main><Footer /></>;
 }

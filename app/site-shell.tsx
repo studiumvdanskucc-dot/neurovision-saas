@@ -77,7 +77,7 @@ export function Footer() {
       <div className="container footer-grid">
         <div className="footer-main">
           <Link className="brand" href="/" aria-label="NeuroVision home"><img src={sitePath("/logo.webp")} alt="" width="38" height="38" /><span><strong>NeuroVision</strong></span></Link>
-          <p>Test ads, website screenshots and packaging. Predict attention, explore AI feedback and improve the design.</p>
+          <p>Attention science and AI tools for testing creative before launch.</p>
           <a href="mailto:info@neurovision-ai.com">info@neurovision-ai.com</a>
         </div>
         <div><strong>Explore</strong><Link href="/how-it-works">How it works</Link><Link href="/use-cases">Use cases</Link><Link href="/case-studies">Creative examples</Link><Link href="/science">Science &amp; validation</Link></div>
