@@ -8,8 +8,9 @@ creative optimisation.
 
 - SaaS-first product homepage
 - Interactive attention / interpretation / optimisation demo
-- Flexible-credit pricing
-- Product workflow and use cases
+- Pay-as-you-go token pricing with a calculator (tokens and euros)
+- A comparison with other attention-testing platforms, under pricing
+- Product workflow and use cases, including A/B Testing and Digital Shelf
 - About and team page
 - Illustrative case study
 - Privacy Policy and Terms of Use
@@ -54,6 +55,21 @@ Product calls to action point to:
 - `http://app.neurovision-ai.com/login`
 
 Contact links use `info@neurovision-ai.com`.
+
+## Changing prices
+
+Every price on the site comes from `app/token-pricing-data.ts`: the euro price
+of a token, the token cost of each action, and the top-up limits. Change a
+number there and the calculator, the cost list, the home page and the FAQ all
+follow.
+
+To add an action to the calculator (for example A/B Testing or Digital Shelf,
+once their token costs are decided), add its cost to that file, add a field to
+`UsagePlan` and `planTokens`, and add a row in `app/token-pricing.tsx`.
+
+The comparison under pricing is in `app/pricing-comparison.tsx`. It names no
+other company. Its right-hand column summarises three platforms' public
+websites as checked in November 2026, so re-check it from time to time.
 
 ## Main routes
 

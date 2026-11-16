@@ -3,14 +3,16 @@ import { Footer, Header } from "../site-shell";
 export const metadata: Metadata = { title: "Pricing", description: "Pay-as-you-go NeuroVision tokens, usage costs and one-off expert creative services." };
 
 import { agencyPackages } from "../pricing-data";
+import { PricingComparison } from "../pricing-comparison";
 import { TokenPricing } from "../token-pricing";
 
 export default function Pricing() {
   return <><Header /><main id="main-content"><section className="page-hero"><div className="container page-hero-grid"><div><p className="kicker">Pricing &amp; services</p><h1>Use the platform.<br />Or let us do the work.</h1></div><p className="lead">Top up your token balance for the platform, or choose a one-off project with our specialists.</p></div></section>
         <section className="section pricing" id="pricing">
           <div className="container">
-            <div className="pricing-head"><h2>One balance. Pay as you go.</h2><p>Add the amount you need. Analyses and AI surveys deduct tokens from the same balance as you use them. Every token has the same price.</p></div>
+            <div className="pricing-head"><h2>One balance. Pay as you go.</h2><p>Add the amount you need. Analyses, AI surveys and Generative Studio runs deduct tokens from the same balance as you use them. Every token has the same price.</p></div>
             <TokenPricing />
+            <PricingComparison />
           </div>
         </section>
 
