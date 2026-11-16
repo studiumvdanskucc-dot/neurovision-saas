@@ -8,7 +8,7 @@ const rows = [
   {
     topic: "How you pay",
     us: "Pay as you go. Top up one token balance when you choose.",
-    them: "A monthly subscription or an annual licence.",
+    them: "A monthly or yearly subscription, an annual licence or a quoted package.",
   },
   {
     topic: "Published prices",
@@ -18,7 +18,7 @@ const rows = [
   {
     topic: "Where it starts",
     us: `A ${euros(MIN_TOPUP_TOKENS * TOKEN_PRICE_CENTS)} top-up (${MIN_TOPUP_TOKENS} tokens).`,
-    them: "From €29 a month where a price is published.",
+    them: "From €29 a month, or €23 a month billed yearly, where a price is published.",
   },
   {
     topic: "A month without testing",
@@ -28,7 +28,7 @@ const rows = [
   {
     topic: "Getting started",
     us: "Create an account and upload a design.",
-    them: "A demo call for two of the three, a 14-day trial for the other.",
+    them: "A demo or a quote request for two of the three, a 14-day free trial for the other.",
   },
   {
     topic: "What you can run",
