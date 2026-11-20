@@ -78,3 +78,7 @@ websites as checked in November 2026, so re-check it from time to time.
 - `/case-studies`
 - `/privacy`
 - `/terms`
+
+## Visual design
+
+The look follows the November 2026 Figma design. `app/brand.css` is loaded last and holds the colours, type, gradient backgrounds and component styles; delete its import in `app/layout.tsx` to return to the previous look. Each tool has its own colour (`--t-attention`, `--t-audience`, `--t-studio`, `--t-ab`, `--t-shelf`), used by the tool rails (`app/tool-rail.tsx`), the calculator cards and the feature artwork (`app/feature-art.tsx`). Logo, gradient and grain images are in `public/logo.webp` and `public/assets/brand/`.

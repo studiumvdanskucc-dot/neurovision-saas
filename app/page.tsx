@@ -3,10 +3,12 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Footer, Header } from "./site-shell";
-import { sitePath } from "./site-path";
+import { REGISTER_URL } from "./site-links";
 import { creativeExamples } from "./creative-examples";
 import { CreativeVisual } from "./creative-visual";
-import { AbTestArt, ShelfArt } from "./feature-art";
+import { AbTestArt, AttentionArt, ShelfArt, StudioArt, SurveyArt } from "./feature-art";
+import { ChecklistIcon, CoinsIcon, EyesIcon, GlassesIcon, QuestionIcon, TeamIcon } from "./brand-icons";
+import { ToolRail, type ToolKey } from "./tool-rail";
 import { PricingComparison } from "./pricing-comparison";
 import { TokenPricing } from "./token-pricing";
 import { ANALYSIS_TOKENS, MIN_TOPUP_TOKENS, STUDIO_GENERATE_TOKENS, STUDIO_OPTIMISE_TOKENS, TOKEN_PRICE_CENTS, euros, surveyTokens } from "./token-pricing-data";
@@ -22,6 +24,10 @@ const demo = {
 } as const;
 
 type DemoKey = keyof typeof demo;
+
+const toolIds: Record<ToolKey, string> = { attention: "attention", audience: "audience", studio: "studio", ab: "ab-testing", shelf: "shelf" };
+
+const reasonIcons = [CoinsIcon, EyesIcon, ChecklistIcon, GlassesIcon];
 
 const reasons = [
   ["Pay only when you test.", `No plans, no monthly fee and no annual licence. A token costs ${euros(TOKEN_PRICE_CENTS)}, and a month without testing costs nothing.`],
@@ -84,31 +90,36 @@ export default function Home() {
           <div className="container">
             <div className="section-head"><div><h2>One place to check a creative.<br />Paid for only when you use it.</h2></div><p>We built NeuroVision so that any team can test every piece of creative, not only the big launches.</p></div>
             <div className="loop-grid value-grid">
-              {reasons.map(([title, copy]) => <article key={title}><h3>{title}</h3><p>{copy}</p></article>)}
+              {reasons.map(([title, copy], index) => { const Icon = reasonIcons[index]; return <article className={`reason-${index + 1}`} key={title}><Icon size={30} /><h3>{title}</h3><p>{copy}</p></article>; })}
             </div>
           </div>
         </section>
 
         <section className="section platform" id="platform">
           <div className="container feature-list">
-            <article className="feature-row">
-              <div className="feature-copy"><h2>Find what gets noticed.</h2><p>Check whether the product, headline and logo stand out. Our attention model helps you review visual hierarchy without eye-tracking equipment.</p><p className="feature-cost"><b>{ANALYSIS_TOKENS} tokens</b> per image, {price(ANALYSIS_TOKENS)}</p><Link className="text-link" href="/how-it-works#attention">Explore attention prediction <span aria-hidden="true">→</span></Link></div>
-              <figure className="feature-media attention-paper"><CreativeVisual asset={creativeExamples[0].original} heatmap /><figcaption>Illustrative heatmap placeholder</figcaption></figure>
+            <article className="feature-row tool-attention" id={toolIds.attention}>
+              <ToolRail tool="attention" ids={toolIds} />
+              <div className="feature-copy"><h2>Find what gets <em>noticed.</em></h2><p>Check whether the product, headline and logo stand out. Our attention model helps you review visual hierarchy without eye-tracking equipment.</p><p className="feature-cost"><b>{ANALYSIS_TOKENS} tokens</b> per image, {price(ANALYSIS_TOKENS)}</p><div className="feature-actions"><a className="btn primary compact" href={REGISTER_URL}>Start free <span aria-hidden="true">→</span></a><Link className="text-link" href="/how-it-works#attention">Explore attention prediction <span aria-hidden="true">→</span></Link></div></div>
+              <AttentionArt />
             </article>
-            <article className="feature-row reverse">
-              <div className="feature-copy"><h2>Look beyond the first glance.</h2><p>Ask AI-simulated audience profiles about clarity, trust and relevance. Catch what a heatmap cannot show: the wrong language for a market, a joke that misses, a message nobody can repeat. Then decide what to explore with real people.</p><p className="feature-cost"><b>From {surveyTokens(25)} tokens</b> for 25 responses, {price(surveyTokens(25))}</p><Link className="text-link" href="/how-it-works#audience">Explore audience surveys <span aria-hidden="true">→</span></Link></div>
-              <div className="feature-media survey-paper"><div className="question-sheet"><p>Let’s talk about the message.</p><ol><li>What is this ad trying to say?</li><li>Is anything unclear?</li><li>Does it feel relevant to you?</li><li>Do the language and the humour feel right?</li></ol><small>Example questions · AI-simulated feedback</small></div></div>
+            <article className="feature-row tool-audience" id={toolIds.audience}>
+              <ToolRail tool="audience" ids={toolIds} />
+              <div className="feature-copy"><h2>Look beyond the first <em>glance.</em></h2><p>Ask AI-simulated audience profiles about clarity, trust and relevance. Catch what a heatmap cannot show: the wrong language for a market, a joke that misses, a message nobody can repeat. Then decide what to explore with real people.</p><p className="feature-cost"><b>From {surveyTokens(25)} tokens</b> for 25 responses, {price(surveyTokens(25))}</p><div className="feature-actions"><a className="btn primary compact" href={REGISTER_URL}>Start free <span aria-hidden="true">→</span></a><Link className="text-link" href="/how-it-works#audience">Explore audience surveys <span aria-hidden="true">→</span></Link></div></div>
+              <SurveyArt />
             </article>
-            <article className="feature-row">
-              <div className="feature-copy"><h2>Make the next version count.</h2><p>Turn the findings into a new design in Generative Studio. Optimise the creative you have, or generate a new one from a brief. Keep your brand rules, resize for your channels, then compare the result with the original using the same checks.</p><p className="feature-cost"><b>{STUDIO_OPTIMISE_TOKENS} tokens</b> to optimise a design, {price(STUDIO_OPTIMISE_TOKENS)}. <b>{STUDIO_GENERATE_TOKENS} tokens</b> to generate a new one, {price(STUDIO_GENERATE_TOKENS)}</p><Link className="text-link" href="/how-it-works#improve">Explore creative improvement <span aria-hidden="true">→</span></Link></div>
-              <figure className="feature-media revision-paper"><div><span>Original</span><img src={sitePath(creativeExamples[2].original.src)} alt={creativeExamples[2].original.alt} loading="lazy" /></div><b aria-hidden="true">→</b><div><span>Recreated</span><img src={sitePath(creativeExamples[2].recreated.src)} alt={creativeExamples[2].recreated.alt} loading="lazy" /></div><figcaption>Illustrative redesign · re-test before choosing</figcaption></figure>
+            <article className="feature-row tool-studio" id={toolIds.studio}>
+              <ToolRail tool="studio" ids={toolIds} />
+              <div className="feature-copy"><h2>Make the next version <em>count.</em></h2><p>Turn the findings into a new design in Generative Studio. Optimise the creative you have, or generate a new one from a brief. Keep your brand rules, resize for your channels, then compare the result with the original using the same checks.</p><p className="feature-cost"><b>{STUDIO_OPTIMISE_TOKENS} tokens</b> to optimise a design, {price(STUDIO_OPTIMISE_TOKENS)}. <b>{STUDIO_GENERATE_TOKENS} tokens</b> to generate a new one, {price(STUDIO_GENERATE_TOKENS)}</p><div className="feature-actions"><a className="btn primary compact" href={REGISTER_URL}>Start free <span aria-hidden="true">→</span></a><Link className="text-link" href="/how-it-works#improve">Explore creative improvement <span aria-hidden="true">→</span></Link></div></div>
+              <StudioArt />
             </article>
-            <article className="feature-row reverse">
-              <div className="feature-copy"><h2>Pick the stronger version.</h2><p>Put two creatives side by side with the goal you care about. NeuroVision checks both on the same measures and names the stronger one for that goal, so you know which to develop.</p><Link className="text-link" href="/how-it-works#compare">Explore A/B Testing <span aria-hidden="true">→</span></Link></div>
+            <article className="feature-row tool-ab" id={toolIds.ab}>
+              <ToolRail tool="ab" ids={toolIds} />
+              <div className="feature-copy"><h2>Pick the stronger <em>version.</em></h2><p>Put two creatives side by side with the goal you care about. NeuroVision checks both on the same measures and names the stronger one for that goal, so you know which to develop.</p><div className="feature-actions"><a className="btn primary compact" href={REGISTER_URL}>Start free <span aria-hidden="true">→</span></a><Link className="text-link" href="/how-it-works#compare">Explore A/B Testing <span aria-hidden="true">→</span></Link></div></div>
               <AbTestArt />
             </article>
-            <article className="feature-row">
-              <div className="feature-copy"><h2>See it where it competes.</h2><p>Your product never appears alone. Compare it with the listings it has to beat, or place it in a marketplace, store-shelf, out-of-home or mall layout and see what its position changes.</p><Link className="text-link" href="/how-it-works#shelf">Explore Digital Shelf <span aria-hidden="true">→</span></Link></div>
+            <article className="feature-row tool-shelf" id={toolIds.shelf}>
+              <ToolRail tool="shelf" ids={toolIds} />
+              <div className="feature-copy"><h2>See it where it <em>competes.</em></h2><p>Your product never appears alone. Compare it with the listings it has to beat, or place it in a marketplace, store-shelf, out-of-home or mall layout and see what its position changes.</p><div className="feature-actions"><a className="btn primary compact" href={REGISTER_URL}>Start free <span aria-hidden="true">→</span></a><Link className="text-link" href="/how-it-works#shelf">Explore Digital Shelf <span aria-hidden="true">→</span></Link></div></div>
               <ShelfArt />
             </article>
           </div>
@@ -122,13 +133,13 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="section agency-pricing agency-teaser" id="agency">
-          <div className="container"><h2>Prefer us to do the work?</h2><p>Our specialists can analyse your campaign, improve the design and test it again. One-off projects start at €690, excluding VAT.</p><Link className="btn white" href="/pricing#agency">Explore expert services →</Link></div>
+        <section className="section agency-teaser" id="agency">
+          <div className="container agency-banner"><TeamIcon size={44} /><h2>Prefer us to do the work?</h2><p>Our specialists can analyse your campaign, improve the design and test it again. One-off projects start at €690, excluding VAT.</p><Link className="btn primary" href="/pricing#agency">Explore expert services <span aria-hidden="true">→</span></Link></div>
         </section>
 
         <section className="section faq">
           <div className="container faq-grid">
-            <div><h2>Common questions.</h2><p>Still deciding how NeuroVision fits? <a href="mailto:info@neurovision-ai.com">Talk to our team.</a></p></div>
+            <div><QuestionIcon size={44} className="faq-icon" /><h2>Common questions.</h2><p>Still deciding how NeuroVision fits? <a href="mailto:info@neurovision-ai.com">Talk to our team.</a></p></div>
             <div>{faqs.map(([q,a], index) => <details key={q} open={index===0}><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div>
           </div>
         </section>

@@ -17,6 +17,7 @@ import {
   type UsagePlan,
 } from "./token-pricing-data";
 import { REGISTER_URL } from "./site-links";
+import { CoinsIcon, EyeIcon, StudioIcon, SurveyIcon } from "./brand-icons";
 
 // The calculator opens on the same example the page used before:
 // two image analyses and one 25-response survey.
@@ -50,10 +51,10 @@ export function TokenPricing({ compact = false }: { compact?: boolean }) {
   const short = valid ? used - amount : 0;
   const change = (key: keyof UsagePlan) => (value: number) => setPlan(current => ({ ...current, [key]: value }));
   const rows = [
-    { key: "images", label: "Images to analyse", detail: "Predicted attention heatmap + AI critique", unit: ANALYSIS_TOKENS, count: plan.images },
-    { key: "surveys", label: "AI audience surveys", detail: "", unit: surveyUnit, count: plan.surveys },
-    { key: "optimisations", label: "Designs to optimise", detail: "Generative Studio, from a creative you already have", unit: STUDIO_OPTIMISE_TOKENS, count: plan.optimisations },
-    { key: "newDesigns", label: "New designs to generate", detail: "Generative Studio, from a brief", unit: STUDIO_GENERATE_TOKENS, count: plan.newDesigns },
+    { key: "images", tool: "attention", Icon: EyeIcon, label: "Images to analyse", detail: "Attention heatmap + AI critique", unit: ANALYSIS_TOKENS, count: plan.images },
+    { key: "surveys", tool: "audience", Icon: SurveyIcon, label: "AI audience surveys", detail: "", unit: surveyUnit, count: plan.surveys },
+    { key: "optimisations", tool: "studio", Icon: StudioIcon, label: "Designs to optimise", detail: "Generative Studio, from a creative you have", unit: STUDIO_OPTIMISE_TOKENS, count: plan.optimisations },
+    { key: "newDesigns", tool: "studio", Icon: StudioIcon, label: "New designs to generate", detail: "Generative Studio, from a brief", unit: STUDIO_GENERATE_TOKENS, count: plan.newDesigns },
   ] as const;
   const note = used === 0
     ? "Nothing planned yet. A month without tests costs nothing."
@@ -71,13 +72,15 @@ export function TokenPricing({ compact = false }: { compact?: boolean }) {
 
     <div className="token-calc" id={compact ? undefined : "calculator"}>
       <div className="token-calc-head">
-        <h3>Work out what you need.</h3>
-        <p>Set what you plan to run. Each line shows its cost in tokens and in euros.</p>
+        <div><h3>Work out what you need.</h3>
+        <p>Set what you plan to run. Each card shows its cost in tokens and in euros.</p></div>
+        <span className="token-pill" aria-hidden="true"><CoinsIcon size={18} />{whole(used)}</span>
       </div>
-      <div className="token-calc-rows">
+      <div className="token-calc-cards">
         {rows.map(row => {
           const lineTokens = row.count * row.unit;
-          return <div className="token-calc-row" key={row.key}>
+          return <article className={`calc-card tool-${row.tool}`} key={row.key}>
+            <span className="calc-card-icon"><row.Icon size={20} /></span>
             <div className="token-calc-what">
               <label htmlFor={`${id}-${row.key}`}>{row.label}</label>
               {row.key === "surveys"
@@ -87,7 +90,7 @@ export function TokenPricing({ compact = false }: { compact?: boolean }) {
             <span className="token-calc-unit">{whole(row.unit)} tokens · {price(row.unit)} each</span>
             <Stepper id={`${id}-${row.key}`} label={row.label} value={row.count} onChange={change(row.key)} />
             <span className="token-calc-line"><b>{whole(lineTokens)} tokens</b>{price(lineTokens)}</span>
-          </div>;
+          </article>;
         })}
       </div>
       <div className="token-calc-total" aria-live="polite">

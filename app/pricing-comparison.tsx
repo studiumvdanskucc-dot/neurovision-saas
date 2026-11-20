@@ -1,7 +1,9 @@
 import { ANALYSIS_TOKENS, MIN_TOPUP_TOKENS, TOKEN_PRICE_CENTS, euros, planTokens } from "./token-pricing-data";
+import { sitePath } from "./site-path";
+import { CheckIcon, DashIcon } from "./brand-icons";
 
 // How NeuroVision's offer differs from other attention-testing platforms.
-// The right-hand column summarises the public websites of three established
+// The “Other attention-testing platforms” card summarises the public websites of three established
 // platforms, checked in November 2026. No platform is named. Re-check the
 // facts before changing the wording.
 const rows = [
@@ -46,17 +48,20 @@ export function PricingComparison() {
       <h3>Pay for the tests you run, not the months in between.</h3>
       <p>Most attention-testing platforms are sold as a subscription or a licence. Here is how that differs from a token balance.</p>
     </div>
-    <div className="offer-compare-scroll" role="region" aria-label="NeuroVision compared with other attention-testing platforms" tabIndex={0}>
-      <table>
-        <thead>
-          <tr><td /><th scope="col" className="us">NeuroVision</th><th scope="col">Other attention-testing platforms</th></tr>
-        </thead>
-        <tbody>
-          {rows.map(row => <tr key={row.topic}><th scope="row">{row.topic}</th><td className="us" data-label="NeuroVision">{row.us}</td><td data-label="Other platforms">{row.them}</td></tr>)}
-        </tbody>
-      </table>
+    <div className="offer-cards">
+      <section className="offer-card offer-us" aria-labelledby="offer-us-title">
+        <img className="offer-mark" src={sitePath("/assets/brand/mark-white.png")} alt="" width={200} height={196} />
+        <h4 id="offer-us-title"><span>NeuroVision</span>Pay as you go</h4>
+        <p className="offer-rate"><b>{euros(TOKEN_PRICE_CENTS)}</b> per token</p>
+        <dl>{rows.map(row => <div key={row.topic}><dt><CheckIcon size={18} />{row.topic}</dt><dd>{row.us}</dd></div>)}</dl>
+      </section>
+      <section className="offer-card offer-them" aria-labelledby="offer-them-title">
+        <h4 id="offer-them-title"><span>Other attention-testing platforms</span>Pay for access</h4>
+        <p className="offer-rate">Subscription, licence or quote</p>
+        <dl>{rows.map(row => <div key={row.topic}><dt><DashIcon size={18} />{row.topic}</dt><dd>{row.them}</dd></div>)}</dl>
+      </section>
     </div>
     <p className="offer-compare-example"><b>A worked example.</b> Analysing {example.images} images ({example.images} × {ANALYSIS_TOKENS} tokens) and asking {example.responses} AI audience profiles uses {exampleTokens} tokens: {euros(exampleTokens * TOKEN_PRICE_CENTS)} for the month. On a subscription, the same month costs the full monthly fee.</p>
-    <p className="fine-print">The right-hand column summarises the public websites of three established attention-testing platforms, checked in November 2026. Their offers change, so check before you decide.</p>
+    <p className="fine-print">The “Other attention-testing platforms” card summarises the public websites of three established attention-testing platforms, checked in November 2026. Their offers change, so check before you decide.</p>
   </div>;
 }
