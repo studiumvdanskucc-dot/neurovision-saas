@@ -14,7 +14,7 @@ const rows = [
   },
   {
     topic: "Published prices",
-    us: `${euros(TOKEN_PRICE_CENTS)} per token, and every action has a listed cost.`,
+    us: `${euros(TOKEN_PRICE_CENTS)} per token, with a public price list.`,
     them: "Two of the three publish no prices. You ask for a quote.",
   },
   {
@@ -39,7 +39,7 @@ const rows = [
   },
 ] as const;
 
-const example = { images: 10, surveys: 1, responses: 25, optimisations: 0, newDesigns: 0 };
+const example = { images: 10, surveys: 1, responses: 25, optimisations: 0, newDesigns: 0, revisions: 0 };
 
 export function PricingComparison() {
   const exampleTokens = planTokens(example);

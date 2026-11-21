@@ -68,7 +68,6 @@ export function Header() {
 export function Footer() {
   return (
     <footer className="footer">
-      <div className="footer-card">
       <div className="container">
         <Link className="footer-difference" href="/about#why-neurovision-is-different">
           <strong>Why NeuroVision is different</strong>
@@ -86,7 +85,6 @@ export function Footer() {
         <div><strong>Legal</strong><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link></div>
       </div>
       <div className="container footer-bottom"><span>© {new Date().getFullYear()} NeuroVision Technologies</span></div>
-      </div>
     </footer>
   );
 }

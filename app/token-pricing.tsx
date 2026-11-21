@@ -6,6 +6,7 @@ import {
   ANALYSIS_TOKENS,
   MAX_TOPUP_TOKENS,
   MIN_TOPUP_TOKENS,
+  REVISION_TOKENS,
   STUDIO_GENERATE_TOKENS,
   STUDIO_OPTIMISE_TOKENS,
   TOKEN_PRICE_CENTS,
@@ -21,7 +22,7 @@ import { CoinsIcon, EyeIcon, StudioIcon, SurveyIcon } from "./brand-icons";
 
 // The calculator opens on the same example the page used before:
 // two image analyses and one 25-response survey.
-const startingPlan: UsagePlan = { images: 2, surveys: 1, responses: 25, optimisations: 0, newDesigns: 0 };
+const startingPlan: UsagePlan = { images: 2, surveys: 1, responses: 25, optimisations: 0, newDesigns: 0, revisions: 0 };
 const MAX_COUNT = 999;
 const whole = (value: number) => value.toLocaleString("en-GB");
 const price = (tokens: number) => euros(tokens * TOKEN_PRICE_CENTS);
@@ -53,8 +54,9 @@ export function TokenPricing({ compact = false }: { compact?: boolean }) {
   const rows = [
     { key: "images", tool: "attention", Icon: EyeIcon, label: "Images to analyse", detail: "Attention heatmap + AI critique", unit: ANALYSIS_TOKENS, count: plan.images },
     { key: "surveys", tool: "audience", Icon: SurveyIcon, label: "AI audience surveys", detail: "", unit: surveyUnit, count: plan.surveys },
-    { key: "optimisations", tool: "studio", Icon: StudioIcon, label: "Designs to optimise", detail: "Generative Studio, from a creative you have", unit: STUDIO_OPTIMISE_TOKENS, count: plan.optimisations },
-    { key: "newDesigns", tool: "studio", Icon: StudioIcon, label: "New designs to generate", detail: "Generative Studio, from a brief", unit: STUDIO_GENERATE_TOKENS, count: plan.newDesigns },
+    { key: "optimisations", tool: "studio", Icon: StudioIcon, label: "Designs to optimise", detail: "One revised image, re-analysed", unit: STUDIO_OPTIMISE_TOKENS, count: plan.optimisations },
+    { key: "newDesigns", tool: "studio", Icon: StudioIcon, label: "New designs to generate", detail: "One refined version, re-analysed", unit: STUDIO_GENERATE_TOKENS, count: plan.newDesigns },
+    { key: "revisions", tool: "studio", Icon: StudioIcon, label: "Extra design revisions", detail: "One more edited image, re-analysed", unit: REVISION_TOKENS, count: plan.revisions },
   ] as const;
   const note = used === 0
     ? "Nothing planned yet. A month without tests costs nothing."
@@ -67,7 +69,7 @@ export function TokenPricing({ compact = false }: { compact?: boolean }) {
           : `A top-up of ${whole(amount)} tokens covers this work and leaves ${whole(amount - used)} on your balance.`;
 
   return <div className="token-pricing">
-    <div className="token-rate"><div className="token-unit"><strong>{euros(TOKEN_PRICE_CENTS)}</strong><span>per token</span></div><h3>One balance.<br />Use it at your own pace.</h3><p>Top up when you need more. Each analysis, AI survey or Generative Studio run deducts only its token cost.</p><p className="token-analysis-price">An image analysis uses <b>5 tokens · {euros(50)}</b></p><a className="text-link" href={REGISTER_URL}>Try NeuroVision free <span aria-hidden="true">→</span></a><small>Tokens are NeuroVision usage credits, shown as credits in the app. They are not AI model token counts. No monthly subscription.</small></div>
+    <div className="token-rate"><div className="token-unit"><strong>{euros(TOKEN_PRICE_CENTS)}</strong><span>per token</span></div><h3>One balance.<br />Use it at your own pace.</h3><p>Top up when you need more. Each analysis, AI survey or Generative Studio run deducts only its token cost.</p><p className="token-analysis-price">An image analysis uses <b>5 tokens · {euros(50)}</b></p><a className="text-link" href={REGISTER_URL}>Try NeuroVision free <span aria-hidden="true">→</span></a><small>Tokens are NeuroVision customer credits, shown as credits in the app. They are separate from the API tokens billed by model providers. No monthly subscription.</small></div>
     <div className="token-topup"><label className="token-label" htmlFor={`${id}-amount`}>How much would you like to add?</label><div className="token-amount"><input id={`${id}-amount`} type="number" min={MIN_TOPUP_TOKENS} max={MAX_TOPUP_TOKENS} step="1" inputMode="numeric" value={draft} onChange={event => setDraft(event.target.value)} aria-invalid={!valid} aria-describedby={`${id}-help`} /><span>tokens</span></div><input className="token-range" type="range" min={MIN_TOPUP_TOKENS} max={MAX_TOPUP_TOKENS} step="1" value={valid ? amount : MIN_TOPUP_TOKENS} onChange={event => setDraft(event.target.value)} aria-label="Adjust token amount" /><div className="token-range-ends" aria-hidden="true"><span>100 tokens</span><span>10,000 tokens</span></div><p className="token-input-help" id={`${id}-help`}>{valid ? "Choose any whole-token amount. The same €0.10 rate applies throughout." : "Enter a whole number between 100 and 10,000 tokens."}</p><div className="token-total" aria-live="polite"><span>One-off top-up<small>excluding VAT</small></span><strong>{cost}</strong></div><a className="btn primary" href={valid ? email : undefined} aria-disabled={!valid} tabIndex={valid ? 0 : -1}>Top up your balance <span aria-hidden="true">→</span></a><p className="token-purchase-note">Top-ups are arranged by email. No payment is taken on this page.</p></div>
 
     <div className="token-calc" id={compact ? undefined : "calculator"}>
@@ -106,6 +108,6 @@ export function TokenPricing({ compact = false }: { compact?: boolean }) {
       </p>
     </div>
 
-    {compact ? <div className="token-more"><Link className="text-link" href="/pricing#tokens">See all usage costs <span aria-hidden="true">→</span></Link></div> : <div className="token-costs" id="tokens"><span id="credits" /><h2>What uses tokens?</h2><div className="token-action-list">{tokenActions.map(action => <div key={action.name}><span><strong>{action.name}</strong><small>{action.detail}</small></span><b>{action.tokens} tokens</b><span>{price(action.tokens)}</span></div>)}</div><p className="fine-print">Above 100 AI responses: 60 tokens, plus 45 tokens for each additional block of up to 100. A/B Testing and Digital Shelf draw on the same balance. Resizing and expert-led work are quoted separately.</p></div>}
+    {compact ? <div className="token-more"><Link className="text-link" href="/pricing#tokens">See all usage costs <span aria-hidden="true">→</span></Link></div> : <div className="token-costs" id="tokens"><span id="credits" /><h2>What uses tokens?</h2><div className="token-action-list">{tokenActions.map(action => <div key={action.name}><span><strong>{action.name}</strong><small>{action.detail}</small></span><b>{action.tokens} tokens</b><span>{price(action.tokens)}</span></div>)}</div><p className="fine-print">Surveys include up to eight questions per profile. Above 100 profiles: 65 tokens for the first 100, then 60 tokens for each additional block of up to 100. For example, 250 profiles use 185 tokens (€18.50). A/B Testing and Digital Shelf draw on the same balance. Resizing and expert-led work are quoted separately.</p></div>}
   </div>;
 }
