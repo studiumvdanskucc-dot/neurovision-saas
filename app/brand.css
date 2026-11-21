@@ -3,8 +3,10 @@
    ink outlines on the product and pricing boxes, alternating feature rows and
    the dark footer. Taken from the new design: the logo, the blue, one colour
    per tool, the tool rails, the benefit and calculator cards, the new
-   illustrations, and the grain gradient on two surfaces only (the NeuroVision
-   comparison card and the closing call to action). Outlines stay at 1–1.5px. */
+   illustrations, and the grain gradient on three surfaces only: the hero, the
+   NeuroVision comparison card and the closing call to action. As on Stripe's
+   homepage, the gradient sits behind the top of the page and the product box
+   hangs over its lower edge onto the calm page below. Outlines stay at 1–1.5px. */
 
 :root {
   --blue: #1261ff;
@@ -30,14 +32,27 @@
 .header { border-color: #e6eaf3; background: rgba(255, 255, 255, .95); }
 .brand img { border-radius: 0; }
 
-/* ---- Grain gradient: comparison card and closing call to action ---- */
-.offer-us, .final-cta > .container {
+/* ---- Grain gradient: hero, comparison card and closing call to action ---- */
+.hero, .offer-us, .final-cta > .container {
   background-color: #df4f78;
   background-image: var(--grain-noise), var(--grain-scrim), var(--grain-gradient);
   background-size: 240px 240px, 100% 100%, cover;
   background-position: 0 0, 0 0, center;
   background-blend-mode: overlay, normal, normal;
 }
+
+/* ---- Hero: the original centred layout on the grain gradient ---- */
+.hero { position: relative; z-index: 1; display: flow-root; margin: 10px 10px 0; padding-bottom: 0; border: 0; border-radius: 28px; }
+.hero h1 { color: #fff; }
+.hero h1 em { display: inline-block; padding: 0 .2em .06em .12em; border-radius: .2em; background: #fff; color: var(--blue); line-height: 1.12; box-shadow: 0 14px 34px rgba(40, 10, 50, .2); }
+.hero-lead, .hero-proof { color: #fff; }
+.hero-lead { font-weight: 500; }
+.hero-proof { opacity: .92; }
+.hero-copy .text-link { color: #fff; }
+.hero .btn.primary { box-shadow: 0 10px 24px rgba(10, 20, 80, .28); }
+/* The example box hangs 200px below the gradient onto the page. */
+.hero .product { position: relative; z-index: 2; margin-bottom: -200px; box-shadow: 3px 3px 0 var(--ink), 0 30px 60px rgba(40, 10, 60, .25); }
+.hero + .section { padding-top: 296px; }
 
 /* ---- Benefits: four cards, each with its own colour ---- */
 .value-grid { gap: 20px; }
@@ -232,6 +247,10 @@
   .offer-card dl { display: block; }
 }
 @media (max-width: 620px) {
+  .hero { margin: 8px 8px 0; border-radius: 22px; }
+  .hero h1 em { padding-inline: .14em .16em; }
+  .hero .product { margin-bottom: -150px; }
+  .hero + .section { padding-top: 226px; }
   .feature-list { gap: 24px; }
   .feature-list > .feature-row, .intelligence-layers .layer-list > article { grid-template-columns: 1fr; gap: 28px; padding: 66px 20px 28px; border-radius: 18px; }
   .feature-row.reverse .feature-copy, .intelligence-layers .layer-list > article .layer-copy { order: 0; }
