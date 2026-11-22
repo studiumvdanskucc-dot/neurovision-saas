@@ -27,3 +27,6 @@ export const ShieldIcon = (p: IconProps) => <Icon {...p}><path d="M12 2.8 19.5 6
 export const KeyIcon = (p: IconProps) => <Icon {...p}><circle cx="8" cy="15" r="4.5" /><path d="m11.3 11.8 8.2-8.3M16.5 6.5l2.5 2.5M14.3 8.7l2 2" /></Icon>;
 export const LockIcon = (p: IconProps) => <Icon {...p}><rect x="4.5" y="10.5" width="15" height="10.5" rx="2.5" /><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" /><circle cx="12" cy="15.8" r="1.3" fill="currentColor" stroke="none" /></Icon>;
 export const RangeIcon = (p: IconProps) => <Icon {...p}><path d="M4 12h16M4 8v8M20 8v8" /><circle cx="12" cy="12" r="2.6" fill="currentColor" stroke="none" /></Icon>;
+export const WindowIcon = (p: IconProps) => <Icon {...p}><rect x="3" y="4" width="18" height="16" rx="2.5" /><path d="M3 8.5h18" /><rect x="7" y="11.5" width="6" height="5" rx="1" /></Icon>;
+export const LayoutIcon = (p: IconProps) => <Icon {...p}><rect x="3" y="4" width="18" height="16" rx="2.5" /><path d="M7 9h4M7 12.5h4M7 16h4" /><rect x="14" y="8.5" width="4" height="8" rx="1" /></Icon>;
+export const PackageIcon = (p: IconProps) => <Icon {...p}><path d="M7 3.5h10l1.5 4v12a1.5 1.5 0 0 1-1.5 1.5H7a1.5 1.5 0 0 1-1.5-1.5v-12L7 3.5Z" /><path d="M5.5 7.5h13" /><rect x="9" y="11" width="6" height="6" rx="1" /></Icon>;
