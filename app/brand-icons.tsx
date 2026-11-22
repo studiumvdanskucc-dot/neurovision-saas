@@ -23,3 +23,5 @@ export const CheckIcon = (p: IconProps) => <Icon {...p}><path d="m5 12.5 4.2 4.2
 export const DashIcon = (p: IconProps) => <Icon {...p}><path d="M6 12h12" /></Icon>;
 export const SearchIcon = (p: IconProps) => <Icon {...p}><circle cx="11" cy="11" r="6.5" /><path d="m16 16 4.5 4.5" /></Icon>;
 export const CartIcon = (p: IconProps) => <Icon {...p}><path d="M3 4h2.2l2.2 10.5h10.2L20 7.5H6.4" /><circle cx="9" cy="19" r="1.4" /><circle cx="17" cy="19" r="1.4" /></Icon>;
+export const ShieldIcon = (p: IconProps) => <Icon {...p}><path d="M12 2.8 19.5 6v5.6c0 4.4-3.1 8.2-7.5 9.6-4.4-1.4-7.5-5.2-7.5-9.6V6L12 2.8Z" /><path d="m8.8 12 2.2 2.2 4.3-4.4" /></Icon>;
+export const KeyIcon = (p: IconProps) => <Icon {...p}><circle cx="8" cy="15" r="4.5" /><path d="m11.3 11.8 8.2-8.3M16.5 6.5l2.5 2.5M14.3 8.7l2 2" /></Icon>;

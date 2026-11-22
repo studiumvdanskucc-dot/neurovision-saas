@@ -54,7 +54,16 @@ export function planTokens(plan: UsagePlan) {
 }
 
 export function euros(cents: number) {
-  return new Intl.NumberFormat("en-IE", { style: "currency", currency: "EUR" }).format(cents / 100);
+  return new Intl.NumberFormat("en-IE", { style: "currency", currency: "EUR" }).format(Math.round(cents) / 100);
+}
+
+// With their own API keys for reports, customers pay 35% less for everything.
+export const OWN_KEYS_DISCOUNT = 0.35;
+export const OWN_KEYS_TOKEN_PRICE_CENTS = TOKEN_PRICE_CENTS * (1 - OWN_KEYS_DISCOUNT);
+
+// The per-token rate needs a third decimal with own keys (€0.065).
+export function tokenRate(cents: number) {
+  return new Intl.NumberFormat("en-IE", { style: "currency", currency: "EUR", minimumFractionDigits: 2, maximumFractionDigits: 3 }).format(cents / 100);
 }
 
 export const tokenActions = [

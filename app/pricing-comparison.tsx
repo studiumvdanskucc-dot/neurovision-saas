@@ -1,4 +1,4 @@
-import { ANALYSIS_TOKENS, MIN_TOPUP_TOKENS, TOKEN_PRICE_CENTS, euros, planTokens } from "./token-pricing-data";
+import { ANALYSIS_TOKENS, MIN_TOPUP_TOKENS, OWN_KEYS_TOKEN_PRICE_CENTS, TOKEN_PRICE_CENTS, euros, planTokens } from "./token-pricing-data";
 import { sitePath } from "./site-path";
 import { CheckIcon, DashIcon } from "./brand-icons";
 
@@ -19,7 +19,7 @@ const rows = [
   },
   {
     topic: "Where it starts",
-    us: `A ${euros(MIN_TOPUP_TOKENS * TOKEN_PRICE_CENTS)} top-up (${MIN_TOPUP_TOKENS} tokens).`,
+    us: `A ${euros(MIN_TOPUP_TOKENS * TOKEN_PRICE_CENTS)} top-up (${MIN_TOPUP_TOKENS} tokens), or ${euros(MIN_TOPUP_TOKENS * OWN_KEYS_TOKEN_PRICE_CENTS)} with your own API keys.`,
     them: "From €29 a month, or €23 a month billed yearly, where a price is published.",
   },
   {

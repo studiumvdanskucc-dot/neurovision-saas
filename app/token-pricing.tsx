@@ -6,6 +6,8 @@ import {
   ANALYSIS_TOKENS,
   MAX_TOPUP_TOKENS,
   MIN_TOPUP_TOKENS,
+  OWN_KEYS_DISCOUNT,
+  OWN_KEYS_TOKEN_PRICE_CENTS,
   REVISION_TOKENS,
   STUDIO_GENERATE_TOKENS,
   STUDIO_OPTIMISE_TOKENS,
@@ -15,6 +17,7 @@ import {
   surveySizes,
   surveyTokens,
   tokenActions,
+  tokenRate,
   type UsagePlan,
 } from "./token-pricing-data";
 import { REGISTER_URL } from "./site-links";
@@ -25,7 +28,6 @@ import { CoinsIcon, EyeIcon, StudioIcon, SurveyIcon } from "./brand-icons";
 const startingPlan: UsagePlan = { images: 2, surveys: 1, responses: 25, optimisations: 0, newDesigns: 0, revisions: 0 };
 const MAX_COUNT = 999;
 const whole = (value: number) => value.toLocaleString("en-GB");
-const price = (tokens: number) => euros(tokens * TOKEN_PRICE_CENTS);
 
 function Stepper({ id, label, value, onChange }: { id: string; label: string; value: number; onChange: (value: number) => void }) {
   const set = (next: number) => onChange(Number.isFinite(next) ? Math.min(MAX_COUNT, Math.max(0, Math.trunc(next))) : 0);
@@ -39,11 +41,15 @@ function Stepper({ id, label, value, onChange }: { id: string; label: string; va
 export function TokenPricing({ compact = false }: { compact?: boolean }) {
   const [draft, setDraft] = useState("500");
   const [plan, setPlan] = useState<UsagePlan>(startingPlan);
+  const [ownKeys, setOwnKeys] = useState(false);
   const id = useId();
+  const rate = ownKeys ? OWN_KEYS_TOKEN_PRICE_CENTS : TOKEN_PRICE_CENTS;
+  const rateLabel = tokenRate(rate);
+  const price = (tokens: number) => euros(tokens * rate);
   const amount = Number(draft);
   const valid = /^\d+$/.test(draft) && Number.isSafeInteger(amount) && amount >= MIN_TOPUP_TOKENS && amount <= MAX_TOPUP_TOKENS;
-  const cost = valid ? euros(amount * TOKEN_PRICE_CENTS) : "—";
-  const email = `mailto:info@neurovision-ai.com?subject=${encodeURIComponent(`NeuroVision balance top-up: ${valid ? amount : 500} tokens`)}&body=${encodeURIComponent(`Hello NeuroVision,\n\nPlease arrange a top-up of ${valid ? amount : 500} tokens at ${euros(TOKEN_PRICE_CENTS)} per token (${cost}, excluding VAT).\n\nMy account email:\n\nPlease confirm payment details before proceeding.\n\nThank you.`)}`;
+  const cost = valid ? price(amount) : "—";
+  const email = `mailto:info@neurovision-ai.com?subject=${encodeURIComponent(`NeuroVision balance top-up: ${valid ? amount : 500} tokens`)}&body=${encodeURIComponent(`Hello NeuroVision,\n\nPlease arrange a top-up of ${valid ? amount : 500} tokens at ${rateLabel} per token${ownKeys ? ", using my own API keys" : ""} (${cost}, excluding VAT).\n\nMy account email:\n\nPlease confirm payment details before proceeding.\n\nThank you.`)}`;
 
   const surveyUnit = surveyTokens(plan.responses);
   const used = planTokens(plan);
@@ -69,8 +75,12 @@ export function TokenPricing({ compact = false }: { compact?: boolean }) {
           : `A top-up of ${whole(amount)} tokens covers this work and leaves ${whole(amount - used)} on your balance.`;
 
   return <div className="token-pricing">
-    <div className="token-rate"><div className="token-unit"><strong>{euros(TOKEN_PRICE_CENTS)}</strong><span>per token</span></div><h3>One balance.<br />Use it at your own pace.</h3><p>Top up when you need more. Each analysis, AI survey or Generative Studio run deducts only its token cost.</p><p className="token-analysis-price">An image analysis uses <b>5 tokens · {euros(50)}</b></p><a className="text-link" href={REGISTER_URL}>Try NeuroVision free <span aria-hidden="true">→</span></a><small>Tokens are NeuroVision customer credits, shown as credits in the app. They are separate from the API tokens billed by model providers. No monthly subscription.</small></div>
-    <div className="token-topup"><label className="token-label" htmlFor={`${id}-amount`}>How much would you like to add?</label><div className="token-amount"><input id={`${id}-amount`} type="number" min={MIN_TOPUP_TOKENS} max={MAX_TOPUP_TOKENS} step="1" inputMode="numeric" value={draft} onChange={event => setDraft(event.target.value)} aria-invalid={!valid} aria-describedby={`${id}-help`} /><span>tokens</span></div><input className="token-range" type="range" min={MIN_TOPUP_TOKENS} max={MAX_TOPUP_TOKENS} step="1" value={valid ? amount : MIN_TOPUP_TOKENS} onChange={event => setDraft(event.target.value)} aria-label="Adjust token amount" /><div className="token-range-ends" aria-hidden="true"><span>100 tokens</span><span>10,000 tokens</span></div><p className="token-input-help" id={`${id}-help`}>{valid ? "Choose any whole-token amount. The same €0.10 rate applies throughout." : "Enter a whole number between 100 and 10,000 tokens."}</p><div className="token-total" aria-live="polite"><span>One-off top-up<small>excluding VAT</small></span><strong>{cost}</strong></div><a className="btn primary" href={valid ? email : undefined} aria-disabled={!valid} tabIndex={valid ? 0 : -1}>Top up your balance <span aria-hidden="true">→</span></a><p className="token-purchase-note">Top-ups are arranged by email. No payment is taken on this page.</p></div>
+    <div className="token-rate"><div className="token-unit"><strong>{rateLabel}</strong><span>per token</span>{ownKeys && <s aria-label={`was ${tokenRate(TOKEN_PRICE_CENTS)}`}>{tokenRate(TOKEN_PRICE_CENTS)}</s>}</div>
+      <button type="button" role="switch" aria-checked={ownKeys} className={ownKeys ? "keys-switch is-on" : "keys-switch"} onClick={() => setOwnKeys(on => !on)}>
+        <span className="keys-switch-track" aria-hidden="true"><i /></span>
+        <span className="keys-switch-text"><b>I use my own API keys</b><small>Connect your own AI provider keys for reports. Every price drops by {Math.round(OWN_KEYS_DISCOUNT * 100)}%.</small></span>
+      </button><h3>One balance.<br />Use it at your own pace.</h3><p>Top up when you need more. Each analysis, AI survey or Generative Studio run deducts only its token cost.</p><p className="token-analysis-price">An image analysis uses <b>{ANALYSIS_TOKENS} tokens · {price(ANALYSIS_TOKENS)}</b></p><a className="text-link" href={REGISTER_URL}>Try NeuroVision free <span aria-hidden="true">→</span></a><small>Tokens are NeuroVision customer credits, shown as credits in the app. They are separate from the API tokens billed by model providers. No monthly subscription.</small></div>
+    <div className="token-topup"><label className="token-label" htmlFor={`${id}-amount`}>How much would you like to add?</label><div className="token-amount"><input id={`${id}-amount`} type="number" min={MIN_TOPUP_TOKENS} max={MAX_TOPUP_TOKENS} step="1" inputMode="numeric" value={draft} onChange={event => setDraft(event.target.value)} aria-invalid={!valid} aria-describedby={`${id}-help`} /><span>tokens</span></div><input className="token-range" type="range" min={MIN_TOPUP_TOKENS} max={MAX_TOPUP_TOKENS} step="1" value={valid ? amount : MIN_TOPUP_TOKENS} onChange={event => setDraft(event.target.value)} aria-label="Adjust token amount" /><div className="token-range-ends" aria-hidden="true"><span>100 tokens</span><span>10,000 tokens</span></div><p className="token-input-help" id={`${id}-help`}>{valid ? `Choose any whole-token amount. The same ${rateLabel} rate applies throughout.` : "Enter a whole number between 100 and 10,000 tokens."}</p><div className="token-total" aria-live="polite"><span>One-off top-up<small>excluding VAT</small></span><strong>{cost}</strong></div><a className="btn primary" href={valid ? email : undefined} aria-disabled={!valid} tabIndex={valid ? 0 : -1}>Top up your balance <span aria-hidden="true">→</span></a><p className="token-purchase-note">Top-ups are arranged by email. No payment is taken on this page.</p></div>
 
     <div className="token-calc" id={compact ? undefined : "calculator"}>
       <div className="token-calc-head">
@@ -108,6 +118,6 @@ export function TokenPricing({ compact = false }: { compact?: boolean }) {
       </p>
     </div>
 
-    {compact ? <div className="token-more"><Link className="text-link" href="/pricing#tokens">See all usage costs <span aria-hidden="true">→</span></Link></div> : <div className="token-costs" id="tokens"><span id="credits" /><h2>What uses tokens?</h2><div className="token-action-list">{tokenActions.map(action => <div key={action.name}><span><strong>{action.name}</strong><small>{action.detail}</small></span><b>{action.tokens} tokens</b><span>{price(action.tokens)}</span></div>)}</div><p className="fine-print">Surveys include up to eight questions per profile. Above 100 profiles: 65 tokens for the first 100, then 60 tokens for each additional block of up to 100. For example, 250 profiles use 185 tokens (€18.50). A/B Testing and Digital Shelf draw on the same balance. Resizing and expert-led work are quoted separately.</p></div>}
+    {compact ? <div className="token-more"><Link className="text-link" href="/pricing#tokens">See all usage costs <span aria-hidden="true">→</span></Link></div> : <div className="token-costs" id="tokens"><span id="credits" /><h2>What uses tokens?</h2><div className="token-action-list">{tokenActions.map(action => <div key={action.name}><span><strong>{action.name}</strong><small>{action.detail}</small></span><b>{action.tokens} tokens</b><span>{price(action.tokens)}</span></div>)}</div><p className="fine-print">Surveys include up to eight questions per profile. Above 100 profiles: 65 tokens for the first 100, then 60 tokens for each additional block of up to 100. For example, 250 profiles use {surveyTokens(250)} tokens ({price(surveyTokens(250))}).{ownKeys && " Prices shown with your own API keys."} A/B Testing and Digital Shelf draw on the same balance. Resizing and expert-led work are quoted separately.</p></div>}
   </div>;
 }
