@@ -75,39 +75,9 @@ export function TokenPricing({ compact = false }: { compact?: boolean }) {
           : `A top-up of ${whole(amount)} tokens covers this work and leaves ${whole(amount - used)} on your balance.`;
 
   const discount = Math.round(OWN_KEYS_DISCOUNT * 100);
-  const dealExamples = [
-    { label: "Image analysis", tokens: ANALYSIS_TOKENS },
-    { label: "Survey, 25 AI profiles", tokens: surveyTokens(25) },
-    { label: "500-token top-up", tokens: 500 },
-  ];
-
-  return <>
-  <section className={ownKeys ? "keys-deal is-on" : "keys-deal"} id="own-keys" aria-labelledby={`${id}-deal`}>
-    <span className="keys-sticker" aria-hidden="true">Save<b>{discount}%</b></span>
-    <div className="keys-deal-copy">
-      <p className="keys-kicker"><KeyIcon size={18} />Bring your own API keys</p>
-      <h3 id={`${id}-deal`}>The same tests for {discount}% less.</h3>
-      <p>Connect your own AI provider keys for reports. Report data stays in your own accounts instead of being sent elsewhere, and every price on NeuroVision drops by {discount}%.</p>
-      <ul>
-        <li><CheckIcon size={16} />All five tools, one token balance</li>
-        <li><CheckIcon size={16} />Runs on European servers</li>
-        <li><CheckIcon size={16} />Switch on or off at any time</li>
-      </ul>
-    </div>
-    <div className="keys-deal-offer">
-      <p className="keys-rate"><s>{tokenRate(TOKEN_PRICE_CENTS)}</s><strong>{tokenRate(OWN_KEYS_TOKEN_PRICE_CENTS)}</strong><span>per token</span></p>
-      <dl>{dealExamples.map(item => <div key={item.label}><dt>{item.label}</dt><dd><s>{euros(item.tokens * TOKEN_PRICE_CENTS)}</s><b>{euros(item.tokens * OWN_KEYS_TOKEN_PRICE_CENTS)}</b></dd></div>)}</dl>
-      <button type="button" role="switch" aria-checked={ownKeys} className="keys-switch" onClick={() => setOwnKeys(on => !on)}>
-        <span className="keys-switch-track" aria-hidden="true"><i /></span>
-        <span>{ownKeys ? `Prices below include your ${discount}% saving` : "Show my prices with my own keys"}</span>
-      </button>
-    </div>
-  </section>
-  <div className="token-pricing">
+  return <div className="token-pricing">
     <div className="token-rate"><div className="token-unit"><strong>{rateLabel}</strong><span>per token</span>{ownKeys && <s aria-label={`was ${tokenRate(TOKEN_PRICE_CENTS)}`}>{tokenRate(TOKEN_PRICE_CENTS)}</s>}</div>
-      {ownKeys
-        ? <p className="keys-active"><KeyIcon size={16} />With your own API keys: {Math.round(OWN_KEYS_DISCOUNT * 100)}% off every price</p>
-        : <a className="keys-hint" href="#own-keys"><KeyIcon size={16} />Using your own API keys? Pay {Math.round(OWN_KEYS_DISCOUNT * 100)}% less</a>}<h3>One balance.<br />Use it at your own pace.</h3><p>Top up when you need more. Each analysis, AI survey or Generative Studio run deducts only its token cost.</p><p className="token-analysis-price">An image analysis uses <b>{ANALYSIS_TOKENS} tokens · {price(ANALYSIS_TOKENS)}</b></p><a className="text-link" href={REGISTER_URL}>Try NeuroVision free <span aria-hidden="true">→</span></a><small>Tokens are NeuroVision customer credits, shown as credits in the app. They are separate from the API tokens billed by model providers. No monthly subscription.</small></div>
+      {ownKeys && <p className="keys-active"><KeyIcon size={16} />Priced with your own API keys</p>}<h3>One balance.<br />Use it at your own pace.</h3><p>Top up when you need more. Each analysis, AI survey or Generative Studio run deducts only its token cost.</p><p className="token-analysis-price">An image analysis uses <b>{ANALYSIS_TOKENS} tokens · {price(ANALYSIS_TOKENS)}</b></p><a className="text-link" href={REGISTER_URL}>Try NeuroVision free <span aria-hidden="true">→</span></a><small>Tokens are NeuroVision customer credits, shown as credits in the app. They are separate from the API tokens billed by model providers. No monthly subscription.</small></div>
     <div className="token-topup"><label className="token-label" htmlFor={`${id}-amount`}>How much would you like to add?</label><div className="token-amount"><input id={`${id}-amount`} type="number" min={MIN_TOPUP_TOKENS} max={MAX_TOPUP_TOKENS} step="1" inputMode="numeric" value={draft} onChange={event => setDraft(event.target.value)} aria-invalid={!valid} aria-describedby={`${id}-help`} /><span>tokens</span></div><input className="token-range" type="range" min={MIN_TOPUP_TOKENS} max={MAX_TOPUP_TOKENS} step="1" value={valid ? amount : MIN_TOPUP_TOKENS} onChange={event => setDraft(event.target.value)} aria-label="Adjust token amount" /><div className="token-range-ends" aria-hidden="true"><span>100 tokens</span><span>10,000 tokens</span></div><p className="token-input-help" id={`${id}-help`}>{valid ? `Choose any whole-token amount. The same ${rateLabel} rate applies throughout.` : "Enter a whole number between 100 and 10,000 tokens."}</p><div className="token-total" aria-live="polite"><span>One-off top-up<small>excluding VAT</small></span><strong>{cost}</strong></div><a className="btn primary" href={valid ? email : undefined} aria-disabled={!valid} tabIndex={valid ? 0 : -1}>Top up your balance <span aria-hidden="true">→</span></a><p className="token-purchase-note">Top-ups are arranged by email. No payment is taken on this page.</p></div>
 
     <div className="token-calc" id={compact ? undefined : "calculator"}>
@@ -116,6 +86,11 @@ export function TokenPricing({ compact = false }: { compact?: boolean }) {
         <p>Set what you plan to run. Each card shows its cost in tokens and in euros.</p></div>
         <span className="token-pill" aria-hidden="true"><CoinsIcon size={18} />{whole(used)}</span>
       </div>
+      <button type="button" role="switch" aria-checked={ownKeys} className={ownKeys ? "keys-switch is-on" : "keys-switch"} onClick={() => setOwnKeys(on => !on)}>
+        <span className="keys-switch-track" aria-hidden="true"><i /></span>
+        <span className="keys-switch-text"><b>I use my own API keys</b><small>Connect your own AI provider keys for reports. All prices drop by {discount}%.</small></span>
+        <span className="keys-switch-badge">−{discount}%</span>
+      </button>
       <div className="token-calc-cards">
         {rows.map(row => {
           const lineTokens = row.count * row.unit;
@@ -147,6 +122,5 @@ export function TokenPricing({ compact = false }: { compact?: boolean }) {
     </div>
 
     {compact ? <div className="token-more"><Link className="text-link" href="/pricing#tokens">See all usage costs <span aria-hidden="true">→</span></Link></div> : <div className="token-costs" id="tokens"><span id="credits" /><h2>What uses tokens?</h2><div className="token-action-list">{tokenActions.map(action => <div key={action.name}><span><strong>{action.name}</strong><small>{action.detail}</small></span><b>{action.tokens} tokens</b><span>{price(action.tokens)}</span></div>)}</div><p className="fine-print">Surveys include up to eight questions per profile. Above 100 profiles: 65 tokens for the first 100, then 60 tokens for each additional block of up to 100. For example, 250 profiles use {surveyTokens(250)} tokens ({price(surveyTokens(250))}).{ownKeys && " Prices shown with your own API keys."} A/B Testing and Digital Shelf draw on the same balance. Resizing and expert-led work are quoted separately.</p></div>}
-  </div>
-  </>;
+  </div>;
 }

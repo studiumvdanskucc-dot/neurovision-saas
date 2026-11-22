@@ -7,6 +7,7 @@ import { creativeExamples } from "./creative-examples";
 import { CreativeVisual } from "./creative-visual";
 import { CoinsIcon, EyesIcon, GlassesIcon, ShieldIcon, ChecklistIcon, KeyIcon, SurveyIcon } from "./brand-icons";
 import { ToolShowcase } from "./tool-showcase";
+import { SurveyIllustration } from "./survey-illustration";
 import { tools } from "./tools";
 import { PricingComparison } from "./pricing-comparison";
 import { TokenPricing } from "./token-pricing";
@@ -100,21 +101,7 @@ export default function Home() {
                 <span className="bento-icon"><SurveyIcon size={22} /></span>
                 <h3>Hear what people understood.</h3>
                 <p>Ask AI audience profiles up to {SURVEY_QUESTIONS} questions each. They flag what a heatmap can’t: text that grabs the eye but can’t be read, a joke that falls flat, a claim nobody believes.</p>
-                <div className="bento-visual survey-visual" aria-hidden="true">
-                  <div className="sv-panel">
-                    <div className="sv-panel-head"><span className="sv-avatars"><i /><i /><i /><i /></span><span>100 profiles · runners, 25–40</span></div>
-                    <p className="sv-q">Q2 · Could you read the headline easily?</p>
-                    <span className="sv-bar"><b>Yes, easily</b><i style={{ width: "21%" }} /><small>21%</small></span>
-                    <span className="sv-bar is-bad"><b>Only with effort</b><i style={{ width: "58%" }} /><small>58%</small></span>
-                    <span className="sv-bar"><b>Didn’t read it</b><i style={{ width: "21%" }} /><small>21%</small></span>
-                  </div>
-                  <div className="sv-flags">
-                    <p><span>Readability</span>“The letters grab my attention, but spaced out like that I can’t read the headline.”</p>
-                    <p><span>Tone</span>“The joke on the second line would not work in Germany. It reads as rude.”</p>
-                    <p className="is-good"><span>Message</span>“It’s about becoming a better version of yourself.”</p>
-                  </div>
-                  <small className="bento-note">Illustrative results</small>
-                </div>
+                <div className="bento-visual survey-visual"><SurveyIllustration /></div>
               </article>
               <article className="bento-card bento-pay">
                 <span className="bento-icon"><CoinsIcon size={22} /></span>
@@ -142,10 +129,10 @@ export default function Home() {
               <article className="bento-card bento-eu">
                 <span className="bento-icon"><ShieldIcon size={22} /></span>
                 <h3>Deployed in the EU. Your data, your choice.</h3>
-                <p>NeuroVision runs on European servers. Bring your own API keys for reports to keep everything in-house instead of sending data elsewhere, and pay {Math.round(OWN_KEYS_DISCOUNT * 100)}% less for every test.</p>
+                <p>NeuroVision runs on European servers. Bring your own API keys for reports to keep everything in-house instead of sending data elsewhere.</p>
                 <div className="bento-visual eu-visual">
                   <span className="eu-chips" aria-hidden="true"><span><ShieldIcon size={16} />European servers</span><span><KeyIcon size={16} />Your own API keys</span></span>
-                  <Link className="eu-deal" href="/pricing#own-keys"><b>−{Math.round(OWN_KEYS_DISCOUNT * 100)}%</b><span>{tokenRate(OWN_KEYS_TOKEN_PRICE_CENTS)} per token with your own keys</span><span aria-hidden="true">→</span></Link>
+                  
                 </div>
               </article>
             </div>

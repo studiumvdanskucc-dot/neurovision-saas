@@ -8,7 +8,6 @@ import { LOGIN_URL, REGISTER_URL } from "./site-links";
 
 const navigation = [
   ["/how-it-works", "How it works"],
-  ["/use-cases", "Use cases"],
   ["/case-studies", "Examples"],
   ["/science", "Science"],
   ["/pricing", "Pricing"],
@@ -80,7 +79,7 @@ export function Footer() {
           <p>Attention science and AI tools for testing creative before launch.</p>
           <a href="mailto:info@neurovision-ai.com">info@neurovision-ai.com</a>
         </div>
-        <div><strong>Explore</strong><Link href="/how-it-works">How it works</Link><Link href="/use-cases">Use cases</Link><Link href="/case-studies">Creative examples</Link><Link href="/science">Science &amp; validation</Link></div>
+        <div><strong>Explore</strong><Link href="/how-it-works">How it works</Link><Link href="/case-studies">Examples &amp; use cases</Link><Link href="/science">Science &amp; validation</Link></div>
         <div><strong>Work with us</strong><Link href="/pricing">Token pricing</Link><Link href="/pricing#agency">Expert services</Link><Link href="/about">About NeuroVision</Link><a href="mailto:info@neurovision-ai.com?subject=NeuroVision%20demo">Request a demo</a></div>
         <div><strong>Legal</strong><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link></div>
       </div>
