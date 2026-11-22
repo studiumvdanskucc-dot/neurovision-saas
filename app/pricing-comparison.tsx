@@ -20,7 +20,7 @@ const rows = [
   {
     topic: "Where it starts",
     us: `A ${euros(MIN_TOPUP_TOKENS * TOKEN_PRICE_CENTS)} top-up (${MIN_TOPUP_TOKENS} tokens), or ${euros(MIN_TOPUP_TOKENS * OWN_KEYS_TOKEN_PRICE_CENTS)} with your own API keys.`,
-    them: "From €29 a month, or €23 a month billed yearly, where a price is published.",
+    them: "From about €30 a month, where a price is published.",
   },
   {
     topic: "A month without testing",

@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Footer, Header } from "./site-shell";
 import { creativeExamples } from "./creative-examples";
 import { CreativeVisual } from "./creative-visual";
-import { CoinsIcon, EyesIcon, GlassesIcon, ShieldIcon, ChecklistIcon, KeyIcon } from "./brand-icons";
+import { CoinsIcon, EyesIcon, GlassesIcon, ShieldIcon, ChecklistIcon, KeyIcon, SurveyIcon } from "./brand-icons";
 import { ToolShowcase } from "./tool-showcase";
 import { tools } from "./tools";
 import { PricingComparison } from "./pricing-comparison";
@@ -80,6 +80,42 @@ export default function Home() {
           <div className="container">
             <div className="section-head"><div><h2>One place to check a creative.<br />Paid for only when you use it.</h2></div><p>We built NeuroVision so that any team can test every piece of creative, not only the big launches.</p></div>
             <div className="bento">
+              
+              <article className="bento-card bento-heat">
+                <span className="bento-icon"><EyesIcon size={22} /></span>
+                <h3>See where people look first.</h3>
+                <p>Our attention model predicts which parts of a design catch the eye in the first seconds: the product, the headline, the logo or the call to action.</p>
+                <div className="bento-visual heat-visual" aria-hidden="true">
+                  <span className="heat-shot"><img src={sitePath(creativeExamples[0].original.src)} alt="" width={creativeExamples[0].original.width} height={creativeExamples[0].original.height} loading="lazy" /><i /></span>
+                  <span className="heat-aois">
+                    <span><b>Runner</b><i style={{ width: "86%" }} /><small>25.4%</small></span>
+                    <span><b>Headline</b><i style={{ width: "48%" }} /><small>11.2%</small></span>
+                    <span><b>Shoes</b><i style={{ width: "16%" }} /><small>3.3%</small></span>
+                    <span><b>Logo</b><i style={{ width: "13%" }} /><small>2.7%</small></span>
+                    <small className="bento-note">Share of predicted attention · illustrative</small>
+                  </span>
+                </div>
+              </article>
+              <article className="bento-card bento-survey">
+                <span className="bento-icon"><SurveyIcon size={22} /></span>
+                <h3>Hear what people understood.</h3>
+                <p>Ask AI audience profiles up to {SURVEY_QUESTIONS} questions each. They flag what a heatmap can’t: text that grabs the eye but can’t be read, a joke that falls flat, a claim nobody believes.</p>
+                <div className="bento-visual survey-visual" aria-hidden="true">
+                  <div className="sv-panel">
+                    <div className="sv-panel-head"><span className="sv-avatars"><i /><i /><i /><i /></span><span>100 profiles · runners, 25–40</span></div>
+                    <p className="sv-q">Q2 · Could you read the headline easily?</p>
+                    <span className="sv-bar"><b>Yes, easily</b><i style={{ width: "21%" }} /><small>21%</small></span>
+                    <span className="sv-bar is-bad"><b>Only with effort</b><i style={{ width: "58%" }} /><small>58%</small></span>
+                    <span className="sv-bar"><b>Didn’t read it</b><i style={{ width: "21%" }} /><small>21%</small></span>
+                  </div>
+                  <div className="sv-flags">
+                    <p><span>Readability</span>“The letters grab my attention, but spaced out like that I can’t read the headline.”</p>
+                    <p><span>Tone</span>“The joke on the second line would not work in Germany. It reads as rude.”</p>
+                    <p className="is-good"><span>Message</span>“It’s about becoming a better version of yourself.”</p>
+                  </div>
+                  <small className="bento-note">Illustrative results</small>
+                </div>
+              </article>
               <article className="bento-card bento-pay">
                 <span className="bento-icon"><CoinsIcon size={22} /></span>
                 <h3>Pay only when you test.</h3>
@@ -89,19 +125,6 @@ export default function Home() {
                   <span><b>Image analysed</b><i>−{ANALYSIS_TOKENS}</i></span>
                   <span><b>Survey, 25 profiles</b><i>−{surveyTokens(25)}</i></span>
                   <span><b>Design optimised</b><i>−{STUDIO_OPTIMISE_TOKENS}</i></span>
-                </div>
-              </article>
-              <article className="bento-card bento-both">
-                <span className="bento-icon"><EyesIcon size={22} /></span>
-                <h3>Heatmaps and audience surveys.</h3>
-                <p>You get more than a heatmap. See where people look, then ask AI audience profiles what they understood, trusted and felt, with up to {SURVEY_QUESTIONS} questions each. You catch the wrong language for a market, a joke that falls flat, or a message nobody can repeat.</p>
-                <div className="bento-visual both-visual" aria-hidden="true">
-                  <span className="both-shot"><img src={sitePath(creativeExamples[0].original.src)} alt="" width={creativeExamples[0].original.width} height={creativeExamples[0].original.height} loading="lazy" /><i /></span>
-                  <span className="both-answers">
-                    <span className="both-q">Q3 · What is this ad about?</span>
-                    <span className="both-a">“Becoming a better version of yourself, not just running.”</span>
-                    <span className="both-a is-warn">“The text covers the runner. It feels a bit cold.”</span>
-                  </span>
                 </div>
               </article>
               <article className="bento-card bento-all">
@@ -119,8 +142,11 @@ export default function Home() {
               <article className="bento-card bento-eu">
                 <span className="bento-icon"><ShieldIcon size={22} /></span>
                 <h3>Deployed in the EU. Your data, your choice.</h3>
-                <p>NeuroVision runs on European servers. Bring your own API keys for reports to keep everything in-house instead of sending data elsewhere, and pay {Math.round(OWN_KEYS_DISCOUNT * 100)}% less.</p>
-                <div className="bento-visual eu-chips" aria-hidden="true"><span><ShieldIcon size={16} />European servers</span><span><KeyIcon size={16} />Your own API keys</span></div>
+                <p>NeuroVision runs on European servers. Bring your own API keys for reports to keep everything in-house instead of sending data elsewhere, and pay {Math.round(OWN_KEYS_DISCOUNT * 100)}% less for every test.</p>
+                <div className="bento-visual eu-visual">
+                  <span className="eu-chips" aria-hidden="true"><span><ShieldIcon size={16} />European servers</span><span><KeyIcon size={16} />Your own API keys</span></span>
+                  <Link className="eu-deal" href="/pricing#own-keys"><b>−{Math.round(OWN_KEYS_DISCOUNT * 100)}%</b><span>{tokenRate(OWN_KEYS_TOKEN_PRICE_CENTS)} per token with your own keys</span><span aria-hidden="true">→</span></Link>
+                </div>
               </article>
             </div>
           </div>

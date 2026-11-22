@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { GazeStudyArt, RedesignStudyArt, SurveyStudyArt } from "../science-art";
+import { LockIcon, RangeIcon, TeamIcon } from "../brand-icons";
 import Link from "next/link";
 import { Footer, Header } from "../site-shell";
 import { WhyDifferent } from "../why-different";
@@ -120,13 +122,77 @@ export default function Science() {
 
     <ScienceLoop />
 
-    <section className="section validation-section" id="aarhus-study"><div className="reading-width">
-      <div className="section-head"><div><h2>The Aarhus validation programme</h2></div><p>We are evaluating three links in the chain: the predicted attention, the simulated interpretation and the effect of changing the creative.</p></div>
-      <p className="validation-status">Programme described here; results and an updated readout date are pending publication on this page.</p>
-      <article className="study-chapter"><h3>A. Do predictions match human gaze?</h3><p>We compare NeuroVision heatmaps with eye movements recorded using EyeLink equipment, across a fixed set of static ads. We look at both the opening glance and the full viewing window.</p><div className="research-method"><h4>How we measure it</h4><div><p><strong>Viewing windows.</strong> The full window is 0–2,000 milliseconds. The early window is 0–800 milliseconds or the first fixations.</p><p><strong>Primary metric.</strong> SIM measures the overlap between normalised fixation-density maps. The predeclared target is a mean SIM of at least 0.93 on the locked benchmark. This is a target, not an achieved result or a “93% accuracy” claim.</p><p><strong>Supporting measures.</strong> CC checks how the maps vary together; NSS evaluates predicted saliency at human fixation locations; AUC-Judd evaluates how the map distinguishes fixated locations from other image locations. We also inspect areas of interest (AOIs): the brand, product, headline and CTA. Multiple measures help avoid relying on one score <a href="#ref-bylinskii">(Bylinskii et al., 2019)</a>.</p></div></div></article>
-      <article className="study-chapter"><h3>B. Do simulated and human answers agree?</h3><p>AI profiles and independent human participants receive the same questions and answer options. We check whether they rank the creatives similarly, and whether the pattern of answers agrees across audience groups.</p><div className="research-method"><h4>How we measure it</h4><div><p><strong>Like-for-like questions.</strong> The study uses identical questionnaires and defined demographic groups for the human and simulated samples.</p><p><strong>More than an average.</strong> We examine error in average responses, the distribution of answers and agreement in how creatives are ranked.</p><p><strong>Separate calibration and evaluation.</strong> One subset is used to identify and adjust systematic differences. An independent holdout checks whether those adjustments carry over to data not used for calibration.</p></div></div></article>
-      <article className="study-chapter"><h3>C. Does the revised design improve the outcome?</h3><p>We compare original and regenerated creatives under the same brand constraints. The question is whether important elements receive more attention and the message becomes clearer.</p><div className="research-method"><h4>How we measure it</h4><div><p><strong>A fair creative brief.</strong> Logos, packshots and legal elements are locked. The editable parts are defined before regeneration.</p><p><strong>A fair exposure.</strong> Fresh participants or balanced assignments limit the effect of having already seen another version of the same ad.</p><p><strong>Outcomes that matter.</strong> The comparison includes attention on the intended elements, message clarity, brand compliance, time and cost. A visual redesign alone is not evidence of improvement.</p></div></div></article>
-      <div className="research-method study-method"><h3>How we keep the benchmark accountable</h3><div><p><strong>Lock the benchmark.</strong> The evaluation set and scoring rules are fixed before scoring, so the test cannot be reshaped around a favourable result.</p><p><strong>Show uncertainty.</strong> Report 95% confidence intervals alongside the scores, rather than presenting a single number as certain.</p><p><strong>Compare people with people.</strong> Human-to-human consistency provides context for what the dataset can support. Published claims will name the dataset, metric and uncertainty used <a href="#ref-bylinskii">(Bylinskii et al., 2019)</a>.</p></div></div>
+    <section className="section validation-section" id="aarhus-study"><div className="container">
+      <div className="section-head"><div><h2>The Aarhus validation programme</h2></div><p>We are testing three things: do our heatmaps match where people really look, do AI answers match what real people say, and does a redesigned creative actually do better?</p></div>
+      <p className="validation-status"><span aria-hidden="true" />Study in progress. Results and an updated readout date will be published on this page.</p>
+
+      <div className="study-cards">
+        <article className="study-card study-a">
+          <GazeStudyArt />
+          <div className="study-body">
+            <p className="study-label">Study A · Attention</p>
+            <h3>Do our heatmaps match where real people look?</h3>
+            <ol className="study-steps">
+              <li><b>Record real eyes.</b> People view a fixed set of ads while an EyeLink eye tracker records where their eyes go.</li>
+              <li><b>Look at two moments.</b> The first glance (up to 0.8 seconds) and the full view (2 seconds).</li>
+              <li><b>Overlay the maps.</b> We lay the NeuroVision heatmap over the real gaze map and measure how much they overlap.</li>
+            </ol>
+            <p className="study-goal"><b>What counts as a pass</b>An overlap score (SIM) of at least 0.93, fixed before testing. It is a target, not a result yet, and not the same as “93% accuracy”.</p>
+            <details className="study-details"><summary>Technical details</summary>
+              <p><strong>Viewing windows.</strong> The full window is 0–2,000 milliseconds. The early window is 0–800 milliseconds or the first fixations.</p>
+              <p><strong>Primary metric.</strong> SIM measures the overlap between normalised fixation-density maps. The predeclared target is a mean SIM of at least 0.93 on the locked benchmark. This is a target, not an achieved result or a “93% accuracy” claim.</p>
+              <p><strong>Supporting measures.</strong> CC checks how the maps vary together; NSS evaluates predicted saliency at human fixation locations; AUC-Judd evaluates how the map distinguishes fixated locations from other image locations. We also inspect areas of interest (AOIs): the brand, product, headline and CTA. Multiple measures help avoid relying on one score <a href="#ref-bylinskii">(Bylinskii et al., 2019)</a>.</p>
+            </details>
+          </div>
+        </article>
+
+        <article className="study-card study-b">
+          <SurveyStudyArt />
+          <div className="study-body">
+            <p className="study-label">Study B · Audience</p>
+            <h3>Do AI answers match what real people say?</h3>
+            <ol className="study-steps">
+              <li><b>Same questions.</b> Real participants and AI profiles from the same audience groups answer the same questionnaire, with the same options.</li>
+              <li><b>More than an average.</b> We compare the spread of answers and the order in which each group ranks the creatives.</li>
+              <li><b>Tune, then check fresh.</b> We adjust for differences on one part of the data, then test on a separate part we never tuned on.</li>
+            </ol>
+            <p className="study-goal"><b>What counts as a pass</b>The AI panel ranks creatives the way people do, across audience groups, on data it has not seen before.</p>
+            <details className="study-details"><summary>Technical details</summary>
+              <p><strong>Like-for-like questions.</strong> The study uses identical questionnaires and defined demographic groups for the human and simulated samples.</p>
+              <p><strong>More than an average.</strong> We examine error in average responses, the distribution of answers and agreement in how creatives are ranked.</p>
+              <p><strong>Separate calibration and evaluation.</strong> One subset is used to identify and adjust systematic differences. An independent holdout checks whether those adjustments carry over to data not used for calibration.</p>
+            </details>
+          </div>
+        </article>
+
+        <article className="study-card study-c">
+          <RedesignStudyArt />
+          <div className="study-body">
+            <p className="study-label">Study C · Improvement</p>
+            <h3>Does a redesigned creative actually do better?</h3>
+            <ol className="study-steps">
+              <li><b>A fair brief.</b> Logos, packshots and legal text are locked. We decide in advance which parts may change.</li>
+              <li><b>Fresh eyes.</b> Each participant sees only the original or the new version, so nobody is influenced by having seen both.</li>
+              <li><b>Results that matter.</b> Attention on the important parts, message clarity, brand fit, time and cost.</li>
+            </ol>
+            <p className="study-goal"><b>What counts as a pass</b>The new version does better on these measures. A new look on its own is not evidence of improvement.</p>
+            <details className="study-details"><summary>Technical details</summary>
+              <p><strong>A fair creative brief.</strong> Logos, packshots and legal elements are locked. The editable parts are defined before regeneration.</p>
+              <p><strong>A fair exposure.</strong> Fresh participants or balanced assignments limit the effect of having already seen another version of the same ad.</p>
+              <p><strong>Outcomes that matter.</strong> The comparison includes attention on the intended elements, message clarity, brand compliance, time and cost. A visual redesign alone is not evidence of improvement.</p>
+            </details>
+          </div>
+        </article>
+      </div>
+
+      <div className="study-rules">
+        <h3>How we keep ourselves honest</h3>
+        <div>
+          <article><span aria-hidden="true"><LockIcon size={22} /></span><h4>Rules fixed first</h4><p>The test images and scoring rules are locked before scoring, so the test can’t be reshaped around a good result.</p></article>
+          <article><span aria-hidden="true"><RangeIcon size={22} /></span><h4>Uncertainty shown</h4><p>Scores come with 95% confidence intervals, never as a single number presented as certain.</p></article>
+          <article><span aria-hidden="true"><TeamIcon size={22} /></span><h4>People as the yardstick</h4><p>How consistent people are with each other sets what the data can support. Published claims will name the dataset, metric and uncertainty <a href="#ref-bylinskii">(Bylinskii et al., 2019)</a>.</p></article>
+        </div>
+      </div>
     </div></section>
 
     <section className="section science-position soft-section"><div className="reading-width"><h2>What the evidence can tell us</h2><p>NeuroVision helps teams screen, compare and improve creative while changes are still easy to make. It predicts patterns across audiences; it does not guarantee what any individual will notice, feel or buy.</p><p>For consequential launch decisions, combine these findings with human research or real campaign testing. The research cited here explains the scientific foundations; it is not, by itself, a validation of NeuroVision’s performance.</p></div></section>
