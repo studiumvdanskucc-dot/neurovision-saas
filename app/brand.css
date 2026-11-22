@@ -542,3 +542,31 @@ h1 em, h2 em, h3 em { font-style: normal; }
   .phone-post-foot { grid-template-columns: repeat(3, 9px) 1fr; gap: 4px; padding: 6px 7px; }
   .phone-post-foot i { width: 9px; height: 9px; }
 }
+
+/* ---- Science: release note and plain-language concept cards ---- */
+.release-note { padding-block: 64px 0; }
+.release-card { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); align-items: center; gap: 40px; padding: 36px 44px; border-radius: 24px; background: radial-gradient(70% 120% at 100% 0%, #2a63ff 0%, transparent 60%), linear-gradient(120deg, #001433 0%, #002151 45%, #0b3a9e 100%); color: #fff; }
+.release-card h2 { color: #fff; font-size: clamp(28px, 2.8vw, 38px); line-height: 1.08; letter-spacing: -.04em; }
+.release-card p { margin: 0; color: rgba(255, 255, 255, .88); font-size: 17px; line-height: 1.65; }
+.science-foundations .section-head { margin-bottom: 28px; }
+.concept-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.concept-card { display: flex; flex-direction: column; padding: 28px 26px 24px; border: 1px solid var(--line); border-radius: 22px; background: #fff; }
+.concept-eye { --c: #1261ff; }
+.concept-heat { --c: #e5321f; }
+.concept-survey { --c: #d0187a; }
+.concept-icon { display: grid; place-items: center; width: 46px; height: 46px; margin-bottom: 18px; border-radius: 14px; background: color-mix(in srgb, var(--c) 10%, #fff); color: var(--c); }
+.concept-card h3 { font-size: 21px; line-height: 1.2; letter-spacing: -.025em; }
+.concept-card > p { margin: 12px 0 0; font-size: 15.5px; line-height: 1.65; color: var(--muted); }
+.concept-card > p a { color: var(--blue); font-size: 13px; text-decoration: underline; text-underline-offset: 3px; }
+.concept-card > .practical-meaning { margin-top: auto; padding: 14px 16px; border: 0; border-radius: 14px; background: color-mix(in srgb, var(--c) 7%, #fff); color: var(--ink); font-size: 14.5px; }
+.concept-card > p:nth-last-child(2) { margin-bottom: 18px; }
+.concept-card .practical-meaning b { display: block; margin-bottom: 3px; color: var(--c); font-size: 13px; font-weight: 600; }
+.science-stat strong { font-size: 40px; line-height: .98; }
+@media (max-width: 1080px) {
+  .concept-cards { grid-template-columns: 1fr; }
+  .release-card { grid-template-columns: 1fr; gap: 16px; padding: 30px 28px; }
+}
+@media (max-width: 620px) {
+  .release-card { padding: 26px 22px; border-radius: 20px; }
+  .concept-card { padding: 24px 20px 20px; }
+}

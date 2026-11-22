@@ -11,7 +11,7 @@ import { SurveyIllustration } from "./survey-illustration";
 import { tools } from "./tools";
 import { PricingComparison } from "./pricing-comparison";
 import { TokenPricing } from "./token-pricing";
-import { ANALYSIS_TOKENS, MIN_TOPUP_TOKENS, OWN_KEYS_DISCOUNT, OWN_KEYS_TOKEN_PRICE_CENTS, REVISION_TOKENS, STUDIO_GENERATE_TOKENS, STUDIO_OPTIMISE_TOKENS, SURVEY_QUESTIONS, TOKEN_PRICE_CENTS, euros, surveyTokens, tokenRate } from "./token-pricing-data";
+import { ANALYSIS_TOKENS, FREE_TOKENS, MIN_TOPUP_TOKENS, OWN_KEYS_DISCOUNT, OWN_KEYS_TOKEN_PRICE_CENTS, REVISION_TOKENS, STUDIO_GENERATE_TOKENS, STUDIO_OPTIMISE_TOKENS, SURVEY_QUESTIONS, TOKEN_PRICE_CENTS, euros, surveyTokens, tokenRate } from "./token-pricing-data";
 import { sitePath } from "./site-path";
 
 const price = (tokens: number) => euros(tokens * TOKEN_PRICE_CENTS);
@@ -29,10 +29,11 @@ type DemoKey = keyof typeof demo;
 const faqs = [
   ["What can I analyse?", "Upload an ad, social creative, landing page, website screenshot, packaging concept, product image or marketplace listing."],
   ["Do I need eye-tracking equipment?", "No. NeuroVision uses predictive models built on neuroscience research and trained on behavioural, cognitive and eye-tracking data, so teams can evaluate early creative in the browser."],
-  ["How do tokens work?", `Top up one token balance and spend it as you use NeuroVision. Each token costs ${euros(TOKEN_PRICE_CENTS)}, excluding VAT. An image analysis uses ${ANALYSIS_TOKENS} tokens (${price(ANALYSIS_TOKENS)}); a survey of 25 AI audience profiles, with up to ${SURVEY_QUESTIONS} questions each, uses ${surveyTokens(25)} tokens (${price(surveyTokens(25))}). In Generative Studio, optimising a design uses ${STUDIO_OPTIMISE_TOKENS} tokens (${price(STUDIO_OPTIMISE_TOKENS)}) and generating a new one uses ${STUDIO_GENERATE_TOKENS} (${price(STUDIO_GENERATE_TOKENS)}); both include a re-analysis, and each extra revision uses ${REVISION_TOKENS} (${price(REVISION_TOKENS)}). Your balance reduces with each action. Resizing is quoted separately.`],
+  ["How do tokens work?", `New accounts start with ${FREE_TOKENS} free tokens. After that, top up one token balance and spend it as you use NeuroVision. Each token costs ${euros(TOKEN_PRICE_CENTS)}, excluding VAT. An image analysis uses ${ANALYSIS_TOKENS} tokens (${price(ANALYSIS_TOKENS)}); a survey of 25 AI audience profiles, with up to ${SURVEY_QUESTIONS} questions each, uses ${surveyTokens(25)} tokens (${price(surveyTokens(25))}). In Generative Studio, optimising a design uses ${STUDIO_OPTIMISE_TOKENS} tokens (${price(STUDIO_OPTIMISE_TOKENS)}) and generating a new one uses ${STUDIO_GENERATE_TOKENS} (${price(STUDIO_GENERATE_TOKENS)}); both include a re-analysis, and each extra revision uses ${REVISION_TOKENS} (${price(REVISION_TOKENS)}). Your balance reduces with each action. Resizing is quoted separately.`],
   ["Is there a subscription or a minimum term?", `No. You top up a token balance when you choose, from ${MIN_TOPUP_TOKENS} tokens (${price(MIN_TOPUP_TOKENS)}), and spend it as you work. There is no monthly plan and no licence.`],
   ["Can I use my own API keys?", `Yes. Connect your own AI provider keys for reports to keep that data in your own accounts instead of sending it elsewhere. Every price then drops by ${Math.round(OWN_KEYS_DISCOUNT * 100)}%, to ${tokenRate(OWN_KEYS_TOKEN_PRICE_CENTS)} per token. NeuroVision itself runs on European servers.`],
-  ["How is NeuroVision different from other attention-testing tools?", "Most are sold as a monthly subscription or an annual licence, often after a demo or a quote. NeuroVision is pay as you go, and one balance covers attention analysis, AI audience surveys, A/B Testing, Digital Shelf and Generative Studio."],
+  ["How is NeuroVision different from other attention-testing tools?", "We are independent and open about our method. Our attention model builds on state-of-the-art published models, refined with our specific research data. It is deployed in Europe and validated in university studies, with full results published in early 2027. Beyond where people look, NeuroVision shows how they read a creative and helps you decide what to change. And you pay per action, not per month."],
+  ["Can Generative Studio make production-ready designs?", "Not yet, but that’s where we’re heading. Generative Studio already suggests revisions and re-checks them against the original, so you can see what is likely to work better. Image generation is getting better every month, but today’s technology can’t yet guarantee production-ready artwork, so your designers should finish the final version. We’re working to push it further, and as soon as it can deliver production-ready designs, we’ll let you know."],
   ["Can NeuroVision replace real consumer research?", "Use NeuroVision to compare ideas and improve designs early. For important launch decisions, follow up with real customers or campaign testing."],
 ];
 
@@ -48,12 +49,12 @@ export default function Home() {
           <div className="container hero-grid">
             <div className="hero-copy">
               <h1>Know how your creative<br className="desktop-break" /> lands <em>before launch.</em></h1>
-              <p className="hero-lead">NeuroVision brings neuroscience and AI together. See where people look,<br className="desktop-break" /> hear what they understood, and fix what isn’t working, in minutes.</p>
+              <p className="hero-lead">NeuroVision brings neuroscience and AI together to predict what people notice and how they read your creative. See where they look, hear what they understand, and decide with confidence before you commit to a design.</p>
               <div className="actions">
                 <a className="btn primary" href="https://app.neurovision-ai.com/register">Try NeuroVision free <span aria-hidden="true">→</span></a>
                 <Link className="text-link" href="/how-it-works">Take a closer look <span aria-hidden="true">→</span></Link>
               </div>
-              <p className="hero-proof">Pay as you go at {euros(TOKEN_PRICE_CENTS)} per token. No subscription, no minimum term.</p>
+              <p className="hero-proof">Start with {FREE_TOKENS} free tokens. Deployed in Europe, validated in university research, pay as you go.</p>
             </div>
 
             <div className="product-wrap stimulus-product">
@@ -79,13 +80,13 @@ export default function Home() {
 
         <section className="section value" id="why">
           <div className="container">
-            <div className="section-head"><div><h2>One place to check a creative.<br />Paid for only when you use it.</h2></div><p>We built NeuroVision so that any team can test every piece of creative, not only the big launches.</p></div>
+            <div className="section-head"><div><h2>Evidence you can check.<br />Paid for only when you use it.</h2></div><p>We help marketers and designers make confident creative decisions on every piece of work, not only the big launches.</p></div>
             <div className="bento">
               
               <article className="bento-card bento-heat">
                 <span className="bento-icon"><EyesIcon size={22} /></span>
                 <h3>See where people look first.</h3>
-                <p>Our attention model predicts which parts of a design catch the eye in the first seconds: the product, the headline, the logo or the call to action.</p>
+                <p>Our attention model builds on state-of-the-art published research, combining established attention models with our specific research data. It predicts which parts of a design catch the eye in the first seconds: the product, the headline, the logo or the call to action.</p>
                 <div className="bento-visual heat-visual" aria-hidden="true">
                   <span className="heat-shot"><img src={sitePath(creativeExamples[0].original.src)} alt="" width={creativeExamples[0].original.width} height={creativeExamples[0].original.height} loading="lazy" /><i /></span>
                   <span className="heat-aois">
@@ -100,7 +101,7 @@ export default function Home() {
               <article className="bento-card bento-survey">
                 <span className="bento-icon"><SurveyIcon size={22} /></span>
                 <h3>Hear what people understood.</h3>
-                <p>Ask AI audience profiles up to {SURVEY_QUESTIONS} questions each. They flag what a heatmap can’t: text that grabs the eye but can’t be read, a joke that falls flat, a claim nobody believes.</p>
+                <p>Ask AI audience profiles, grounded in behavioural and cognitive research, up to {SURVEY_QUESTIONS} questions each. They flag what a heatmap can’t: text that grabs the eye but can’t be read, a joke that falls flat, a claim nobody believes.</p>
                 <div className="bento-visual survey-visual"><SurveyIllustration /></div>
               </article>
               <article className="bento-card bento-pay">
@@ -117,14 +118,14 @@ export default function Home() {
               <article className="bento-card bento-all">
                 <span className="bento-icon"><ChecklistIcon size={22} /></span>
                 <h3>All the analysis you need, in one place.</h3>
-                <p>Attention prediction, audience surveys, A/B Testing, Digital Shelf and Generative Studio, in one workspace with one token balance.</p>
+                <p>Attention, audience feedback, version comparison, shelf placement and design suggestions, in one workspace with one token balance.</p>
                 <div className="bento-visual all-tools" aria-hidden="true">{tools.map(tool => <span className={`tool-${tool.key}`} key={tool.key}><tool.Icon size={18} /></span>)}</div>
               </article>
               <article className="bento-card bento-science">
                 <span className="bento-icon"><GlassesIcon size={22} /></span>
-                <h3>Built on neuroscience.</h3>
-                <p>Our attention model is built on the latest neuroscience and eye-tracking research. It is about 95% as accurate as an eye-tracking study, and it returns insight on a creative in seconds instead of weeks.</p>
-                <div className="bento-visual science-stat" aria-hidden="true"><strong>~95%</strong><span>as accurate as eye-tracking<br />in seconds, not weeks</span></div>
+                <h3>Built on neuroscience. Validated in the open.</h3>
+                <p>The attention model is based on state-of-the-art neuroscience and eye-tracking research, and it returns insight in seconds instead of weeks. Our university validation studies have been positive so far, and the full results will be published in early 2027.</p>
+                <div className="bento-visual science-stat" aria-hidden="true"><strong>Seconds,<br />not weeks</strong><span>Full results published<br />early 2027</span></div>
               </article>
               <article className="bento-card bento-eu">
                 <span className="bento-icon"><ShieldIcon size={22} /></span>
@@ -141,14 +142,14 @@ export default function Home() {
 
         <section className="section platform" id="platform">
           <div className="container">
-            <div className="section-head"><div><h2>Five tools. One token balance.</h2></div><p>Go from where people look, to what they understood, to a better version, without switching tools.</p></div>
+            <div className="section-head"><div><h2>One workflow. One token balance.</h2></div><p>Predict what people notice, understand how they read it, and decide what to change, all from the same balance.</p></div>
             <ToolShowcase />
           </div>
         </section>
 
         <section className="section pricing" id="pricing">
           <div className="container">
-            <div className="pricing-head"><h2>Top up once. Spend as you work.</h2><p>One token balance for image analysis, AI audience surveys and Generative Studio. Every token costs {euros(TOKEN_PRICE_CENTS)}, excluding VAT. No plans or monthly subscriptions.</p></div>
+            <div className="pricing-head"><h2>Top up once. Spend as you work.</h2><p>One token balance for every tool. New accounts start with {FREE_TOKENS} free tokens, worth {euros(FREE_TOKENS * TOKEN_PRICE_CENTS)} of testing. After that, every token costs {euros(TOKEN_PRICE_CENTS)}, excluding VAT. No plans or monthly subscriptions.</p></div>
             <TokenPricing compact />
             <PricingComparison />
           </div>
@@ -165,7 +166,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="final-cta"><div className="container"><h2>Try it with your own creative.</h2><p>Upload a visual, explore the findings and create a version you can test.</p><div className="actions center"><a className="btn white" href="https://app.neurovision-ai.com/register">Try NeuroVision free →</a><a className="btn ghost" href="mailto:info@neurovision-ai.com?subject=NeuroVision%20demo">Book a demo</a></div><small>Pay as you go. No subscription.</small></div></section>
+        <section className="final-cta"><div className="container"><h2>Try it with your own creative.</h2><p>Upload a visual, see what people notice and understand, and decide what to change next.</p><div className="actions center"><a className="btn white" href="https://app.neurovision-ai.com/register">Try NeuroVision free →</a><a className="btn ghost" href="mailto:info@neurovision-ai.com?subject=NeuroVision%20demo">Book a demo</a></div><small>Start with {FREE_TOKENS} free tokens. One token system for every tool. No subscription.</small></div></section>
       </main>
       <Footer />
     </>

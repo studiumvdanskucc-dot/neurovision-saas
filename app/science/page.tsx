@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { GazeStudyArt, RedesignStudyArt, SurveyStudyArt } from "../science-art";
-import { LockIcon, RangeIcon, TeamIcon } from "../brand-icons";
+import { EyeIcon, EyesIcon, LockIcon, RangeIcon, SurveyIcon, TeamIcon } from "../brand-icons";
 import Link from "next/link";
 import { Footer, Header } from "../site-shell";
 import { WhyDifferent } from "../why-different";
@@ -77,17 +77,14 @@ export default function Science() {
               <p className="kicker">Science &amp; validation</p>
               <h1>How we test what we predict.</h1>
               <p className="sv-lead">
-                Where do people look? What do they understand? Does a new design
-                improve the outcome? NeuroVision connects these questions in one
-                workflow, with a separate evidence standard for each step.
+                Three questions matter: where do people look, what do they understand, and does a new version do better? Each one has its own test.
               </p>
               <div className="sv-status-row">
-                <span>Aarhus validation programme</span>
-                <span>Results not yet published here</span>
+                <span>Results so far: positive</span>
+                <span>Full publication early 2027</span>
               </div>
               <p className="sv-citation-line">
-                Early gaze is shaped by visual saliency and scene structure, while
-                task and context increasingly influence what happens next{" "}
+                What catches the eye first depends on what stands out. What happens next depends on the viewer’s goals and the context{" "}
                 <a href="#ref-itti-koch">(Itti &amp; Koch, 2001)</a>{" "}
                 <a href="#ref-tatler">(Tatler et al., 2011)</a>.
               </p>
@@ -113,18 +110,44 @@ export default function Science() {
         </section>
 
 
-    <section className="section science-foundations" id="evidence"><div className="reading-width">
-      <div className="section-head"><div><h2>Scientific foundations</h2></div><p>Attention is a starting point. Understanding the message and improving the creative are separate steps.</p></div>
-      <article className="science-chapter"><h3>What guides visual attention?</h3><p>Contrast, colour, faces, text and the arrangement of objects help guide our opening glance. This is often called <em>visual saliency</em>: how much something stands out in a scene. Our goals, experience and the context also shape what we look at <a href="#ref-itti-koch">(Itti &amp; Koch, 2001)</a> <a href="#ref-bruce-tsotsos">(Bruce &amp; Tsotsos, 2009)</a> <a href="#ref-tatler">(Tatler et al., 2011)</a>.</p><p className="practical-meaning"> A striking background can compete with the product. Attention analysis helps you check whether the intended message has enough visual presence.</p></article>
-      <article className="science-chapter"><h3>What does a heatmap predict?</h3><p>Modern models estimate how likely different parts of an image are to receive a fixation — a brief pause of the eyes. A heatmap makes that distribution visible. It describes a pattern across viewers, rather than the exact path of one person’s eyes <a href="#ref-deepgaze-ii">(Kümmerer et al., 2016)</a> <a href="#ref-deepgaze-iie">(Linardos et al., 2021)</a>.</p><p>To know whether a model is useful, its predictions need to be compared with human eye-tracking on images it has not been evaluated or tuned on. Different metrics reveal different strengths and errors; one attractive map or headline score is not enough <a href="#ref-bylinskii">(Bylinskii et al., 2019)</a>.</p><p className="practical-meaning"> Use the map to compare visual hierarchy. Looking at a headline does not, by itself, show that someone understood or believed it.</p></article>
-      <article className="science-chapter"><h3>What can AI audience feedback tell us?</h3><p>AI agents can answer structured questions from selected audience profiles. Research explores when these simulations reflect aspects of human behaviour, including the role of grounding agents in information about real people <a href="#ref-horton">(Horton, 2023)</a> <a href="#ref-mei">(Mei et al., 2024)</a> <a href="#ref-park">(Park et al., 2024)</a>.</p><p>That does not make simulated answers interchangeable with a human research panel. They can miss variation and reflect bias. NeuroVision uses them to explore possible interpretations; comparison and calibration against human responses form a separate part of our validation programme.</p><p className="practical-meaning"> Screen for clarity, trust and relevance. Use the findings to prioritise ideas and decide what to ask real customers.</p></article>
-    </div></section>
+    <section className="section release-note"><div className="container">
+        <div className="release-card">
+          <h2>Why we’re releasing now</h2>
+          <p>Our validation studies with university researchers will be officially published in early 2027. So far, every result has been positive. That’s why we’re releasing NeuroVision now: to give the industry access to state-of-the-art prediction intelligence today, not in a year.</p>
+        </div>
+      </div></section>
+
+      <section className="section science-foundations" id="evidence"><div className="container">
+        <div className="section-head"><div><h2>The concepts, in plain words</h2></div><p>Three ideas behind NeuroVision, and what each one means for your work.</p></div>
+        <div className="concept-cards">
+          <article className="concept-card concept-eye">
+            <span className="concept-icon" aria-hidden="true"><EyesIcon size={24} /></span>
+            <h3>What catches the eye?</h3>
+            <p>In the first second, people notice what stands out: strong contrast, colour, faces and text. Scientists call this <em>visual saliency</em>. After that, what people are looking for, and where they are, matter more <a href="#ref-itti-koch">(Itti &amp; Koch, 2001)</a> <a href="#ref-bruce-tsotsos">(Bruce &amp; Tsotsos, 2009)</a> <a href="#ref-tatler">(Tatler et al., 2011)</a>.</p>
+            <p className="practical-meaning"><b>In practice</b>A bold background can steal attention from your product. Attention analysis shows whether your message gets enough of it.</p>
+          </article>
+          <article className="concept-card concept-heat">
+            <span className="concept-icon" aria-hidden="true"><EyeIcon size={24} /></span>
+            <h3>What does a heatmap show?</h3>
+            <p>A heatmap shows where many people are likely to look. It doesn’t show the exact path of one person’s eyes. Warm colours mean more attention <a href="#ref-deepgaze-ii">(Kümmerer et al., 2016)</a> <a href="#ref-deepgaze-iie">(Linardos et al., 2021)</a>.</p>
+            <p>To trust a heatmap, it must be checked against real eye-tracking, on images the model has never seen, using more than one score <a href="#ref-bylinskii">(Bylinskii et al., 2019)</a>.</p>
+            <p className="practical-meaning"><b>In practice</b>Use it to compare what stands out. Seeing a headline isn’t the same as understanding or believing it.</p>
+          </article>
+          <article className="concept-card concept-survey">
+            <span className="concept-icon" aria-hidden="true"><SurveyIcon size={24} /></span>
+            <h3>What can AI audience feedback tell you?</h3>
+            <p>AI profiles answer your questions the way a chosen audience might. Research shows this can reflect real behaviour, especially when the profiles are based on real people <a href="#ref-horton">(Horton, 2023)</a> <a href="#ref-mei">(Mei et al., 2024)</a> <a href="#ref-park">(Park et al., 2024)</a>.</p>
+            <p>It can’t replace a real panel, though: it can miss variety and carry bias. That’s why our studies compare AI answers with real people’s answers.</p>
+            <p className="practical-meaning"><b>In practice</b>Use it to screen for clarity, trust and relevance, and to decide what to ask real customers.</p>
+          </article>
+        </div>
+      </div></section>
 
     <ScienceLoop />
 
     <section className="section validation-section" id="aarhus-study"><div className="container">
-      <div className="section-head"><div><h2>The Aarhus validation programme</h2></div><p>We are testing three things: do our heatmaps match where people really look, do AI answers match what real people say, and does a redesigned creative actually do better?</p></div>
-      <p className="validation-status"><span aria-hidden="true" />Study in progress. Results and an updated readout date will be published on this page.</p>
+      <div className="section-head"><div><h2>The validation programme</h2></div><p>We test three things: do our heatmaps match where people really look, do AI answers match what real people say, and does a redesigned creative actually do better?</p></div>
+      <p className="validation-status"><span aria-hidden="true" />So far, every result has been positive. The full studies will be officially published in early 2027.</p>
 
       <div className="study-cards">
         <article className="study-card study-a">
@@ -137,10 +160,10 @@ export default function Science() {
               <li><b>Look at two moments.</b> The first glance (up to 0.8 seconds) and the full view (2 seconds).</li>
               <li><b>Overlay the maps.</b> We lay the NeuroVision heatmap over the real gaze map and measure how much they overlap.</li>
             </ol>
-            <p className="study-goal"><b>What counts as a pass</b>An overlap score (SIM) of at least 0.93, fixed before testing. It is a target, not a result yet, and not the same as “93% accuracy”.</p>
+            <p className="study-goal"><b>What counts as a pass</b>An overlap score (SIM) of at least 0.93, fixed before testing. Results so far are positive; the published figures follow in early 2027. SIM measures how much two maps overlap, so it isn’t the same as “93% accuracy”.</p>
             <details className="study-details"><summary>Technical details</summary>
               <p><strong>Viewing windows.</strong> The full window is 0–2,000 milliseconds. The early window is 0–800 milliseconds or the first fixations.</p>
-              <p><strong>Primary metric.</strong> SIM measures the overlap between normalised fixation-density maps. The predeclared target is a mean SIM of at least 0.93 on the locked benchmark. This is a target, not an achieved result or a “93% accuracy” claim.</p>
+              <p><strong>Primary metric.</strong> SIM measures the overlap between normalised fixation-density maps. The predeclared target is a mean SIM of at least 0.93 on the locked benchmark. This target was fixed before testing; SIM is not the same as a “93% accuracy” claim.</p>
               <p><strong>Supporting measures.</strong> CC checks how the maps vary together; NSS evaluates predicted saliency at human fixation locations; AUC-Judd evaluates how the map distinguishes fixated locations from other image locations. We also inspect areas of interest (AOIs): the brand, product, headline and CTA. Multiple measures help avoid relying on one score <a href="#ref-bylinskii">(Bylinskii et al., 2019)</a>.</p>
             </details>
           </div>

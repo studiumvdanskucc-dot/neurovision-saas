@@ -17,7 +17,7 @@ const price = (tokens: number) => euros(tokens * TOKEN_PRICE_CENTS);
 const panels: { title: ReactNode; copy: string; cost?: ReactNode; href: string; link: string; art: ReactNode }[] = [
   {
     title: <>Find what gets <em>noticed.</em></>,
-    copy: "Check whether the product, headline and logo stand out. Our attention model predicts where people look first, without eye-tracking equipment.",
+    copy: "Check whether the product, headline and logo stand out. The attention model predicts where people look first, without eye-tracking equipment.",
     cost: <><b>{ANALYSIS_TOKENS} tokens</b> per image, {price(ANALYSIS_TOKENS)}</>,
     href: "/how-it-works#attention", link: "Explore attention prediction", art: <AttentionArt />,
   },
@@ -29,7 +29,7 @@ const panels: { title: ReactNode; copy: string; cost?: ReactNode; href: string; 
   },
   {
     title: <>Make the next version <em>count.</em></>,
-    copy: "Optimise the creative you have, or generate a new one from a brief. Your brand rules stay in place, and every run ends with a re-analysis so you can compare it with the original.",
+    copy: "Generative Studio turns the findings into a suggested revision, or a first draft from a brief, and re-checks it against the original. Image generation is improving fast, and we are pushing it as far as today’s technology allows. It can’t yet guarantee production-ready artwork, so treat each version as a strong starting point for your designers. The moment it can deliver production-ready designs, you’ll be the first to know.",
     cost: <><b>{STUDIO_OPTIMISE_TOKENS} tokens</b> to optimise, {price(STUDIO_OPTIMISE_TOKENS)} · <b>{STUDIO_GENERATE_TOKENS}</b> to generate, {price(STUDIO_GENERATE_TOKENS)}</>,
     href: "/how-it-works#improve", link: "Explore Generative Studio", art: <StudioArt />,
   },

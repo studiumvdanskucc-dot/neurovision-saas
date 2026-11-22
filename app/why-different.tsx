@@ -14,10 +14,9 @@ export function WhyDifferent({ id }: WhyDifferentProps) {
         <div className="sv-control-grid">
           <article>
             <span>EU</span>
-            <div><h3>Our model, hosted in Europe.</h3></div>
+            <div><h3>Deployed in Europe.</h3></div>
             <p>
-              We develop our own attention model and run it on European servers.
-              That gives us direct control over its performance and development.
+              Our attention model builds on state-of-the-art published models and is refined with our specific research data. It is deployed on European servers, which gives us direct control over how it runs and improves.
             </p>
           </article>
           <article>
@@ -26,7 +25,7 @@ export function WhyDifferent({ id }: WhyDifferentProps) {
             </span>
             <div><h3>Millions of research data points.</h3></div>
             <p>
-              Our model draws on gaze and fixation data collected with devices
+              The model draws on gaze and fixation data collected with devices
               including EyeLink 1000, and on research data collected at Aarhus University.
             </p>
           </article>

@@ -14,6 +14,8 @@ export const REVISION_TOKENS = 40;
 export const SURVEY_QUESTIONS = 8;
 export const SURVEY_FIRST_100_TOKENS = 65;
 export const SURVEY_EXTRA_BLOCK_TOKENS = 60;
+// Every new account starts with this many tokens for free.
+export const FREE_TOKENS = 40;
 export const MIN_TOPUP_TOKENS = 100;
 export const MAX_TOPUP_TOKENS = 10000;
 

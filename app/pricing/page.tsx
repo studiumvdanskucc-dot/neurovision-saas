@@ -5,12 +5,13 @@ export const metadata: Metadata = { title: "Pricing", description: "Pay-as-you-g
 import { agencyPackages } from "../pricing-data";
 import { PricingComparison } from "../pricing-comparison";
 import { TokenPricing } from "../token-pricing";
+import { FREE_TOKENS, TOKEN_PRICE_CENTS, euros } from "../token-pricing-data";
 
 export default function Pricing() {
   return <><Header /><main id="main-content"><section className="page-hero"><div className="container page-hero-grid"><div><p className="kicker">Pricing &amp; services</p><h1>Use the platform.<br />Or let us do the work.</h1></div><p className="lead">Top up your token balance for the platform, or choose a one-off project with our specialists.</p></div></section>
         <section className="section pricing" id="pricing">
           <div className="container">
-            <div className="pricing-head"><h2>One balance. Pay as you go.</h2><p>Add the amount you need. Analyses, AI surveys and Generative Studio runs deduct tokens from the same balance as you use them. Every token has the same price.</p></div>
+            <div className="pricing-head"><h2>One balance. Pay as you go.</h2><p>New accounts start with {FREE_TOKENS} free tokens, worth {euros(FREE_TOKENS * TOKEN_PRICE_CENTS)} of testing. After that, add the amount you need: every tool draws on the same balance, and every token has the same price.</p></div>
             <TokenPricing />
             <PricingComparison />
           </div>
