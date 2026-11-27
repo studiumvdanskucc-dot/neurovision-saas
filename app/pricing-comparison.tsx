@@ -1,4 +1,5 @@
 import { ANALYSIS_TOKENS, MIN_TOPUP_TOKENS, TOKEN_PRICE_CENTS, euros, planTokens } from "./token-pricing-data";
+import Link from "next/link";
 import { sitePath } from "./site-path";
 import { CheckIcon, DashIcon } from "./brand-icons";
 
@@ -62,6 +63,7 @@ export function PricingComparison() {
       </section>
     </div>
     <p className="offer-compare-example"><b>A worked example.</b> Analysing {example.images} images ({example.images} × {ANALYSIS_TOKENS} tokens) and asking {example.responses} AI audience profiles uses {exampleTokens} tokens: {euros(exampleTokens * TOKEN_PRICE_CENTS)} for the month. On a subscription, the same month costs the full monthly fee.</p>
+    <div className="offer-compare-cta"><Link className="btn primary" href="/pricing#calculator">Calculate now <span aria-hidden="true">→</span></Link></div>
     <p className="fine-print">The “Other attention-testing platforms” card summarises the public websites of three established attention-testing platforms, checked in November 2026. Their offers change, so check before you decide.</p>
   </div>;
 }

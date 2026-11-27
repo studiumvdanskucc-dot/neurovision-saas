@@ -10,7 +10,6 @@ import { ToolShowcase } from "./tool-showcase";
 import { SurveyIllustration } from "./survey-illustration";
 import { tools } from "./tools";
 import { PricingComparison } from "./pricing-comparison";
-import { TokenPricing } from "./token-pricing";
 import { ANALYSIS_TOKENS, FREE_TOKENS, MIN_TOPUP_TOKENS, OWN_KEYS_DISCOUNT, OWN_KEYS_TOKEN_PRICE_CENTS, REVISION_TOKENS, STUDIO_GENERATE_TOKENS, STUDIO_OPTIMISE_TOKENS, SURVEY_QUESTIONS, TOKEN_PRICE_CENTS, euros, surveyTokens, tokenRate } from "./token-pricing-data";
 import { sitePath } from "./site-path";
 
@@ -34,7 +33,6 @@ const faqs = [
   ["Can I use my own API keys?", `Yes. Connect your own AI provider keys for reports to keep that data in your own accounts instead of sending it elsewhere. Every price then drops by ${Math.round(OWN_KEYS_DISCOUNT * 100)}%, to ${tokenRate(OWN_KEYS_TOKEN_PRICE_CENTS)} per token. NeuroVision itself runs on European servers.`],
   ["How is NeuroVision different from other attention-testing tools?", "We are independent and open about our method. Our attention model builds on state-of-the-art published models, refined with our specific research data. It is deployed in Europe and validated in university studies, with full results published in early 2027. Beyond where people look, NeuroVision shows how they read a creative and helps you decide what to change. And you pay per action, not per month."],
   ["Can Generative Studio make production-ready designs?", "Not yet, but that’s where we’re heading. Generative Studio already suggests revisions and re-checks them against the original, so you can see what is likely to work better. Image generation is getting better every month, but today’s technology can’t yet guarantee production-ready artwork, so your designers should finish the final version. We’re working to push it further, and as soon as it can deliver production-ready designs, we’ll let you know."],
-  ["Can NeuroVision replace real consumer research?", "Use NeuroVision to compare ideas and improve designs early. For important launch decisions, follow up with real customers or campaign testing."],
 ];
 
 export default function Home() {
@@ -149,9 +147,7 @@ export default function Home() {
 
         <section className="section pricing" id="pricing">
           <div className="container">
-            <div className="pricing-head"><h2>Top up once. Spend as you work.</h2><p>One token balance for every tool. New accounts start with {FREE_TOKENS} free tokens, worth {euros(FREE_TOKENS * TOKEN_PRICE_CENTS)} of testing. After that, every token costs {euros(TOKEN_PRICE_CENTS)}, excluding VAT. No plans or monthly subscriptions.</p></div>
-            <TokenPricing compact />
-            <PricingComparison />
+            <div className="pricing-head"><h2>Top up once. Spend as you work.</h2><p>One token balance for every tool. New accounts start with {FREE_TOKENS} free tokens, worth {euros(FREE_TOKENS * TOKEN_PRICE_CENTS)} of testing. After that, every token costs {euros(TOKEN_PRICE_CENTS)}, excluding VAT. No plans or monthly subscriptions.</p></div><PricingComparison />
           </div>
         </section>
 

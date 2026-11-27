@@ -570,3 +570,113 @@ h1 em, h2 em, h3 em { font-style: normal; }
   .release-card { padding: 26px 22px; border-radius: 20px; }
   .concept-card { padding: 24px 20px 20px; }
 }
+
+/* ---- Comparison: link to the calculator on the Pricing page ---- */
+.offer-compare-cta { display: flex; justify-content: center; margin-top: 28px; }
+.offer-compare-cta .btn { min-width: 220px; justify-content: center; }
+#calculator { scroll-margin-top: 110px; }
+@media (max-width: 620px) { .offer-compare-cta .btn { width: 100%; } }
+
+/* ---- Science (November 2026 update) ---- */
+.cite { white-space: normal; }
+.cite a, .concept-card > p .cite a { color: var(--blue); font-size: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.concept-card > p .cite { font-size: 13.5px; }
+.science-foundations .section-head > p b { color: var(--ink); font-weight: 650; }
+
+/* Benchmark context */
+.benchmark-context { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, .65fr); gap: 32px; margin-bottom: 32px; padding: 32px; border: 1px solid var(--line); border-radius: 24px; background: #fff; }
+.benchmark-copy h3 { font-size: clamp(22px, 2vw, 28px); font-weight: 700; line-height: 1.15; letter-spacing: -.03em; }
+.benchmark-copy p { margin: 14px 0 0; font-size: 15.5px; line-height: 1.7; color: var(--muted); }
+.benchmark-copy b { color: var(--ink); font-weight: 600; }
+.benchmark-copy .benchmark-bridge { padding: 14px 16px; border-left: 3px solid var(--blue); border-radius: 0 12px 12px 0; background: #f3f7ff; color: var(--ink); }
+.benchmark-figures { align-self: start; padding: 20px; border-radius: 18px; background: #f5f7fc; }
+.benchmark-flag { margin: 0 0 12px; padding: 4px 10px; border-radius: 99px; background: #fff; color: var(--muted); font-size: 12px; font-weight: 600; box-shadow: inset 0 0 0 1px var(--line); width: fit-content; }
+.benchmark-figures dl { display: grid; gap: 10px; margin: 0; }
+.benchmark-figures dl > div { display: grid; grid-template-columns: 84px 1fr; align-items: baseline; gap: 10px; padding-top: 10px; border-top: 1px solid var(--line); }
+.benchmark-figures dt { font-size: 22px; font-weight: 700; letter-spacing: -.03em; color: var(--ink); font-variant-numeric: tabular-nums; }
+.benchmark-figures dd { margin: 0; font-size: 13.5px; color: var(--ink); }
+.benchmark-figures small { display: block; color: var(--muted); font-size: 12px; }
+.benchmark-caveat { margin: 14px 0 0; font-size: 12.5px; line-height: 1.55; color: var(--muted); }
+
+/* Study cards */
+.study-label { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.study-number { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 8px; background: var(--s); color: #fff; font-size: 13px; font-weight: 700; }
+.study-status { padding: 3px 10px; border-radius: 99px; background: color-mix(in srgb, var(--s) 10%, #fff); color: var(--s); font-size: 12px; font-weight: 600; }
+.study-body > p:not(.study-label) { margin: 12px 0 0; font-size: 15px; line-height: 1.65; color: var(--muted); }
+.study-body > p b { color: var(--ink); font-weight: 600; }
+.study-body > h3 + p { margin-top: 14px; }
+.study-goal p { margin: 6px 0 0; }
+.study-goal ul, .study-details ul { margin: 8px 0 0; padding-left: 18px; }
+.study-goal li, .study-details li { margin-top: 4px; }
+.study-goal strong { font-weight: 650; }
+.study-body > .study-caveat { padding: 12px 14px; border: 1px dashed color-mix(in srgb, var(--s) 45%, #fff); border-radius: 12px; color: var(--ink); font-size: 14px; }
+.study-body > .study-context { font-size: 14px; }
+.study-details li { font-size: 14px; line-height: 1.6; color: var(--muted); }
+.study-card { scroll-margin-top: 110px; }
+
+/* Honesty panel */
+.study-rules { display: flex; align-items: flex-start; gap: 18px; margin-top: 32px; padding: 26px 28px; border: 1px solid var(--line); border-radius: 20px; background: #fff; }
+.study-rules > div { display: block; margin: 0; }
+.study-rules h3 { font-size: 22px; font-weight: 700; letter-spacing: -.03em; }
+.study-rules p { margin: 10px 0 0; max-width: 78ch; font-size: 15px; line-height: 1.65; color: var(--muted); }
+.study-rules p b { color: var(--ink); font-weight: 600; }
+.study-rules-icon { display: grid; flex: none; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: var(--ice); color: var(--blue); }
+
+/* Model card and lineage */
+.sv-control-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.sv-control-grid .sv-model-card { grid-column: 1 / -1; display: grid; grid-template-columns: auto minmax(0, 1fr) minmax(0, .9fr); grid-template-areas: "icon title lineage" "icon text lineage"; column-gap: 24px; align-items: start; }
+.sv-model-card > span { grid-area: icon; margin: 0 !important; }
+.sv-model-card > span svg { width: 32px; height: 32px; }
+.sv-model-card > div { grid-area: title; }
+.sv-model-card > p { grid-column: 2; margin-top: 12px !important; }
+.sv-model-card > .model-lineage { grid-area: lineage; grid-row: 1 / span 4; }
+.sv-control-grid .sv-model-card h3 { max-width: 30ch; }
+.model-lineage { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; counter-reset: lineage; }
+.model-lineage li { position: relative; display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
+.model-lineage b { font-size: 14.5px; font-weight: 650; }
+.model-lineage span { grid-column: 1; font-size: 13px; line-height: 1.45; color: var(--muted); }
+.model-lineage small { grid-column: 2; grid-row: 1; align-self: start; padding: 2px 8px; border-radius: 99px; background: #f0f2f7; color: var(--muted); font-size: 11px; font-weight: 600; white-space: nowrap; }
+.model-lineage li.is-own { border-color: var(--blue); background: #f3f7ff; }
+.model-lineage li.is-own small { background: var(--blue); color: #fff; }
+.model-lineage li.is-own::before { content: "Fine-tuning"; position: absolute; top: -10px; left: 12px; padding: 0 6px; background: #fff; color: var(--blue); font-size: 11px; font-weight: 600; }
+.sv-control-grid .cite a { color: var(--blue); }
+
+/* References, grouped */
+.reference-groups { display: grid; gap: 36px; margin-bottom: 36px; }
+.reference-group h3 { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; font-size: 18px; font-weight: 650; }
+.reference-group h3 span { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: var(--ink); color: #fff; font-size: 13px; }
+.reference-group .reference-list { margin: 0; }
+.reference-entry { margin: 0 !important; color: var(--ink) !important; font-size: 15px !important; line-height: 1.6 !important; }
+.reference-note { margin: 4px 0 0 !important; font-size: 13.5px !important; }
+.reference-list li { scroll-margin-top: 110px; }
+
+@media (max-width: 1080px) {
+  .benchmark-context { grid-template-columns: 1fr; }
+  .sv-control-grid .sv-model-card { grid-template-columns: auto minmax(0, 1fr); grid-template-areas: "icon title" "icon text" "lineage lineage"; }
+  .sv-model-card > .model-lineage { grid-row: auto; grid-column: 1 / -1; margin-top: 20px; }
+}
+@media (max-width: 800px) {
+  .sv-control-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 620px) {
+  .benchmark-context { padding: 22px 18px; border-radius: 20px; }
+  .study-rules { flex-direction: column; padding: 22px 20px; }
+  .sv-control-grid .sv-model-card { display: block; }
+  .sv-model-card > span { margin-bottom: 18px !important; }
+  .model-lineage li { grid-template-columns: 1fr; }
+  .model-lineage small { grid-column: 1; grid-row: auto; justify-self: start; margin-top: 4px; }
+}
+
+/* Team: centre an incomplete last row so the grid never shows a gap. */
+.detailed-team { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; }
+.detailed-team > article { flex: 0 0 calc((100% - 52px) / 3); }
+@media (max-width: 800px) { .detailed-team > article { flex-basis: calc((100% - 20px) / 2); } }
+@media (max-width: 620px) { .detailed-team > article { flex-basis: 100%; } }
+
+/* Science update: refinements after review */
+.sv-citation-line .cite a { color: inherit; }
+@media (min-width: 801px) { .study-card { align-items: start; } .study-card > .study-art { position: sticky; top: 110px; } }
+.study-goal ul, .study-details ul { list-style: disc; }
+.study-goal li::marker, .study-details li::marker { color: var(--s); }
+.reference-group .reference-list li { padding: 16px 0; }
+.reference-group .reference-list a { min-height: 32px; }
